@@ -1,6 +1,39 @@
-import category2 from '../../assets/img/categories/category-2.jpg';
-
+import React, { useEffect } from 'react';
+import discount_png from '../../assets/img/discount.jpg';
 function Home() {
+    useEffect(() => {
+        const loadScripts = async () => {
+            await loadScript(`${process.env.PUBLIC_URL}/js/jquery-3.3.1.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/bootstrap.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/jquery.magnific-popup.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/jquery-ui.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/mixitup.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/jquery.countdown.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/jjquery.slicknav.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/owl.carousel.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/jquery.nicescroll.min.js`);
+            await loadScript(`${process.env.PUBLIC_URL}/js/main.js`);
+            // Your jQuery-dependent logic here
+        };
+
+        loadScripts();
+
+        return () => {
+            // Cleanup logic if needed
+        };
+    }, []);
+
+    const loadScript = (src) => {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            //document.body.appendChild(script);
+        });
+    };
+
     return (
         <>
             {/* Categories Section Begin */}
@@ -500,23 +533,23 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/ht-1.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/ht-1.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Chain bucket bag</h6>
                                         <div className="rating">
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" style={{ padding: '2px' }} />
+                                            <i className="fa fa-star" style={{ padding: '2px' }} />
+                                            <i className="fa fa-star" style={{ padding: '2px' }} />
+                                            <i className="fa fa-star" style={{ padding: '2px' }} />
+                                            <i className="fa fa-star" style={{ padding: '2px' }} />
                                         </div>
                                         <div className="product__price">$ 59.0</div>
                                     </div>
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/ht-2.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/ht-2.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Pendant earrings</h6>
@@ -532,7 +565,7 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/ht-3.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/ht-3.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Cotton T-Shirt</h6>
@@ -555,7 +588,7 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/bs-1.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/bs-1.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Cotton T-Shirt</h6>
@@ -571,7 +604,7 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/bs-2.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/bs-2.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>
@@ -590,7 +623,7 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/bs-3.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/bs-3.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Round leather bag</h6>
@@ -613,7 +646,7 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/f-1.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/f-1.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Bow wrap skirt</h6>
@@ -629,7 +662,7 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/f-2.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/f-2.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Metallic earrings</h6>
@@ -645,7 +678,7 @@ function Home() {
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
-                                        <img src="img/trend/f-3.jpg" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/trend/f-3.jpg'} alt="" />
                                     </div>
                                     <div className="trend__item__text">
                                         <h6>Flap cross-body bag</h6>
@@ -671,7 +704,7 @@ function Home() {
                     <div className="row">
                         <div className="col-lg-6 p-0">
                             <div className="discount__pic">
-                                <img src="img/discount.jpg" alt="" />
+                                <img src={discount_png} alt="" />
                             </div>
                         </div>
                         <div className="col-lg-6 p-0">
@@ -749,7 +782,12 @@ function Home() {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-2 col-md-4 col-sm-4 p-0">
-                            <div className="instagram__item set-bg" data-setbg="img/instagram/insta-1.jpg">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-1.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
                                     <i className="fa fa-instagram" />
                                     <a href="#">@ ashion_shop</a>
@@ -757,7 +795,12 @@ function Home() {
                             </div>
                         </div>
                         <div className="col-lg-2 col-md-4 col-sm-4 p-0">
-                            <div className="instagram__item set-bg" data-setbg="img/instagram/insta-2.jpg">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-2.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
                                     <i className="fa fa-instagram" />
                                     <a href="#">@ ashion_shop</a>
@@ -765,7 +808,12 @@ function Home() {
                             </div>
                         </div>
                         <div className="col-lg-2 col-md-4 col-sm-4 p-0">
-                            <div className="instagram__item set-bg" data-setbg="img/instagram/insta-3.jpg">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-3.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
                                     <i className="fa fa-instagram" />
                                     <a href="#">@ ashion_shop</a>
@@ -773,7 +821,12 @@ function Home() {
                             </div>
                         </div>
                         <div className="col-lg-2 col-md-4 col-sm-4 p-0">
-                            <div className="instagram__item set-bg" data-setbg="img/instagram/insta-4.jpg">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-4.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
                                     <i className="fa fa-instagram" />
                                     <a href="#">@ ashion_shop</a>
@@ -781,7 +834,12 @@ function Home() {
                             </div>
                         </div>
                         <div className="col-lg-2 col-md-4 col-sm-4 p-0">
-                            <div className="instagram__item set-bg" data-setbg="img/instagram/insta-5.jpg">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-5.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
                                     <i className="fa fa-instagram" />
                                     <a href="#">@ ashion_shop</a>
@@ -789,7 +847,12 @@ function Home() {
                             </div>
                         </div>
                         <div className="col-lg-2 col-md-4 col-sm-4 p-0">
-                            <div className="instagram__item set-bg" data-setbg="img/instagram/insta-6.jpg">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-6.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
                                     <i className="fa fa-instagram" />
                                     <a href="#">@ ashion_shop</a>

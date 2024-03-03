@@ -113,10 +113,10 @@ function Footer() {
                             {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
                             <div className="footer__copyright__text">
                                 <p>
-                                    Copyright © All rights reserved | This template is made with
-                                    <i className="fa fa-heart" aria-hidden="true" /> by
-                                    <a href="https://colorlib.com" target="_blank">
-                                        Colorlib
+                                    coder dinkr kao - ong than ux/ui .
+                                    <i className="fa fa-heart" aria-hidden="true" />. by .
+                                    <a href="https://www.facebook.com/profile.php?id=100009572831410" target="_blank">
+                                        Chần Dinh
                                     </a>
                                 </p>
                             </div>
