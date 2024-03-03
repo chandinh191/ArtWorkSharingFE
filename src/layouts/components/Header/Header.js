@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-
+import logo from '../../../assets/img/logo.png';
 import styles from './Header.module.scss';
 const cx = classNames.bind(styles);
 
@@ -13,7 +13,7 @@ function Header() {
                         <div className={cx('col-xl-3 col-lg-2')}>
                             <div className={cx('header__logo')}>
                                 <a href="./index.html">
-                                    <img src="img/logo.png" alt="" />
+                                    <img src={logo} alt="" />
                                 </a>
                             </div>
                         </div>
