@@ -10,7 +10,9 @@ function Home() {
                         <div className="col-lg-6 p-0">
                             <div
                                 className="categories__item categories__large__item set-bg"
-                                data-setbg="img/categories/category-1.jpg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-1.jpg')`,
+                                }}
                             >
                                 <div className="categories__text">
                                     <h1>Women’s fashion</h1>
@@ -28,8 +30,7 @@ function Home() {
                                     <div
                                         className="categories__item set-bg"
                                         style={{
-                                            backgroundImage:
-                                                "url('https://images.fpt.shop/unsafe/filters:quality(5)/fptshop.com.vn/uploads/images/tin-tuc/158160/Originals/2%20(7).jpg')",
+                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-2.jpg')`,
                                         }}
                                     >
                                         <div className="categories__text">
@@ -43,8 +44,7 @@ function Home() {
                                     <div
                                         className="categories__item set-bg"
                                         style={{
-                                            backgroundImage:
-                                                "url('https://images.fpt.shop/unsafe/filters:quality(5)/fptshop.com.vn/uploads/images/tin-tuc/158160/Originals/2%20(7).jpg')",
+                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-3.jpg')`,
                                         }}
                                     >
                                         <div className="categories__text">
@@ -55,7 +55,12 @@ function Home() {
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6 p-0">
-                                    <div className="categories__item set-bg" data-setbg="img/categories/category-4.jpg">
+                                    <div
+                                        className="categories__item set-bg"
+                                        style={{
+                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-4.jpg')`,
+                                        }}
+                                    >
                                         <div className="categories__text">
                                             <h4>Cosmetics</h4>
                                             <p>159 items</p>
@@ -64,7 +69,12 @@ function Home() {
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6 p-0">
-                                    <div className="categories__item set-bg" data-setbg="img/categories/category-5.jpg">
+                                    <div
+                                        className="categories__item set-bg"
+                                        style={{
+                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-5.jpg')`,
+                                        }}
+                                    >
                                         <div className="categories__text">
                                             <h4>Accessories</h4>
                                             <p>792 items</p>
@@ -103,7 +113,12 @@ function Home() {
                     <div className="row property__gallery">
                         <div className="col-lg-3 col-md-4 col-sm-6 mix women">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-1.jpg')`,
+                                    }}
+                                >
                                     <div className="label new">New</div>
                                     <ul className="product__hover">
                                         <li>
@@ -140,7 +155,12 @@ function Home() {
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 mix men">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-2.jpg')`,
+                                    }}
+                                >
                                     <ul className="product__hover">
                                         <li>
                                             <a href="img/product/product-2.jpg" className="image-popup">
@@ -176,7 +196,12 @@ function Home() {
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 mix accessories">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-3.jpg')`,
+                                    }}
+                                >
                                     <div className="label stockout">out of stock</div>
                                     <ul className="product__hover">
                                         <li>
@@ -213,7 +238,12 @@ function Home() {
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-4.jpg')`,
+                                    }}
+                                >
                                     <ul className="product__hover">
                                         <li>
                                             <a href="img/product/product-4.jpg" className="image-popup">
@@ -249,7 +279,12 @@ function Home() {
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 mix kid">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-5.jpg')`,
+                                    }}
+                                >
                                     <ul className="product__hover">
                                         <li>
                                             <a href="img/product/product-5.jpg" className="image-popup">
@@ -285,7 +320,12 @@ function Home() {
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
                             <div className="product__item sale">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-6.jpg')`,
+                                    }}
+                                >
                                     <div className="label sale">Sale</div>
                                     <ul className="product__hover">
                                         <li>
@@ -324,7 +364,12 @@ function Home() {
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
                             <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-7.jpg')`,
+                                    }}
+                                >
                                     <ul className="product__hover">
                                         <li>
                                             <a href="img/product/product-7.jpg" className="image-popup">
@@ -360,7 +405,12 @@ function Home() {
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
                             <div className="product__item sale">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
+                                <div
+                                    className="product__item__pic set-bg"
+                                    style={{
+                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-8.jpg')`,
+                                    }}
+                                >
                                     <div className="label">Sale</div>
                                     <ul className="product__hover">
                                         <li>
@@ -402,7 +452,12 @@ function Home() {
             </section>
             {/* Product Section End */}
             {/* Banner Section Begin */}
-            <section className="banner set-bg" data-setbg="img/banner/banner-1.jpg">
+            <section
+                className="banner set-bg"
+                style={{
+                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/banner/banner-1.jpg')`,
+                }}
+            >
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-7 col-lg-8 m-auto">
