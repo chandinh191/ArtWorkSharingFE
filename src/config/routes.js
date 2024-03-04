@@ -5,6 +5,11 @@ const routes = {
     upload: '/upload',
     search: '/search',
     live: '/live',
+    shop: '/shop',
+    blogdetails: '/blogdetails',
+    contact: '/contact',
+    signup: '/signup',
+    signin: '/signin',
 };
 
 export default routes;
