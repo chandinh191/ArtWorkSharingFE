@@ -1,14 +1,16 @@
 import React from 'react';
+import img1 from '../../assets/img/background.jpg';
+import '../../assets/css/login-style.css';
 
 function SignIn() {
     return (
         <div>
             <main>
-                <div className="background">
+                <div className="background" style={{ backgroundImage: `url(${img1})` }}>
                     <div className="text">
                         <h1>Login</h1>
                         <p>
-                            No Account? <a href="signup.html">Sign up</a>
+                            No Account? <a href="signup.html">Register</a>
                         </p>
                     </div>
                     <div className="box">
