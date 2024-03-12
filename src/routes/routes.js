@@ -9,18 +9,22 @@ import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
-import Live from '~/pages/Live';
 import Contact from '~/pages/Contact';
 import BlogDetails from '~/pages/BlogDetails';
 import Shop from '~/pages/Shop';
 import SignUp from '~/pages/SignUp';
 import SignIn from '~/pages/SignIn';
+import ProductDetail from '~/pages/ProductDetail';
+import Cart from '~/pages/Cart';
+import CheckOut from '~/pages/CheckOut';
 
 // Public routes
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.following, component: Following },
-    { path: config.routes.live, component: Live },
+    { path: config.routes.productDetail, component: ProductDetail },
+    { path: config.routes.cart, component: Cart },
+    { path: config.routes.checkout, component: CheckOut },
     { path: config.routes.profile, component: Profile },
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },
     { path: config.routes.search, component: Search },
