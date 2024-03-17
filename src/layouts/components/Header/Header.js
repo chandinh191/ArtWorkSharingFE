@@ -61,8 +61,8 @@ function Header() {
                         <div className={cx('col-lg-3')}>
                             <div className={cx('header__right')}>
                                 <div className={cx('header__right__auth')}>
-                                    <a href="#">Login</a>
-                                    <a href="#">Register</a>
+                                    <a href="/SignUp">Login</a>
+                                    <a href="/SignIn">Register</a>
                                 </div>
                                 <ul className={cx('header__right__widget')}>
                                     <li>
