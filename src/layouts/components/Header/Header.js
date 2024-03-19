@@ -21,18 +21,18 @@ function Header() {
                             <nav className={cx('header__menu')}>
                                 <ul>
                                     <li className={cx('active')}>
-                                        <a href="./index.html">Home</a>
+                                        <a href="./">Home</a>
                                     </li>
                                     <li>
-                                        <a href="#">Women’s</a>
+                                        <a href="./Shop">Shop</a>
                                     </li>
                                     <li>
-                                        <a href="#">Men’s</a>
+                                        <a href="./blogdetails">Blog</a>
                                     </li>
                                     <li>
-                                        <a href="./shop.html">Shop</a>
+                                        <a href="./Contact">Contact</a>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <a href="#">Pages</a>
                                         <ul className={cx('dropdown')}>
                                             <li>
@@ -48,34 +48,28 @@ function Header() {
                                                 <a href="./blog-details.html">Blog Details</a>
                                             </li>
                                         </ul>
-                                    </li>
-                                    <li>
-                                        <a href="./blog.html">Blog</a>
-                                    </li>
-                                    <li>
-                                        <a href="./contact.html">Contact</a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </nav>
                         </div>
                         <div className={cx('col-lg-3')}>
                             <div className={cx('header__right')}>
                                 <div className={cx('header__right__auth')}>
-                                    <a href="/SignUp">Login</a>
-                                    <a href="/SignIn">Register</a>
+                                    <a href="/SignIn">Login</a>
+                                    <a href="/SignUp">Register</a>
                                 </div>
                                 <ul className={cx('header__right__widget')}>
-                                    <li>
+                                    {/* <li>
                                         <span className={cx('icon_search search-switch')} />
-                                    </li>
-                                    <li>
+                                    </li> */}
+                                    {/* <li>
                                         <a href="#">
                                             <span className={cx('icon_heart_alt')} />
                                             <div className={cx('tip')}>2</div>
                                         </a>
-                                    </li>
+                                    </li> */}
                                     <li>
-                                        <a href="#">
+                                        <a href="./Cart">
                                             <span className={cx('icon_bag_alt')} />
                                             <div className={cx('tip')}>2</div>
                                         </a>
