@@ -326,6 +326,7 @@ ol {
 }
 .header__logo img {
     height: 88px;
+    width: auto;
 }
 
 .header__logo a {
