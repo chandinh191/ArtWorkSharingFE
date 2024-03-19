@@ -12,7 +12,7 @@ function Header() {
                     <div className={cx('row')}>
                         <div className={cx('col-xl-3 col-lg-2')}>
                             <div className={cx('header__logo')}>
-                                <a href="./index.html">
+                                <a href="./">
                                     <img src={logo} alt="" />
                                 </a>
                             </div>
