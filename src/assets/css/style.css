@@ -1289,7 +1289,7 @@ ol {
 .product__item__text .rating i {
     font-size: 10px;
     color: #e3c01c;
-    margin-right: -4px;
+    margin-right: 1px;
 }
 
 .product__item__text .rating i:last-child {
