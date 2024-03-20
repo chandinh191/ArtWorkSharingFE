@@ -39,7 +39,7 @@ function Home() {
     useEffect(() => {
         // Make the API request
         axios
-            .get(`http://aws-prn.somee.com/api/ArtWork/GetAll`)
+            .get(`https://localhost:7178/api/ArtWork/GetAll`)
             .then((response) => {
                 // Update the state with the fetched data
                 setArtworks(response.data);
@@ -149,10 +149,15 @@ function Home() {
                     <div className="row">
                         <div className="col-lg-4 col-md-4">
                             <div className="section-title">
-                                <h4>New product</h4>
+                                <h4>New ArtWork</h4>
                             </div>
                         </div>
                         <div className="col-lg-8 col-md-8">
+                            <ul className="filter__controls">
+                                <li className="active">Artwork for last week</li>
+                            </ul>
+                        </div>
+                        {/* <div className="col-lg-8 col-md-8">
                             <ul className="filter__controls">
                                 <li className="active" data-filter="*">
                                     All
@@ -163,97 +168,70 @@ function Home() {
                                 <li data-filter=".accessories">Accessories</li>
                                 <li data-filter=".cosmetic">Cosmetics</li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="row property__gallery">
-                        {artworks.map((artwork) => (
-                            <div className="col-lg-3 col-md-4 col-sm-6 mix women">
-                                <div className="product__item">
-                                    <div
-                                        className="product__item__pic set-bg"
-                                        style={{
-                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-1.jpg')`,
-                                        }}
-                                    >
-                                        {artwork.isSold ? <div className="label stockout">Sold</div> : null}
-                                        {artwork.isPreOrder ? <div className="label stockout">PreOrder</div> : null}
-                                        <div className="label new">New</div>
-                                        <ul className="product__hover">
-                                            <li>
-                                                <a href="img/product/product-1.jpg" className="image-popup">
-                                                    <span className="arrow_expand" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span className="icon_heart_alt" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span className="icon_bag_alt" />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="product__item__text">
-                                        <h6>
-                                            <a href="#">{artwork.name}</a>
-                                        </h6>
-                                        <div className="rating">
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
-                                            <i className="fa fa-star" />
+                        {artworks
+                            .sort((a, b) => new Date(b.created) - new Date(a.created)) // Sắp xếp theo thời gian tạo mới nhất
+                            .slice(0, 8) // Chỉ lấy 8 tác phẩm đầu tiên sau khi đã sắp xếp
+                            .map(
+                                (artwork) =>
+                                    isWithinLastWeek(artwork.created) && (
+                                        <div className="col-lg-3 col-md-4 col-sm-6 mix women" key={artwork.id}>
+                                            <div className="product__item">
+                                                <div
+                                                    className="product__item__pic set-bg"
+                                                    style={{
+                                                        backgroundImage: `url('${process.env.PUBLIC_URL}/images/product/product-1.jpg')`,
+                                                    }}
+                                                >
+                                                    {/* {artwork.isSold && <div className="label stockout">Sold</div>} */}
+                                                    {artwork.isPreOrder ? (
+                                                        <div className="label stockout">PreOrder</div>
+                                                    ) : (
+                                                        <div className="label new">New</div>
+                                                    )}
+
+                                                    <ul className="product__hover">
+                                                        <li>
+                                                            <a href="img/product/product-1.jpg" className="image-popup">
+                                                                <span className="arrow_expand" />
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span className="icon_heart_alt" />
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span className="icon_bag_alt" />
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div className="product__item__text">
+                                                    <h6>
+                                                        <a href="#">{artwork.name}</a>
+                                                    </h6>
+                                                    <div className="rating">
+                                                        <i className="fa fa-star" />
+                                                        <i className="fa fa-star" />
+                                                        <i className="fa fa-star" />
+                                                        <i className="fa fa-star" />
+                                                        <i className="fa fa-star" />
+                                                    </div>
+                                                    <div className="product__price">${artwork.price}</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="product__price">${artwork.price}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                                    ),
+                            )}
                     </div>
                 </div>
             </section>
             {/* Product Section End */}
-            {/* Banner Section Begin */}
-            <section
-                className="banner set-bg"
-                style={{
-                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/banner/banner-1.jpg')`,
-                }}
-            >
-                <div className="container">
-                    <div className="row">
-                        <div className="col-xl-7 col-lg-8 m-auto">
-                            <div className="banner__slider owl-carousel">
-                                <div className="banner__item">
-                                    <div className="banner__text">
-                                        <span>The Chloe Collection</span>
-                                        <h1>The Project Jacket</h1>
-                                        <a href="#">Shop now</a>
-                                    </div>
-                                </div>
-                                <div className="banner__item">
-                                    <div className="banner__text">
-                                        <span>The Chloe Collection</span>
-                                        <h1>The Project Jacket</h1>
-                                        <a href="#">Shop now</a>
-                                    </div>
-                                </div>
-                                <div className="banner__item">
-                                    <div className="banner__text">
-                                        <span>The Chloe Collection</span>
-                                        <h1>The Project Jacket</h1>
-                                        <a href="#">Shop now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* Banner Section End */}
+
             {/* Trend Section Begin */}
             <section className="trend spad">
                 <div className="container">
@@ -261,7 +239,7 @@ function Home() {
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="trend__content">
                                 <div className="section-title">
-                                    <h4>Hot Trend</h4>
+                                    <h4>Hot</h4>
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
@@ -316,7 +294,7 @@ function Home() {
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="trend__content">
                                 <div className="section-title">
-                                    <h4>Best seller</h4>
+                                    <h4>Best Exchange</h4>
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">
@@ -374,7 +352,7 @@ function Home() {
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="trend__content">
                                 <div className="section-title">
-                                    <h4>Feature</h4>
+                                    <h4>Best Artist</h4>
                                 </div>
                                 <div className="trend__item">
                                     <div className="trend__item__pic">

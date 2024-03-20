@@ -579,7 +579,7 @@ ol {
 -----------------------*/
 
 .trend {
-    padding-top: 80px;
+    padding-top: 40px;
     padding-bottom: 50px;
 }
 
@@ -1107,7 +1107,7 @@ ol {
 
 .product {
     padding-top: 60px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .filter__controls {
@@ -1184,7 +1184,7 @@ ol {
 }
 
 .product__item__pic .label.stockout {
-    background: #111111;
+    background: orange;
 }
 
 .product__item__pic .label.stockblue {
