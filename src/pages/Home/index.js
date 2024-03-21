@@ -70,10 +70,9 @@ function Home() {
                                 }}
                             >
                                 <div className="categories__text">
-                                    <h1>Women’s fashion</h1>
+                                    <h1>.</h1>
                                     <p>
-                                        Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
-                                        edolore magna aliquapendisse ultrices gravida.
+                                        .
                                     </p>
                                     <a href="#">Shop now</a>
                                 </div>

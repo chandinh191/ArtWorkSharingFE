@@ -32,6 +32,9 @@ function Header() {
                                     <li>
                                         <a href="./Contact">Contact</a>
                                     </li>
+                                    <li>
+                                        <a href="./MyArtWork">MyArtWork</a>
+                                    </li>
                                     {/* <li>
                                         <a href="#">Pages</a>
                                         <ul className={cx('dropdown')}>

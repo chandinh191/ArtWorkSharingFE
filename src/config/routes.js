@@ -13,6 +13,8 @@ const routes = {
     productDetail: '/ProductDetail',
     cart: '/Cart',
     checkout: '/CheckOut',
+    myArtWork: '/MyArtWork',
+    createArtwork: '/MyArtWork/Create'
 };
 
 export default routes;
