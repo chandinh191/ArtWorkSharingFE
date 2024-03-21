@@ -33,6 +33,7 @@
 
 html,
 body {
+    
     height: 100%;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -1066,24 +1067,28 @@ ol {
     margin-bottom: 15px;
 }
 
-.categories__text h1 {
+.categories__text h2 {
     font-family: 'Cookie', cursive;
-    color: #111111;
+    color: whitesmoke;
+    font-weight: 700;
     margin-bottom: 5px;
 }
 
 .categories__text h4 {
-    color: #111111;
+    font-family: 'Cookie', cursive;
+    color: whitesmoke;
     font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .categories__text p {
+    color: wheat;
     margin-bottom: 10px;
 }
 
 .categories__text a {
     font-size: 14px;
-    color: #111111;
+    color: #ffb4b4;
     text-transform: uppercase;
     font-weight: 600;
     position: relative;

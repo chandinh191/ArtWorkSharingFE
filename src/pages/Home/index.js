@@ -70,8 +70,8 @@ function Home() {
                                 }}
                             >
                                 <div className="categories__text">
-                                    <h1>.</h1>
-                                    <p>.</p>
+                                    <h2>Category 1</h2>
+                                    <p>2 items</p>
                                     <a href="#">Shop now</a>
                                 </div>
                             </div>
