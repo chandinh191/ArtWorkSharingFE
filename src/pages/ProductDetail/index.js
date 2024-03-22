@@ -1,17 +1,10 @@
 import React from 'react';
-import img_productdetail_thumb_1 from '../../assets/img/product/details/product-1.jpg';
-import img_productdetail_thumb_2 from '../../assets/img/product/details/product-2.jpg';
-import img_productdetail_thumb_3 from '../../assets/img/product/details/product-3.jpg';
-import img_productdetail_thumb_4 from '../../assets/img/product/details/product-4.jpg';
-import img_productdetail_product_1 from '../../assets/img/product/details/thumb-1.jpg';
-import img_productdetail_product_2 from '../../assets/img/product/details/thumb-2.jpg';
-import img_productdetail_product_3 from '../../assets/img/product/details/thumb-3.jpg';
-import img_productdetail_product_4 from '../../assets/img/product/details/thumb-4.jpg';
-import img_productdetail_related_1 from '../../assets/img/product/related/rp-1.jpg';
-import img_productdetail_related_2 from '../../assets/img/product/related/rp-2.jpg';
-import img_productdetail_related_3 from '../../assets/img/product/related/rp-3.jpg';
-import img_productdetail_related_4 from '../../assets/img/product/related/rp-4.jpg';
+import { useParams } from 'react-router-dom';
+import img_avatar from '../../assets/img/avatar.jpg';
+import img_product from '../../assets/img/product/details/product-2.jpg';
+
 function ProductDetail() {
+    const { id } = useParams();
     return (
         <>
             {/* Breadcrumb Begin */}
@@ -23,8 +16,8 @@ function ProductDetail() {
                                 <a href="./index.html">
                                     <i className="fa fa-home" /> Home
                                 </a>
-                                <a href="#">Women’s </a>
-                                <span>Essential structured blazer</span>
+                                <a href="#">ArtWork </a>
+                                <span>Detail information</span>
                             </div>
                         </div>
                     </div>
@@ -37,55 +30,13 @@ function ProductDetail() {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="product__details__pic">
-                                <div className="product__details__pic__left product__thumb nice-scroll">
-                                    <a className="pt active" href="#product-1">
-                                        <img src={img_productdetail_thumb_1} alt="" />
-                                    </a>
-                                    <a className="pt" href="#product-2">
-                                        <img src={img_productdetail_thumb_2} alt="" />
-                                    </a>
-                                    <a className="pt" href="#product-3">
-                                        <img src={img_productdetail_thumb_3} alt="" />
-                                    </a>
-                                    <a className="pt" href="#product-4">
-                                        <img src={img_productdetail_thumb_4} alt="" />
-                                    </a>
-                                </div>
-                                <div className="product__details__slider__content">
-                                    <div className="product__details__pic__slider owl-carousel">
-                                        <img
-                                            data-hash="product-1"
-                                            className="product__big__img"
-                                            src={img_productdetail_product_1}
-                                            alt=""
-                                        />
-                                        <img
-                                            data-hash="product-2"
-                                            className="product__big__img"
-                                            src={img_productdetail_product_3}
-                                            alt=""
-                                        />
-                                        <img
-                                            data-hash="product-3"
-                                            className="product__big__img"
-                                            src={img_productdetail_product_2}
-                                            alt=""
-                                        />
-                                        <img
-                                            data-hash="product-4"
-                                            className="product__big__img"
-                                            src={img_productdetail_product_4}
-                                            alt=""
-                                        />
-                                    </div>
-                                </div>
+                                <img src={img_product} alt="" />
                             </div>
                         </div>
                         <div className="col-lg-6">
                             <div className="product__details__text">
                                 <h3>
-                                    Essential structured blazer{" "}
-                                    <span>Brand: SKMEIMore Men Watches from SKMEI</span>
+                                    Essential structured blazer <span>Brand: SKMEIMore Men Watches from SKMEI</span>
                                 </h3>
                                 <div className="rating">
                                     <i className="fa fa-star" />
@@ -95,23 +46,14 @@ function ProductDetail() {
                                     <i className="fa fa-star" />
                                     <span>( 138 reviews )</span>
                                 </div>
-                                <div className="product__details__price">
-                                    $ 75.0 <span>$ 83.0</span>
-                                </div>
+                                <div className="product__details__price">$ 75.0 {/*<span>$ 83.0</span> */}</div>
                                 <p>
-                                    Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret
-                                    fugit, sed quia consequuntur magni lores eos qui ratione
-                                    voluptatem sequi nesciunt.
+                                    Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia
+                                    consequuntur magni lores eos qui ratione voluptatem sequi nesciunt.
                                 </p>
                                 <div className="product__details__button">
-                                    <div className="quantity">
-                                        <span>Quantity:</span>
-                                        <div className="pro-qty">
-                                            <input type="text" defaultValue={1} />
-                                        </div>
-                                    </div>
                                     <a href="#" className="cart-btn">
-                                        <span className="icon_bag_alt" /> Add to cart
+                                        <span className="icon_bag_alt" /> BUY NOW
                                     </a>
                                     <ul>
                                         <li>
@@ -119,11 +61,11 @@ function ProductDetail() {
                                                 <span className="icon_heart_alt" />
                                             </a>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <a href="#">
                                                 <span className="icon_adjust-horiz" />
                                             </a>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                                 <div className="product__details__widget">
@@ -190,274 +132,73 @@ function ProductDetail() {
                             <div className="product__details__tab">
                                 <ul className="nav nav-tabs" role="tablist">
                                     <li className="nav-item">
-                                        <a
-                                            className="nav-link active"
-                                            data-toggle="tab"
-                                            href="#tabs-1"
-                                            role="tab"
-                                        >
-                                            Description
+                                        <a className="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                            Reviews ( 2 )
                                         </a>
                                     </li>
-                                    <li className="nav-item">
-                                        <a
-                                            className="nav-link"
-                                            data-toggle="tab"
-                                            href="#tabs-2"
-                                            role="tab"
-                                        >
+                                    {/* <li className="nav-item">
+                                        <a className="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
                                             Specification
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a
-                                            className="nav-link"
-                                            data-toggle="tab"
-                                            href="#tabs-3"
-                                            role="tab"
-                                        >
+                                        <a className="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
                                             Reviews ( 2 )
                                         </a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                                 <div className="tab-content">
                                     <div className="tab-pane active" id="tabs-1" role="tabpanel">
                                         <h6>Description</h6>
                                         <p>
-                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                            odit aut loret fugit, sed quia consequuntur magni dolores eos
-                                            qui ratione voluptatem sequi nesciunt loret. Neque porro lorem
-                                            quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                            voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                            fugit, sed quia ipsu consequuntur magni dolores eos qui
-                                            ratione voluptatem sequi nesciunt. Nulla consequat massa quis
-                                            enim.
+                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
+                                            fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
+                                            nesciunt loret. Neque porro lorem quisquam est, qui dolorem ipsum quia dolor
+                                            si. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                                            loret fugit, sed quia ipsu consequuntur magni dolores eos qui ratione
+                                            voluptatem sequi nesciunt. Nulla consequat massa quis enim.
                                         </p>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                                            natoque penatibus et magnis dis parturient montes, nascetur
-                                            ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                                            eu, pretium quis, sem.
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                                            pellentesque eu, pretium quis, sem.
                                         </p>
                                     </div>
                                     <div className="tab-pane" id="tabs-2" role="tabpanel">
                                         <h6>Specification</h6>
                                         <p>
-                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                            odit aut loret fugit, sed quia consequuntur magni dolores eos
-                                            qui ratione voluptatem sequi nesciunt loret. Neque porro lorem
-                                            quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                            voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                            fugit, sed quia ipsu consequuntur magni dolores eos qui
-                                            ratione voluptatem sequi nesciunt. Nulla consequat massa quis
-                                            enim.
+                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
+                                            fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
+                                            nesciunt loret. Neque porro lorem quisquam est, qui dolorem ipsum quia dolor
+                                            si. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                                            loret fugit, sed quia ipsu consequuntur magni dolores eos qui ratione
+                                            voluptatem sequi nesciunt. Nulla consequat massa quis enim.
                                         </p>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                                            natoque penatibus et magnis dis parturient montes, nascetur
-                                            ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                                            eu, pretium quis, sem.
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                                            pellentesque eu, pretium quis, sem.
                                         </p>
                                     </div>
                                     <div className="tab-pane" id="tabs-3" role="tabpanel">
                                         <h6>Reviews ( 2 )</h6>
                                         <p>
-                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                            odit aut loret fugit, sed quia consequuntur magni dolores eos
-                                            qui ratione voluptatem sequi nesciunt loret. Neque porro lorem
-                                            quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                            voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                            fugit, sed quia ipsu consequuntur magni dolores eos qui
-                                            ratione voluptatem sequi nesciunt. Nulla consequat massa quis
-                                            enim.
+                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
+                                            fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
+                                            nesciunt loret. Neque porro lorem quisquam est, qui dolorem ipsum quia dolor
+                                            si. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                                            loret fugit, sed quia ipsu consequuntur magni dolores eos qui ratione
+                                            voluptatem sequi nesciunt. Nulla consequat massa quis enim.
                                         </p>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                                            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                                            natoque penatibus et magnis dis parturient montes, nascetur
-                                            ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                                            eu, pretium quis, sem.
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                                            pellentesque eu, pretium quis, sem.
                                         </p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-12 text-center">
-                            <div className="related__title">
-                                <h5>RELATED PRODUCTS</h5>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6">
-                            <div className="product__item">
-                                <div
-                                    className="product__item__pic set-bg"
-                                    style={{ backgroundImage: `url(${img_productdetail_related_1})` }}
-                                >
-                                    <div className="label new">New</div>
-                                    <ul className="product__hover">
-                                        <li>
-                                            <a
-                                                href={img_productdetail_related_1}
-                                                className="image-popup"
-                                            >
-                                                <span className="arrow_expand" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_heart_alt" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_bag_alt" />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>
-                                        <a href="#">Buttons tweed blazer</a>
-                                    </h6>
-                                    <div className="rating">
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                    </div>
-                                    <div className="product__price">$ 59.0</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6">
-                            <div className="product__item">
-                                <div
-                                    className="product__item__pic set-bg"
-                                    style={{ backgroundImage: `url(${img_productdetail_related_2})` }}
-                                >
-                                    <ul className="product__hover">
-                                        <li>
-                                            <a
-                                                href={img_productdetail_related_2}
-                                                className="image-popup"
-                                            >
-                                                <span className="arrow_expand" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_heart_alt" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_bag_alt" />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>
-                                        <a href="#">Flowy striped skirt</a>
-                                    </h6>
-                                    <div className="rating">
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                    </div>
-                                    <div className="product__price">$ 49.0</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6">
-                            <div className="product__item">
-                                <div
-                                    className="product__item__pic set-bg"
-                                    style={{ backgroundImage: `url(${img_productdetail_related_3})` }}
-                                >
-                                    <div className="label stockout">out of stock</div>
-                                    <ul className="product__hover">
-                                        <li>
-                                            <a
-                                                href={img_productdetail_related_3}
-                                                className="image-popup"
-                                            >
-                                                <span className="arrow_expand" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_heart_alt" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_bag_alt" />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>
-                                        <a href="#">Cotton T-Shirt</a>
-                                    </h6>
-                                    <div className="rating">
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                    </div>
-                                    <div className="product__price">$ 59.0</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6">
-                            <div className="product__item">
-                                <div
-                                    className="product__item__pic set-bg"
-                                    style={{ backgroundImage: `url(${img_productdetail_related_4})` }}
-                                >
-                                    <ul className="product__hover">
-                                        <li>
-                                            <a
-                                                href={img_productdetail_related_4}
-                                                className="image-popup"
-                                            >
-                                                <span className="arrow_expand" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_heart_alt" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span className="icon_bag_alt" />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>
-                                        <a href="#">Slim striped pocket shirt</a>
-                                    </h6>
-                                    <div className="rating">
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                        <i className="fa fa-star" />
-                                    </div>
-                                    <div className="product__price">$ 59.0</div>
                                 </div>
                             </div>
                         </div>
@@ -465,6 +206,66 @@ function ProductDetail() {
                 </div>
             </section>
             {/* Product Details Section End */}
+            <div className="container">
+                <div className="blog__details__comment">
+                    <h5>3 Comment</h5>
+                    <a href="#" className="leave-btn">
+                        Leave a comment
+                    </a>
+                    <div className="blog__comment__item">
+                        <div className="blog__comment__item__pic">
+                            <img src={img_avatar} alt="" />
+                        </div>
+                        <div className="blog__comment__item__text">
+                            <h6>Brandon Kelley</h6>
+                            <p>
+                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune perpetua mei
+                                et. Simul viderer facilisis egimus tractatos splendi.
+                            </p>
+                            <ul>
+                                <li>
+                                    <i className="fa fa-clock-o" /> Seb 17, 2019
+                                </li>
+                                {/* <li>
+                                    <i className="fa fa-heart-o" /> 12
+                                </li>
+                                <li>
+                                    <i className="fa fa-share" /> 1
+                                </li> */}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="blog__comment__item">
+                        <div className="blog__comment__item__pic">
+                            <img src={img_avatar} alt="" />
+                        </div>
+                        <div className="blog__comment__item__text">
+                            <h6>Brandon Kelley</h6>
+                            <p>
+                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune perpetua mei
+                                et. Simul viderer facilisis egimus tractatos splendi.
+                            </p>
+                            <ul>
+                                <li>
+                                    <i className="fa fa-clock-o" /> Seb 17, 2019
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="contact__content">
+                    <div className="contact__form">
+                        <form action="#">
+                            <textarea placeholder="Enter your reviewing" defaultValue={''} />
+                            <button type="submit" className="site-btn">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
