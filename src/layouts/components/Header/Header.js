@@ -33,7 +33,7 @@ function Header() {
                                         <a href="./Contact">Contact</a>
                                     </li>
                                     <li>
-                                        <a href="./MyArtWork">MyArtWork</a>
+                                        <a href="./ArtistProfile">ArtistProfile</a>
                                     </li>
                                     {/* <li>
                                         <a href="#">Pages</a>

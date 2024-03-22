@@ -13,8 +13,9 @@ const routes = {
     productDetail: '/ProductDetail',
     cart: '/Cart',
     checkout: '/CheckOut',
-    myArtWork: '/MyArtWork',
-    createArtwork: '/MyArtWork/Create'
+    artistProfile: '/ArtistProfile',
+    artistOrder: '/ArtistProfile/ArtistOrder',
+    createArtWork: '/ArtistProfile/Create'
 };
 
 export default routes;
