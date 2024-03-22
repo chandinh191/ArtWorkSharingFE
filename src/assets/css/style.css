@@ -1621,6 +1621,10 @@ ol {
 
 .product__details__pic {
     overflow: hidden;
+    text-align: center;
+}
+.product__details__pic img {
+    max-height: 500px;
 }
 
 .product__details__pic__left {
@@ -1730,7 +1734,6 @@ ol {
     font-size: 30px;
     font-weight: 600;
     color: #ca1515;
-    margin-bottom: 30px;
 }
 
 .product__details__price span {
@@ -1788,7 +1791,7 @@ ol {
 
 .product__details__button {
     overflow: hidden;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .product__details__button .cart-btn {
@@ -1837,7 +1840,7 @@ ol {
 
 .product__details__widget {
     border-top: 1px solid #ebebeb;
-    padding-top: 35px;
+    padding-top: 15px;
 }
 
 .product__details__widget ul li {
@@ -3689,4 +3692,12 @@ ol {
         width: 100%;
         font-size: 24px;
     }
+}
+
+.green {
+    color: green; /* Set color to green */
+}
+
+.red {
+    color: red; /* Set color to red */
 }
