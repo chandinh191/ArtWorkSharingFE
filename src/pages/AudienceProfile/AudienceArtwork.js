@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-function ArtistProfile() {
+function AudienceArtwork() {
     const [artWork, setArtwork] = useState([]);
     useEffect(() => {
         // Make the API request
@@ -61,10 +61,10 @@ function ArtistProfile() {
                                                     <div className="card-body">
                                                         <ul>
                                                             <li>
-                                                                <a href="/ArtistProfile">Art Works</a>
+                                                                <a href="AudienceArtwork">Art Works</a>
                                                             </li>
                                                             <li>
-                                                                <a href="ArtistOrder">Orders</a>
+                                                                <a href="AudienceOrder">Orders</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#">Dresses</a>
@@ -152,4 +152,4 @@ function ArtistProfile() {
     );
 }
 
-export default ArtistProfile;
+export default AudienceArtwork;

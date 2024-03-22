@@ -16,6 +16,9 @@ import CheckOut from '~/pages/CheckOut';
 import ArtistProfile from '~/pages/ArtistProfile';
 import ArtistOrder from '~/pages/ArtistProfile/ArtistOrder'
 import CreateArtWork from '~/pages/ArtistProfile/Create';
+import AudienceArtwork from '~/pages/AudienceProfile/AudienceArtwork';
+import AudienceOrder from '~/pages/AudienceProfile/AudienceOrder'
+
 
 // Public routes
 const publicRoutes = [
@@ -26,6 +29,8 @@ const publicRoutes = [
     { path: config.routes.contact, component: Contact },
     { path: config.routes.artistProfile, component: ArtistProfile },
     { path: config.routes.artistOrder, component: ArtistOrder },
+    { path: config.routes.audienceArtwork, component: AudienceArtwork },
+    { path: config.routes.audienceOrder, component: AudienceOrder },
     { path: config.routes.createArtWork, component: CreateArtWork },
     { path: config.routes.blogdetails, component: BlogDetails },
     { path: config.routes.shop, component: Shop },

@@ -35,6 +35,9 @@ function Header() {
                                     <li>
                                         <a href="./ArtistProfile">ArtistProfile</a>
                                     </li>
+                                    <li>
+                                        <a href="./AudienceProfile/AudienceArtwork">AudienceArtwork</a>
+                                    </li>
                                     {/* <li>
                                         <a href="#">Pages</a>
                                         <ul className={cx('dropdown')}>
