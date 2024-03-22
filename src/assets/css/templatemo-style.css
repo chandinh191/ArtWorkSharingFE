@@ -251,7 +251,7 @@ button:focus {
   background-color: #50697f;
   color: #fff;
   font-size: 85%;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 thead {
