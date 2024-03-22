@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import discount_png from '../../assets/img/discount.jpg';
 import axios from 'axios';
 import moment from 'moment';
+import appsetting from '../../appsetting.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPalette } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
+const { SERVER_API } = appsetting;
 function Home() {
     useEffect(() => {
         const loadScripts = async () => {
@@ -39,7 +43,7 @@ function Home() {
     useEffect(() => {
         // Make the API request
         axios
-            .get(`https://localhost:7178/api/ArtWork/GetAll`)
+            .get(`${SERVER_API}/ArtWork/GetAll`)
             .then((response) => {
                 // Update the state with the fetched data
                 setArtworks(response.data);
@@ -191,9 +195,13 @@ function Home() {
 
                                                     <ul className="product__hover">
                                                         <li>
-                                                            <a href="img/product/product-1.jpg" className="image-popup">
+                                                            {/* Use Link component here */}
+                                                            <Link
+                                                                to={`/ProductDetail/${artwork.id}`}
+                                                                className="image-popup"
+                                                            >
                                                                 <span className="arrow_expand" />
-                                                            </a>
+                                                            </Link>
                                                         </li>
                                                         <li>
                                                             <a href="#">
@@ -418,8 +426,8 @@ function Home() {
                                 }}
                             >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
@@ -431,8 +439,8 @@ function Home() {
                                 }}
                             >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
@@ -444,8 +452,8 @@ function Home() {
                                 }}
                             >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
@@ -457,8 +465,8 @@ function Home() {
                                 }}
                             >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
@@ -470,8 +478,8 @@ function Home() {
                                 }}
                             >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
@@ -483,8 +491,8 @@ function Home() {
                                 }}
                             >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
