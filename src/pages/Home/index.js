@@ -166,7 +166,7 @@ function Home() {
                                                         <li>
                                                             {/* Use Link component here */}
                                                             <Link
-                                                                to={`/ProductDetail/${artwork.id}`}
+                                                                to={`/ProductDetail?id=${artwork.id}`}
                                                                 className="image-popup"
                                                             >
                                                                 <span className="arrow_expand" />
