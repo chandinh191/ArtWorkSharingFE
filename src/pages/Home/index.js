@@ -8,37 +8,6 @@ import { Link } from 'react-router-dom';
 
 const { SERVER_API } = appsetting;
 function Home() {
-    useEffect(() => {
-        const loadScripts = async () => {
-            await loadScript(`${process.env.PUBLIC_URL}/js/jquery-3.3.1.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/bootstrap.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/jquery.magnific-popup.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/jquery-ui.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/mixitup.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/jquery.countdown.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/jjquery.slicknav.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/owl.carousel.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/jquery.nicescroll.min.js`);
-            await loadScript(`${process.env.PUBLIC_URL}/js/main.js`);
-            // Your jQuery-dependent logic here
-        };
-        loadScripts();
-        return () => {
-            // Cleanup logic if needed
-        };
-    }, []);
-
-    const loadScript = (src) => {
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = src;
-            script.async = true;
-            script.onload = resolve;
-            script.onerror = reject;
-            //document.body.appendChild(script);
-        });
-    };
-
     const [artworks, setArtworks] = useState([]);
     useEffect(() => {
         // Make the API request

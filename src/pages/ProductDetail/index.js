@@ -1,10 +1,11 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+
 import img_avatar from '../../assets/img/avatar.jpg';
 import img_product from '../../assets/img/product/details/product-2.jpg';
-
+import appsetting from '../../appsetting.json';
+import axios from 'axios';
+const { SERVER_API } = appsetting;
 function ProductDetail() {
-    const { id } = useParams();
     return (
         <>
             {/* Breadcrumb Begin */}
@@ -17,7 +18,7 @@ function ProductDetail() {
                                     <i className="fa fa-home" /> Home
                                 </a>
                                 <a href="#">ArtWork </a>
-                                <span>Detail information</span>
+                                <span>Detail Information</span>
                             </div>
                         </div>
                     </div>
