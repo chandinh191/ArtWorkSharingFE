@@ -19,26 +19,9 @@ function Footer() {
                                     </a>
                                 </div>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt cilisis.
+                                    ArtHub is a vibrant online platform dedicated to art enthusiasts, collectors, and
+                                    creators alike.
                                 </p>
-                                <div className="footer__payment">
-                                    <a href="#">
-                                        <img src="img/payment/payment-1.png" alt="" />
-                                    </a>
-                                    <a href="#">
-                                        <img src="img/payment/payment-2.png" alt="" />
-                                    </a>
-                                    <a href="#">
-                                        <img src="img/payment/payment-3.png" alt="" />
-                                    </a>
-                                    <a href="#">
-                                        <img src="img/payment/payment-4.png" alt="" />
-                                    </a>
-                                    <a href="#">
-                                        <img src="img/payment/payment-5.png" alt="" />
-                                    </a>
-                                </div>
                             </div>
                         </div>
                         <div className="col-lg-2 col-md-3 col-sm-5">
