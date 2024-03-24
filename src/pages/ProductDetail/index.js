@@ -200,7 +200,7 @@ function ProductDetail() {
                 </div>
             </section>
             {/* Product Details Section End */}
-            <div className="container">
+            <div className="container" style={{ padding: '45px' }}>
                 <div className="blog__details__comment">
                     <h5>3 Comment</h5>
                     <a href="#" className="leave-btn">

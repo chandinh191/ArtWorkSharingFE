@@ -39,10 +39,13 @@ function Header() {
                                                 <a href="./ArtistProfile">Information</a>
                                             </li>
                                             <li>
-                                                <a href="./">ArtWork</a>
+                                                <a href="./">ArtWork nó tạo</a>
                                             </li>
                                             <li>
-                                                <a href="./">Order</a>
+                                                <a href="./">ArtWork của nó</a>
+                                            </li>
+                                            <li>
+                                                <a href="./">Order request</a>
                                             </li>
                                             <li>
                                                 <a href="./">Trasation</a>

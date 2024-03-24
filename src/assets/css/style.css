@@ -2009,7 +2009,7 @@ ol {
 
 .product__details__tab {
     padding-top: 80px;
-    margin-bottom: 65px;
+    margin-bottom: 15px;
 }
 
 .nav {
@@ -3199,10 +3199,10 @@ ol {
         padding: 5px 15px 5px 15px;
     }
     .nav::before {
-        width: 380px;
+        width: 32vw;
     }
     .nav::after {
-        width: 380px;
+        width: 32vw;
     }
 }
 
