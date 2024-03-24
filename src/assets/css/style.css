@@ -2664,7 +2664,8 @@ ol {
 }
 
 .blog__sidebar__item .section-title {
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .blog__sidebar__item .section-title h4 {
@@ -3014,7 +3015,7 @@ ol {
 -----------------------*/
 
 .contact {
-    padding-top: 80px;
+    padding-top: 20px;
     padding-bottom: 80px;
 }
 
@@ -3156,7 +3157,7 @@ ol {
 }
 
 .contact__map {
-    height: 780px;
+    height: 480px;
 }
 
 .contact__map iframe {

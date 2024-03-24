@@ -8,12 +8,8 @@ import img_sb1 from '../../assets/img/blog/sidebar/fp-1.jpg';
 import img_sb2 from '../../assets/img/blog/sidebar/fp-2.jpg';
 import img_sb3 from '../../assets/img/blog/sidebar/fp-3.jpg';
 
-import img_insta1 from '../../assets/img/instagram/insta-1.jpg';
-import img_insta2 from '../../assets/img/instagram/insta-2.jpg';
-import img_insta3 from '../../assets/img/instagram/insta-3.jpg';
-import img_insta4 from '../../assets/img/instagram/insta-4.jpg';
-import img_insta5 from '../../assets/img/instagram/insta-5.jpg';
-import img_insta6 from '../../assets/img/instagram/insta-6.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPalette } from '@fortawesome/free-solid-svg-icons';
 
 function BlogDetails() {
     return (
@@ -24,11 +20,10 @@ function BlogDetails() {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="breadcrumb__links">
-                                <a href="./index.html">
+                                <a href="./">
                                     <i className="fa fa-home" /> Home
                                 </a>
-                                <a href="./blog.html">Blog</a>
-                                <span>Being seen: how is age diversity effecting change in fashion and beauty?</span>
+                                <span>Blog</span>
                             </div>
                         </div>
                     </div>
@@ -42,34 +37,39 @@ function BlogDetails() {
                         <div className="col-lg-8 col-md-8">
                             <div className="blog__details__content">
                                 <div className="blog__details__item">
-                                    <img src={img1} alt="" />
+                                    <img
+                                        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fb25beed-ac71-4492-ae55-a5ec271949e7/dg2fe7r-560a876b-b411-4bbf-af59-8dcac50fbf59.png/v1/fill/w_1280,h_715,q_80,strp/4k_picasso_impressionism_by_refinedpermutations_dg2fe7r-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzE1IiwicGF0aCI6IlwvZlwvZmIyNWJlZWQtYWM3MS00NDkyLWFlNTUtYTVlYzI3MTk0OWU3XC9kZzJmZTdyLTU2MGE4NzZiLWI0MTEtNGJiZi1hZjU5LThkY2FjNTBmYmY1OS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.r2PRrxdY7uuKyiaedXTrZ2fE3yXCtkMH3BUCxm5eRVM"
+                                        alt=""
+                                    />
                                     <div className="blog__details__item__title">
-                                        <span className="tip">Street style</span>
-                                        <h4>
-                                            Being seen: how is age diversity effecting change in fashion and beauty?
-                                        </h4>
+                                        <span className="tip">The beauty of art</span>
+                                        <h4>ArtHub: Discover and Share Art Online</h4>
                                         <ul>
                                             <li>
-                                                by <span>Ema Timahe</span>
+                                                by <span> Chần Dinh</span>
                                             </li>
-                                            <li>Seb 17, 2019</li>
-                                            <li>39 Comments</li>
+                                            <li>March 25, 2024</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div className="blog__details__desc">
                                     <p>
-                                        Afashion season can be defined as much by the people on the catwalk as it can by
-                                        the clothes they are wearing. This time around, a key moment came at the end of
-                                        Marc Jacobs’ New York show, when an almost makeup-free Christy Turlington made a
-                                        rare return to the catwalk, aged 50 (she also stars, with the designer himself,
-                                        in the label’s AW ad campaign), where the average catwalk model is around 18.
+                                        ArtHub is an online platform dedicated to promoting art and creativity,
+                                        providing a vibrant space for artists and art enthusiasts worldwide. With its
+                                        diverse range of artworks spanning various mediums and styles, ArtHub offers a
+                                        comprehensive collection that caters to every artistic taste. Whether you're an
+                                        amateur enthusiast or a seasoned professional, ArtHub welcomes individuals from
+                                        all walks of life to explore, share, and connect through the universal language
+                                        of art.
                                     </p>
                                     <p>
-                                        A few days later, Simone Rocha arguably upped the ante. The 32-year-old’s show –
-                                        in part inspired by Louise Bourgeois, who lived until she was 98 – featured
-                                        models in their 30s and 40s, including cult favourite Jeny Howorth and actor
-                                        Chloë Sevigny.
+                                        At ArtHub, artists have the opportunity to showcase their work to a global
+                                        audience, fostering connections and collaborations with fellow creators. Through
+                                        features such as profile customization and interactive galleries, artists can
+                                        curate their portfolios and engage with viewers, receiving valuable feedback and
+                                        exposure. Similarly, art enthusiasts can immerse themselves in a diverse array
+                                        of artworks, discovering new talents and perspectives while interacting with the
+                                        vibrant community of like-minded individuals.
                                     </p>
                                 </div>
                                 <div className="blog__details__quote">
@@ -77,122 +77,32 @@ function BlogDetails() {
                                         <i className="fa fa-quote-left" />
                                     </div>
                                     <p>
-                                        Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-                                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                        nisi ut aliquip ex ea commodo consequat.
+                                        Beyond being a mere showcase platform, ArtHub serves as a catalyst for
+                                        creativity, providing resources and support to nurture artistic growth. Through
+                                        workshops, tutorials, and forums, artists can hone their skills, explore new
+                                        techniques, and stay updated on the latest trends in the art world.
+                                        Additionally, ArtHub hosts virtual events and challenges, encouraging
+                                        participants to push their boundaries and unleash their creative potential in a
+                                        collaborative environment.
                                     </p>
                                 </div>
                                 <div className="blog__details__desc">
                                     <p>
-                                        Occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                                        id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate.
+                                        ArtHub celebrates the rich tapestry of human expression, embracing diversity in
+                                        all its forms. From traditional paintings to experimental installations, ArtHub
+                                        showcases a kaleidoscope of perspectives and voices, fostering inclusivity and
+                                        understanding. By providing a platform for marginalized artists and
+                                        underrepresented communities, ArtHub strives to amplify their voices and
+                                        contribute to a more equitable and inclusive art ecosystem. Join us on ArtHub
+                                        and embark on a journey of discovery, creativity, and connection in the
+                                        boundless realm of art.
                                     </p>
                                 </div>
                                 <div className="blog__details__tags">
-                                    <a href="#">Fashion</a>
-                                    <a href="#">Street style</a>
-                                    <a href="#">Diversity</a>
-                                    <a href="#">Beauty</a>
-                                </div>
-                                <div className="blog__details__btns">
-                                    <div className="row">
-                                        <div className="col-lg-6 col-md-6 col-sm-6">
-                                            <div className="blog__details__btn__item">
-                                                <h6>
-                                                    <a href="#">
-                                                        <i className="fa fa-angle-left" /> Previous posts
-                                                    </a>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6 col-md-6 col-sm-6">
-                                            <div className="blog__details__btn__item blog__details__btn__item--next">
-                                                <h6>
-                                                    <a href="#">
-                                                        Next posts <i className="fa fa-angle-right" />
-                                                    </a>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="blog__details__comment">
-                                    <h5>3 Comment</h5>
-                                    <a href="#" className="leave-btn">
-                                        Leave a comment
-                                    </a>
-                                    <div className="blog__comment__item">
-                                        <div className="blog__comment__item__pic">
-                                            <img src={img_cmt1} alt="" />
-                                        </div>
-                                        <div className="blog__comment__item__text">
-                                            <h6>Brandon Kelley</h6>
-                                            <p>
-                                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune
-                                                perpetua mei et. Simul viderer facilisis egimus tractatos splendi.
-                                            </p>
-                                            <ul>
-                                                <li>
-                                                    <i className="fa fa-clock-o" /> Seb 17, 2019
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-heart-o" /> 12
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-share" /> 1
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className="blog__comment__item blog__comment__item--reply">
-                                        <div className="blog__comment__item__pic">
-                                            <img src={img_cmt2} alt="" />
-                                        </div>
-                                        <div className="blog__comment__item__text">
-                                            <h6>Brandon Kelley</h6>
-                                            <p>
-                                                Consequat consetetur dissentiet, ceteros commune perpetua mei et. Simul
-                                                viderer facilisis egimus ulla mcorper.
-                                            </p>
-                                            <ul>
-                                                <li>
-                                                    <i className="fa fa-clock-o" /> Seb 17, 2019
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-heart-o" /> 12
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-share" /> 1
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className="blog__comment__item">
-                                        <div className="blog__comment__item__pic">
-                                            <img src={img_cmt3} alt="" />
-                                        </div>
-                                        <div className="blog__comment__item__text">
-                                            <h6>Brandon Kelley</h6>
-                                            <p>
-                                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune
-                                                perpetua mei et. Simul viderer facilisis egimus tractatos splendi.
-                                            </p>
-                                            <ul>
-                                                <li>
-                                                    <i className="fa fa-clock-o" /> Seb 17, 2019
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-heart-o" /> 12
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-share" /> 1
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    <a href="#">Art</a>
+                                    <a href="#">Painting</a>
+                                    <a href="#">Drawing</a>
+                                    <a href="#">Sculpture</a>
                                 </div>
                             </div>
                         </div>
@@ -230,48 +140,39 @@ function BlogDetails() {
                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div className="blog__sidebar">
                                 <div className="blog__sidebar__item">
                                     <div className="section-title">
-                                        <h4>Feature posts</h4>
+                                        <h4>New user</h4>
                                     </div>
-                                    <a href="#" className="blog__feature__item">
-                                        <div className="blog__feature__item__pic">
-                                            <img src={img_sb1} alt="" />
-                                        </div>
-                                        <div className="blog__feature__item__text">
-                                            <h6>Amf Cannes Red Carpet Celebrities Kend...</h6>
-                                            <span>Seb 17, 2019</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" className="blog__feature__item">
-                                        <div className="blog__feature__item__pic">
-                                            <img src={img_sb2} alt="" />
-                                        </div>
-                                        <div className="blog__feature__item__text">
-                                            <h6>Amf Cannes Red Carpet Celebrities Kend...</h6>
-                                            <span>Seb 17, 2019</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" className="blog__feature__item">
-                                        <div className="blog__feature__item__pic">
-                                            <img src={img_sb3} alt="" />
-                                        </div>
-                                        <div className="blog__feature__item__text">
-                                            <h6>Amf Cannes Red Carpet Celebrities Kend...</h6>
-                                            <span>Seb 17, 2019</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="blog__sidebar__item">
-                                    <div className="section-title">
-                                        <h4>Tags cloud</h4>
-                                    </div>
-                                    <div className="blog__sidebar__tags">
-                                        <a href="#">Fashion</a>
-                                        <a href="#">Street style</a>
-                                        <a href="#">Diversity</a>
-                                        <a href="#">Beauty</a>
-                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                All <span>(250)</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Fashion week <span>(80)</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Street style <span>(75)</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Lifestyle <span>(35)</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Beauty <span>(60)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -283,51 +184,81 @@ function BlogDetails() {
             <div className="instagram">
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-lg-2 col-md-4 col-sm-4 col-md-6 col-sm-6 p-0">
-                            <div className="instagram__item set-bg" style={{ backgroundImage: `url(${img_insta1})` }}>
+                        <div className="col-lg-2 col-md-4 col-sm-4 p-0">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-1.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-2 col-md-4 col-sm-4 col-md-6 col-sm-6 p-0">
-                            <div className="instagram__item set-bg" style={{ backgroundImage: `url(${img_insta2})` }}>
+                        <div className="col-lg-2 col-md-4 col-sm-4 p-0">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-2.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-2 col-md-4 col-sm-4 col-md-6 col-sm-6 p-0">
-                            <div className="instagram__item set-bg" style={{ backgroundImage: `url(${img_insta3})` }}>
+                        <div className="col-lg-2 col-md-4 col-sm-4 p-0">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-3.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-2 col-md-4 col-sm-4 col-md-6 col-sm-6 p-0">
-                            <div className="instagram__item set-bg" style={{ backgroundImage: `url(${img_insta4})` }}>
+                        <div className="col-lg-2 col-md-4 col-sm-4 p-0">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-4.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-2 col-md-4 col-sm-4 col-md-6 col-sm-6 p-0">
-                            <div className="instagram__item set-bg" style={{ backgroundImage: `url(${img_insta5})` }}>
+                        <div className="col-lg-2 col-md-4 col-sm-4 p-0">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-5.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-2 col-md-4 col-sm-4 col-md-6 col-sm-6 p-0">
-                            <div className="instagram__item set-bg" style={{ backgroundImage: `url(${img_insta6})` }}>
+                        <div className="col-lg-2 col-md-4 col-sm-4 p-0">
+                            <div
+                                className="instagram__item set-bg"
+                                style={{
+                                    backgroundImage: `url('${process.env.PUBLIC_URL}/images/instagram/insta-6.jpg')`,
+                                }}
+                            >
                                 <div className="instagram__text">
-                                    <i className="fa fa-instagram" />
-                                    <a href="#">@ ashion_shop</a>
+                                    <FontAwesomeIcon icon={faPalette} />
+                                    <a href="#">ArtWork</a>
                                 </div>
                             </div>
                         </div>
