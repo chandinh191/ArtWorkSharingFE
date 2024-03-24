@@ -115,7 +115,7 @@ function Home() {
             {/* Categories Section End */}
             {/* Product Section Begin */}
             <section className="product spad">
-                <div className="container">
+                <div className="container" style={{ padding: '40px' }}>
                     <div className="row">
                         <div className="col-lg-4 col-md-4">
                             <div className="section-title">
@@ -208,7 +208,7 @@ function Home() {
 
             {/* Trend Section Begin */}
             <section className="trend spad">
-                <div className="container">
+                <div className="container" style={{ padding: '40px' }}>
                     <div className="row">
                         <div className="col-lg-4 col-md-4 col-sm-6">
                             <div className="trend__content">
