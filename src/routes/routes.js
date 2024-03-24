@@ -14,11 +14,10 @@ import ProductDetail from '~/pages/ProductDetail';
 import Cart from '~/pages/Cart';
 import CheckOut from '~/pages/CheckOut';
 import ArtistProfile from '~/pages/ArtistProfile';
-import ArtistOrder from '~/pages/ArtistProfile/ArtistOrder'
+import ArtistOrder from '~/pages/ArtistProfile/ArtistOrder';
 import CreateArtWork from '~/pages/ArtistProfile/Create';
 import AudienceArtwork from '~/pages/AudienceProfile/AudienceArtwork';
-import AudienceOrder from '~/pages/AudienceProfile/AudienceOrder'
-
+import AudienceOrder from '~/pages/AudienceProfile/AudienceOrder';
 
 // Public routes
 const publicRoutes = [
@@ -35,7 +34,7 @@ const publicRoutes = [
     { path: config.routes.blogdetails, component: BlogDetails },
     { path: config.routes.shop, component: Shop },
     { path: config.routes.signup, component: SignUp, layout: HeaderOnly },
-    { path: config.routes.signin, component: SignIn, layout: HeaderOnly },
+    { path: config.routes.signin, component: SignIn, layout: null },
 ];
 
 const privateRoutes = [];
