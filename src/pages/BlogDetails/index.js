@@ -38,7 +38,7 @@ function BlogDetails() {
             {/* Blog Details Section Begin */}
             <section className="blog-details spad">
                 <div className="container">
-                    <div className="row">
+                    <div className="row" style={{ padding: '50px' }}>
                         <div className="col-lg-8 col-md-8">
                             <div className="blog__details__content">
                                 <div className="blog__details__item">

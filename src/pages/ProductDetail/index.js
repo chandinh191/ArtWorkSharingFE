@@ -24,7 +24,6 @@ function ProductDetail() {
                 if (res.ok) {
                     const resData = await res.json(); // Extract JSON data from response
                     setArtwork(resData);
-                    console.log(artwork);
                 } else {
                     console.error('Failed to fetch artwork');
                 }
@@ -33,9 +32,8 @@ function ProductDetail() {
             }
         };
         fetchArtwork();
-        window.scrollTo(0, 0);
     }, [id]);
-
+    console.log(artwork);
     return (
         <>
             {/* Breadcrumb Begin */}
@@ -58,7 +56,7 @@ function ProductDetail() {
             {/* Product Details Section Begin */}
             <section className="product-details spad">
                 <div className="container">
-                    <div className="row">
+                    <div className="row" style={{ padding: '50px' }}>
                         <div className="col-lg-6">
                             <div className="product__details__pic">
                                 {/* <img src={img_product} alt="" /> */}
@@ -109,7 +107,7 @@ function ProductDetail() {
                                         </li>
                                         <li>
                                             <span>Category:</span>
-                                            <p>Free shipping</p>
+                                            <p>{artwork.categoryId}</p>
                                         </li>
 
                                         <li>

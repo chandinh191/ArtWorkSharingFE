@@ -33,28 +33,22 @@ function Header() {
                                         <a href="./Contact">Contact</a>
                                     </li>
                                     <li>
-                                        <a href="./ArtistProfile">ArtistProfile</a>
-                                    </li>
-                                    <li>
-                                        <a href="./AudienceProfile/AudienceArtwork">AudienceArtwork</a>
-                                    </li>
-                                    {/* <li>
-                                        <a href="#">Pages</a>
+                                        <a href="./ArtistProfile">Artist Profile</a>
                                         <ul className={cx('dropdown')}>
                                             <li>
-                                                <a href="./product-details.html">Product Details</a>
+                                                <a href="./ArtistProfile">Information</a>
                                             </li>
                                             <li>
-                                                <a href="./shop-cart.html">Shop Cart</a>
+                                                <a href="./">ArtWork</a>
                                             </li>
                                             <li>
-                                                <a href="./checkout.html">Checkout</a>
+                                                <a href="./">Order</a>
                                             </li>
                                             <li>
-                                                <a href="./blog-details.html">Blog Details</a>
+                                                <a href="./">Trasation</a>
                                             </li>
                                         </ul>
-                                    </li> */}
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

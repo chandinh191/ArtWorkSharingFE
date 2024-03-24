@@ -13,6 +13,7 @@ import SignIn from '~/pages/SignIn';
 import ProductDetail from '~/pages/ProductDetail';
 import Cart from '~/pages/Cart';
 import CheckOut from '~/pages/CheckOut';
+
 import ArtistProfile from '~/pages/ArtistProfile';
 import ArtistOrder from '~/pages/ArtistProfile/ArtistOrder';
 import CreateArtWork from '~/pages/ArtistProfile/Create';

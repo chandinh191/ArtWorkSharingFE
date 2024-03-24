@@ -59,23 +59,17 @@ function SignIn() {
                                 </form>
                                 <div className="social-login">
                                     <span className="social-label">Or login with</span>
-                                    <ul className="socials">
-                                        <li>
-                                            <a href="#">
-                                                <i className="display-flex-center zmdi zmdi-facebook" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i className="display-flex-center zmdi zmdi-twitter" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i className="display-flex-center zmdi zmdi-google" />
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <div class="footer__social">
+                                        <a href="#">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-youtube-play"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-google"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

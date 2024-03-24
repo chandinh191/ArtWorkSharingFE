@@ -44,7 +44,7 @@ function Home() {
                             >
                                 <div className="categories__text">
                                     <h2>Category 1</h2>
-                                    <p>2 items</p>
+                                    <p>2666 items</p>
                                     <a href="#">Shop now</a>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ function Home() {
                                         }}
                                     >
                                         <div className="categories__text">
-                                            <h4>Men’s fashion</h4>
+                                            <h4>Category 2</h4>
                                             <p>358 items</p>
                                             <a href="#">Shop now</a>
                                         </div>
@@ -73,7 +73,7 @@ function Home() {
                                         }}
                                     >
                                         <div className="categories__text">
-                                            <h4>Kid’s fashion</h4>
+                                            <h4>Category 3</h4>
                                             <p>273 items</p>
                                             <a href="#">Shop now</a>
                                         </div>
@@ -87,7 +87,7 @@ function Home() {
                                         }}
                                     >
                                         <div className="categories__text">
-                                            <h4>Cosmetics</h4>
+                                            <h4>Category 4</h4>
                                             <p>159 items</p>
                                             <a href="#">Shop now</a>
                                         </div>
@@ -101,7 +101,7 @@ function Home() {
                                         }}
                                     >
                                         <div className="categories__text">
-                                            <h4>Accessories</h4>
+                                            <h4>Category 5</h4>
                                             <p>792 items</p>
                                             <a href="#">Shop now</a>
                                         </div>
