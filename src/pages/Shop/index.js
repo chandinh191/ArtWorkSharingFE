@@ -41,7 +41,7 @@ function Shop() {
             {/* Breadcrumb End */}
             {/* Shop Section Begin */}
             <section className="shop spad">
-                <div className="container" style={{ padding: '50px' }}>
+                <div className="container" style={{ padding: '50px 15px' }}>
                     <div className="row">
                         <div className="col-lg-3 col-md-3">
                             <div className="shop__sidebar">

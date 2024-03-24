@@ -16,8 +16,7 @@ const routes = {
     artistProfile: '/ArtistProfile',
     artistOrder: '/ArtistProfile/ArtistOrder',
     createArtWork: '/ArtistProfile/Create',
-    audienceArtwork: '/AudienceProfile/AudienceArtwork',
-    audienceOrder: '/AudienceProfile/AudienceOrder',
+    artistArtWork: '/ArtistProfile/MyArtwork',
 };
 
 export default routes;

@@ -79,9 +79,6 @@ button:focus {
 
 .tm-block {
     padding: 40px;
-    -webkit-box-shadow: 1px 1px 5px 0 #455c71;
-    -moz-box-shadow: 1px 1px 5px 0 #455c71;
-    box-shadow: 1px 1px 5px 0 #455c71;
     min-height: 350px;
     height: 100%;
     max-height: 450px;
@@ -113,7 +110,6 @@ button:focus {
 .tm-block-title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #fff;
     margin-bottom: 30px;
 }
 
@@ -450,7 +446,8 @@ thead {
 }
 
 .tm-bg-primary-dark {
-    background-color: #435c70;
+    background-color: #d6e6e6e9;
+    border-radius: 10px;
 }
 
 .tm-bg-gray {

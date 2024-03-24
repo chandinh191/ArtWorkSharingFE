@@ -113,6 +113,7 @@ ol {
 
 .section-title {
     margin-bottom: 45px;
+    text-align: center;
 }
 
 .section-title h4 {
@@ -320,7 +321,6 @@ ol {
 .header {
     background: #ffffff;
     -webkit-box-shadow: 0px 5px 10px rgba(91, 91, 91, 0.1);
-    box-shadow: 0px 5px 20px rgba(91, 91, 91, 0.1);
 }
 
 .header__logo {
@@ -3713,4 +3713,52 @@ ol {
 .w3-bar-item {
     border-radius: 10px;
     width: 100%;
+}
+
+.product-card-horizontal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px 20px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.product-image {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.product-details2 {
+    flex: 1;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+}
+
+.product-description {
+    margin: 0 0 10px 0;
+}
+
+.product-price {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.add-to-cart-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #0056b3;
 }
