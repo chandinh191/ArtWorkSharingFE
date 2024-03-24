@@ -7,6 +7,7 @@ import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
 function Shop() {
     const [artworks, setArtworks] = useState([]);
+    const [categories, setCategories] = useState([]);
     useEffect(() => {
         // Make the API request
         axios
@@ -14,6 +15,20 @@ function Shop() {
             .then((response) => {
                 // Update the state with the fetched data
                 setArtworks(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                // Handle any errors here
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+    useEffect(() => {
+        // Make the API request
+        axios
+            .get(`${SERVER_API}/Category/GetAll`)
+            .then((response) => {
+                // Update the state with the fetched data
+                setCategories(response.data);
                 console.log(response.data);
             })
             .catch((error) => {
@@ -51,26 +66,13 @@ function Shop() {
                                     </div>
                                     <div className="categories__accordion">
                                         <div className="accordion" id="accordionExample">
-                                            <div className="card">
-                                                <div className="display-button-cate">
-                                                    <a className="w3-bar-item w3-button">Cate1</a>
+                                            {categories.map((category, index) => (
+                                                <div className="card">
+                                                    <div className="display-button-cate">
+                                                        <a className="w3-bar-item w3-button">{category.categoryName}</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="card">
-                                                <div>
-                                                    <a className="w3-bar-item w3-button">Cate1</a>
-                                                </div>
-                                            </div>
-                                            <div className="card">
-                                                <div>
-                                                    <a className="w3-bar-item w3-button">Cate1</a>
-                                                </div>
-                                            </div>
-                                            <div className="card">
-                                                <div>
-                                                    <a className="w3-bar-item w3-button">Cate1</a>
-                                                </div>
-                                            </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

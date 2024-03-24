@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 const { SERVER_API } = appsetting;
 function Home() {
     const [artworks, setArtworks] = useState([]);
+    const [categories, setCategories] = useState([]);
     useEffect(() => {
         // Make the API request
         axios
@@ -22,12 +23,36 @@ function Home() {
                 console.error('Error fetching data:', error);
             });
     }, []);
-
+    useEffect(() => {
+        // Make the API request
+        axios
+            .get(`${SERVER_API}/Category/GetAll`)
+            .then((response) => {
+                // Update the state with the fetched data
+                setCategories(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                // Handle any errors here
+                console.error('Error fetching data:', error);
+            });
+    }, []);
     // Hàm kiểm tra xem artwork.created có nằm trong 7 ngày gần đây không
     const isWithinLastWeek = (created) => {
         const oneWeekAgo = moment().subtract(7, 'days');
         return moment(created).isAfter(oneWeekAgo);
     };
+
+    // Lấy từng category theo index
+    const getCategoryByIndex = (index) => {
+        if (categories.length > index) {
+            return categories[index];
+        }
+        return null; // Trả về null nếu index vượt qua độ dài của mảng categories
+    };
+    if (!categories) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
