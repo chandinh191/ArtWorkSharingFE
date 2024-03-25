@@ -41,7 +41,7 @@ function Shop() {
 
     // search
     const [search, setSearch] = useState([]);
-    const filteredData = artworks.filter((data) => data.name.toLowerCase().includes(search.toLowerCase()));
+    const filteredData = artworks.filter((data) => data.name.toLowerCase().includes(search));
 
     console.log(filteredData);
     // pagination
@@ -104,13 +104,15 @@ function Shop() {
                                     justifyContent: 'space-between',
                                     display: 'flex',
                                     placeholder: 'Search',
-                                    onChange: (e) => {
-                                        setSearch(e.target.value);
-                                    },
                                 }}
                             >
                                 <div style={{ width: '30%', display: 'flex' }}>
-                                    <input type="text" className="form-control" placeholder="Search" />
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Search"
+                                        onChange={(e) => setSearch(e.target.value)}
+                                    />
                                     <div className="input-group-append">
                                         <button className="btn btn-outline-secondary" type="button">
                                             Button
@@ -129,45 +131,46 @@ function Shop() {
                             </div>
 
                             <div className="row">
-                                {currentData.map((artwork, index) => (
-                                    <div className="col-lg-4 col-md-6">
-                                        <div className="product__item">
-                                            <div
-                                                className="product__item__pic set-bg"
-                                                style={{ backgroundImage: `url(${artwork.imageUrl})` }}
-                                            >
-                                                <ul className="product__hover">
-                                                    <li>
-                                                        {/* Use Link component here */}
-                                                        <Link
-                                                            to={`/ProductDetail?id=${artwork.id}`}
-                                                            className="image-popup"
-                                                        >
-                                                            <span className="arrow_expand" />
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span className="icon_heart_alt" />
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <span className="icon_bag_alt" />
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div className="product__item__text">
-                                                <h6>
-                                                    <a href="#">{artwork.name}</a>
-                                                </h6>
+                                {currentData &&
+                                    currentData.map((artwork, index) => (
+                                        <div className="col-lg-4 col-md-6">
+                                            <div className="product__item">
+                                                <div
+                                                    className="product__item__pic set-bg"
+                                                    style={{ backgroundImage: `url(${artwork.imageUrl})` }}
+                                                >
+                                                    <ul className="product__hover">
+                                                        <li>
+                                                            {/* Use Link component here */}
+                                                            <Link
+                                                                to={`/ProductDetail?id=${artwork.id}`}
+                                                                className="image-popup"
+                                                            >
+                                                                <span className="arrow_expand" />
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span className="icon_heart_alt" />
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span className="icon_bag_alt" />
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div className="product__item__text">
+                                                    <h6>
+                                                        <a href="#">{artwork.name}</a>
+                                                    </h6>
 
-                                                <div className="product__price">${artwork.price}</div>
+                                                    <div className="product__price">${artwork.price}</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
                         </div>
                     </div>
