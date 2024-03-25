@@ -16,6 +16,7 @@ import CheckOut from '~/pages/CheckOut';
 import ArtistProfile from '~/pages/ArtistProfile';
 import CreateArtWork from '~/pages/ArtistProfile/Create';
 import ArtistArtWork from '~/pages/ArtistProfile/MyArtwork';
+import ArtworkOrdered from '~/pages/ArtistProfile/ArtworkOrdered';
 
 // Public routes
 const publicRoutes = [
@@ -26,12 +27,13 @@ const publicRoutes = [
     { path: config.routes.contact, component: Contact },
 
     { path: config.routes.artistProfile, component: ArtistProfile, layout: ArtistProfileLayout },
-    { path: config.routes.createArtWork, component: CreateArtWork },
+    { path: config.routes.createArtWork, component: CreateArtWork, layout: ArtistProfileLayout },
     { path: config.routes.artistArtWork, component: ArtistArtWork, layout: ArtistProfileLayout },
+    { path: config.routes.artworkOrdered, component: ArtworkOrdered, layout: ArtistProfileLayout },
 
     { path: config.routes.blogdetails, component: BlogDetails },
     { path: config.routes.shop, component: Shop },
-    { path: config.routes.signup, component: SignUp, layout: HeaderOnly },
+    { path: config.routes.signup, component: SignUp, layout: null },
     { path: config.routes.signin, component: SignIn, layout: null },
 ];
 
