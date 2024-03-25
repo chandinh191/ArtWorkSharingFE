@@ -85,7 +85,7 @@ function SignIn() {
                                             name="signin"
                                             id="signin"
                                             className="form-submit"
-                                            defaultValue="Log in"
+                                            value={'Login'}
                                         />
                                     </div>
                                 </form>
