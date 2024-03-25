@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import img_avatar from '../../assets/img/avatar.jpg';
-import img_product from '../../assets/img/product/details/product-2.jpg';
 import appsetting from '../../appsetting.json';
-import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 const { SERVER_API } = appsetting;
+
 function ProductDetail() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get('id');
     console.log(id);
     const [artwork, setArtwork] = useState([]);
+
+    if (!localStorage.getItem('token')) {
+        window.location.href = '/signin';
+    }
 
     useEffect(() => {
         const fetchArtwork = async () => {
@@ -23,7 +26,7 @@ function ProductDetail() {
                     },
                 });
                 if (res.ok) {
-                    const resData = await res.json(); // Extract JSON data from response
+                    const resData = await res.json();
                     setArtwork(resData);
                 } else {
                     console.error('Failed to fetch artwork');
@@ -34,7 +37,7 @@ function ProductDetail() {
         };
         fetchArtwork();
     }, [id]);
-    console.log(artwork);
+
     return (
         <>
             {/* Breadcrumb Begin */}
