@@ -16,7 +16,6 @@ function Shop() {
             .then((response) => {
                 // Update the state with the fetched data
                 setArtworks(response.data);
-                console.log(response.data);
             })
             .catch((error) => {
                 // Handle any errors here
@@ -31,7 +30,6 @@ function Shop() {
             .then((response) => {
                 // Update the state with the fetched data
                 setCategories(response.data);
-                console.log(response.data);
             })
             .catch((error) => {
                 // Handle any errors here
@@ -41,12 +39,33 @@ function Shop() {
 
     // search
     const [search, setSearch] = useState([]);
-    const filteredData = artworks.filter((data) => data.name.toLowerCase().includes(search));
+    const [categoryfilter, setCategoriesFilter] = useState(null);
+    const [pricefilter, setPriceFilter] = useState(null);
+    const filteredData = artworks.filter((data) => {
+        if (pricefilter) {
+            if (pricefilter === '0-100') {
+                return data.name.toLowerCase().includes(search) && data.price < 100;
+            }
+            if (pricefilter === '100-500') {
+                return data.name.toLowerCase().includes(search) && data.price >= 100 && data.price < 500;
+            }
+            if (pricefilter === '500-1000') {
+                return data.name.toLowerCase().includes(search) && data.price >= 500 && data.price < 1000;
+            }
+            if (pricefilter === '1000-') {
+                return data.name.toLowerCase().includes(search) && data.price >= 1000;
+            }
+        }
 
-    console.log(filteredData);
+        if (categoryfilter) {
+            return data.name.toLowerCase().includes(search) && data.categoryId === categoryfilter;
+        }
+        return data.name.toLowerCase().includes(search);
+    });
+
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
-    const [dataPerPage] = useState(3);
+    const [dataPerPage] = useState(6);
     const changePageNo = (number) => setCurrentPage(number);
     const lastIndex = currentPage * dataPerPage;
     const firstIndex = lastIndex - dataPerPage;
@@ -85,7 +104,11 @@ function Shop() {
                                             {categories.map((category) => (
                                                 <div className="card">
                                                     <div className="display-button-cate">
-                                                        <button className="w3-bar-item w3-button" value={category.id}>
+                                                        <button
+                                                            className="w3-bar-item w3-button"
+                                                            value={category.id}
+                                                            onClick={(e) => setCategoriesFilter(e.target.value)}
+                                                        >
                                                             {category.categoryName}
                                                         </button>
                                                     </div>
@@ -121,7 +144,8 @@ function Shop() {
                                 </div>
 
                                 <div style={{ width: '30%' }}>
-                                    <select className="custom-select">
+                                    <select className="custom-select" onChange={(e) => setPriceFilter(e.target.value)}>
+                                        <option value="">Tất cả</option>
                                         <option value="0-100">Dưới 100$</option>
                                         <option value="100-500">100$ - 500$</option>
                                         <option value="500-1000">500$ - 1000$</option>

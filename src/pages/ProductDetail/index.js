@@ -19,6 +19,7 @@ function ProductDetail() {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 });
                 if (res.ok) {
