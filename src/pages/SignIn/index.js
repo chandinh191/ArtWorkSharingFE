@@ -2,7 +2,31 @@ import React from 'react';
 import img1 from '../../assets/images/signin-image.jpg';
 import '../../assets/css/login-style.css';
 import '../../../src/assets/fonts/material-icon/css/material-design-iconic-font.css';
+
 function SignIn() {
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    async function SignIn() {
+        const res = await fetch(`https://localhost:7178/api/Auth/SignIn`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        });
+        if (res.ok) {
+            window.location.href = '/';
+            const json = await res.json();
+            console.log(json);
+        } else {
+            window.location.reload();
+        }
+    }
+
     return (
         <>
             <div className="main">
@@ -20,32 +44,40 @@ function SignIn() {
                             </div>
                             <div className="signin-form">
                                 <h2 className="form-title">Sign up</h2>
-                                <form method="POST" className="register-form" id="login-form">
+                                <form
+                                    method="POST"
+                                    className="register-form"
+                                    id="login-form"
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
+                                        SignIn();
+                                    }}
+                                >
                                     <div className="form-group">
-                                        <label htmlFor="your_name">
+                                        <label htmlFor="email">
                                             <i className="zmdi zmdi-account material-icons-name" />
                                         </label>
-                                        <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
+                                        <input
+                                            type="text"
+                                            name="email"
+                                            id="email"
+                                            placeholder="Your Name"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="your_pass">
+                                        <label htmlFor="password">
                                             <i className="zmdi zmdi-lock" />
                                         </label>
-                                        <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
-                                    </div>
-                                    <div className="form-group">
                                         <input
-                                            type="checkbox"
-                                            name="remember-me"
-                                            id="remember-me"
-                                            className="agree-term"
+                                            type="password"
+                                            name="password"
+                                            id="password"
+                                            placeholder="Password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
                                         />
-                                        <label htmlFor="remember-me" className="label-agree-term">
-                                            <span>
-                                                <span />
-                                            </span>
-                                            Remember me
-                                        </label>
                                     </div>
                                     <div className="form-group form-button">
                                         <input
