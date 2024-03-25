@@ -52,14 +52,14 @@ function CreateArtWork() {
                     },
                     body: requestBody,
                 })
-                    .then(res => {
+                    .then((res) => {
                         if (res.ok) {
                             window.location.reload(); // Reload the page if the request is successful
                         } else {
                             console.error('Error:', res.statusText); // Log error message if request fails
                         }
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         console.error('Error posting data:', error); // Log error if fetch fails
                     });
             };
@@ -70,9 +70,9 @@ function CreateArtWork() {
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
+        setFormData((prevState) => ({
             ...prevState,
-            [name]: value
+            [name]: value,
         }));
     };
     const [categories, setCategories] = useState([]);
@@ -174,7 +174,7 @@ function CreateArtWork() {
                                                     id="name"
                                                     name="name"
                                                     type="text"
-                                                    placeholder='Art Work Name'
+                                                    placeholder="Art Work Name"
                                                     className="form-control validate"
                                                     required=""
                                                     value={formData.name}
@@ -187,7 +187,7 @@ function CreateArtWork() {
                                                     name="description"
                                                     className="form-control validate"
                                                     rows={3}
-                                                    placeholder='Description'
+                                                    placeholder="Description"
                                                     required=""
                                                     defaultValue={''}
                                                     value={formData.description}
@@ -216,22 +216,12 @@ function CreateArtWork() {
                                                         id="price"
                                                         name="price"
                                                         type="number"
-                                                        placeholder='price'
+                                                        placeholder="price"
                                                         min={0}
                                                         className="form-control validate"
                                                         data-large-mode="true"
                                                         value={formData.price}
                                                         onChange={handleChange}
-                                                    />
-                                                </div>
-                                                <div className="form-group mb-3 col-xs-12 col-sm-6">
-                                                    <label htmlFor="stock">Units In Stock</label>
-                                                    <input
-                                                        id="stock"
-                                                        name="stock"
-                                                        type="text"
-                                                        className="form-control validate"
-                                                        required=""
                                                     />
                                                 </div>
                                             </div>
@@ -242,7 +232,7 @@ function CreateArtWork() {
                                             {selectedFile && (
                                                 <img
                                                     src={URL.createObjectURL(selectedFile)}
-                                                    alt="Product Image"
+                                                    alt="Product"
                                                     className="img-fluid"
                                                     style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                                                 />
