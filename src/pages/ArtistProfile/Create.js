@@ -8,6 +8,7 @@ import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
 
 function CreateArtWork() {
+    const [category, setCategories] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
     const handleUploadClick = () => {
         document.getElementById('fileInput').click();
@@ -16,7 +17,8 @@ function CreateArtWork() {
         name: '',
         description: '',
         categoryId: '',
-        price: '',
+        expireDate: '',
+        stock: '',
     });
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -24,72 +26,35 @@ function CreateArtWork() {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        const formDataWithFile = new FormData();
+        formDataWithFile.append('name', formData.name);
+        formDataWithFile.append('description', formData.description);
+        formDataWithFile.append('category', formData.categoryId);
+        formDataWithFile.append('price', formData.price);
+        formDataWithFile.append('image', selectedFile);
 
-        // Check if selectedFile is not null
-        if (selectedFile) {
-            const reader = new FileReader();
-
-            reader.onload = (event) => {
-                // Inside the onload event handler, event.target.result will contain the data URL
-                const imageUrl = event.target.result;
-
-                // Create the requestBody object with the imageUrl
-                const requestBody = JSON.stringify({
-                    name: formData.name,
-                    description: formData.description,
-                    categoryId: formData.categoryId,
-                    price: formData.price,
-                    imageUrl: imageUrl, // Use the data URL here
-                });
-
-                console.log(requestBody); // Log the body before making the fetch call
-
-                // Make the fetch call
-                fetch(`${SERVER_API}/Category/Add`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: requestBody,
-                })
-                    .then(res => {
-                        if (res.ok) {
-                            window.location.reload(); // Reload the page if the request is successful
-                        } else {
-                            console.error('Error:', res.statusText); // Log error message if request fails
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error posting data:', error); // Log error if fetch fails
-                    });
-            };
-
-            // Read the selectedFile as a data URL
-            reader.readAsDataURL(selectedFile);
-        }
+        axios
+            .post('https://localhost:7178/api/Category/Add', formDataWithFile)
+            .then((response) => {
+                console.log('Response:', response.data);
+                // Do something with the response if needed
+            })
+            .catch((error) => {
+                console.error('Error posting data:', error);
+            });
     };
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-    const [categories, setCategories] = useState([]);
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Make the API request
-                const response = await axios.get(`${SERVER_API}/Category/GetAll`);
+        // Make the API request
+        axios
+            .get(`https://localhost:7178/api/Category/GetAll`)
+            .then((response) => {
                 // Update the state with the fetched data
                 setCategories(response.data);
-            } catch (error) {
+            })
+            .catch((error) => {
                 // Handle any errors here
                 console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchData(); // Call the async function
+            });
     }, []);
 
     return (
@@ -166,62 +131,47 @@ function CreateArtWork() {
                                         <h2 className="tm-block-title d-inline-block">Add Product</h2>
                                     </div>
                                 </div>
-                                <form onSubmit={handleSubmit} className="row tm-edit-product-row">
+                                <div className="row tm-edit-product-row">
                                     <div className="col-xl-6 col-lg-6 col-md-12">
-                                        <div className="tm-edit-product-form">
+                                        <form onSubmit={handleSubmit} className="tm-edit-product-form">
                                             <div className="form-group mb-3">
+                                                <label htmlFor="name">Art Work Name</label>
                                                 <input
                                                     id="name"
                                                     name="name"
                                                     type="text"
-                                                    placeholder='Art Work Name'
                                                     className="form-control validate"
                                                     required=""
-                                                    value={formData.name}
-                                                    onChange={handleChange}
                                                 />
                                             </div>
                                             <div className="form-group mb-3">
+                                                <label htmlFor="description">Description</label>
                                                 <textarea
-                                                    id="description"
-                                                    name="description"
                                                     className="form-control validate"
                                                     rows={3}
-                                                    placeholder='Description'
                                                     required=""
                                                     defaultValue={''}
-                                                    value={formData.description}
-                                                    onChange={handleChange}
                                                 />
                                             </div>
                                             <div className="form-group mb-3">
-                                                <select
-                                                    className="custom-select tm-select-accounts"
-                                                    id="categoryId"
-                                                    name="categoryId"
-                                                    value={formData.categoryId}
-                                                    onChange={handleChange}
-                                                >
-                                                    <option value="">Select category</option>
-                                                    {categories.map((category, i) => (
-                                                        <option key={i} value={category.id}>
-                                                            {category.categoryName}
-                                                        </option>
-                                                    ))}
+                                                <label htmlFor="category">Category</label>
+                                                <select className="custom-select tm-select-accounts" id="category">
+                                                    <option selected="">Select category</option>
+                                                    {category.forEach(function (category, i) {
+                                                        <option value={category.categoryId}>{category.name}</option>;
+                                                    })}
                                                 </select>
                                             </div>
                                             <div className="row">
                                                 <div className="form-group mb-3 col-xs-12 col-sm-6">
+                                                    <label htmlFor="expire_date">Price</label>
                                                     <input
                                                         id="price"
                                                         name="price"
                                                         type="number"
-                                                        placeholder='price'
                                                         min={0}
                                                         className="form-control validate"
                                                         data-large-mode="true"
-                                                        value={formData.price}
-                                                        onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className="form-group mb-3 col-xs-12 col-sm-6">
@@ -235,7 +185,7 @@ function CreateArtWork() {
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                                         <div className="tm-product-img-dummy mx-auto">
@@ -268,7 +218,7 @@ function CreateArtWork() {
                                             Create
                                         </button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
