@@ -2,15 +2,13 @@ import React from 'react';
 import img1 from '../../assets/images/signin-image.jpg';
 import '../../assets/css/login-style.css';
 import '../../../src/assets/fonts/material-icon/css/material-design-iconic-font.css';
-import appsetting from '../../appsetting.json';
-const { SERVER_API } = appsetting;
 
 function SignIn() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
     async function SignIn() {
-        const res = await fetch(`${SERVER_API}/Auth/SignIn`, {
+        const res = await fetch(`https://localhost:7178/api/Auth/SignIn`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,12 +18,10 @@ function SignIn() {
                 password: password,
             }),
         });
-
         if (res.ok) {
-            const result = await res.json();
-            localStorage.setItem('token', result.token);
-            localStorage.setItem('user', JSON.stringify(result.accinfo));
             window.location.href = '/';
+            const json = await res.json();
+            console.log(json);
         } else {
             window.location.reload();
         }
@@ -95,7 +91,7 @@ function SignIn() {
                                 </form>
                                 <div className="social-login">
                                     <span className="social-label">Or login with</span>
-                                    <div className="footer__social">
+                                    <div class="footer__social">
                                         <a href="#">
                                             <i class="fa fa-facebook"></i>
                                         </a>
