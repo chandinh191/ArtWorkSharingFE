@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
-function MyArtwork() {
+function ArtworkOrdered() {
     const [artworks, setArtworks] = useState([]);
     useEffect(() => {
         // Make the API request
@@ -55,4 +55,4 @@ function MyArtwork() {
     );
 }
 
-export default MyArtwork;
+export default ArtworkOrdered;
