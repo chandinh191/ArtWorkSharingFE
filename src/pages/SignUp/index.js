@@ -1,30 +1,89 @@
 import React from 'react';
-import img2 from '../../assets/img/background.jpg';
-import '../../assets/css/signup-style.css';
+import img1 from '../../assets/images/signup-image.jpg';
+import '../../assets/css/login-style.css';
+import '../../../src/assets/fonts/material-icon/css/material-design-iconic-font.css';
 
 function SignUp() {
     return (
-        <div>
-            <main>
-                <div className="background" style={{ backgroundImage: `url(${img2})` }}>
-                    <div className="text">
-                        <h1>Register</h1>
-                        <p>
-                            Have Account? <a href="login.html">Login</a>
-                        </p>
+        <>
+            <div className="main">
+                {/* Sing in  Form */}
+                <section className="signup">
+                    <div className="container">
+                        <div className="signup-content">
+                            <div className="signup-form">
+                                <h2 className="form-title">Sign up</h2>
+                                <form method="POST" className="register-form" id="register-form">
+                                    <div className="form-group">
+                                        <label htmlFor="name">
+                                            <i className="zmdi zmdi-account material-icons-name" />
+                                        </label>
+                                        <input type="text" name="name" id="name" placeholder="Your Name" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="email">
+                                            <i className="zmdi zmdi-email" />
+                                        </label>
+                                        <input type="email" name="email" id="email" placeholder="Your Email" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="pass">
+                                            <i className="zmdi zmdi-lock" />
+                                        </label>
+                                        <input type="password" name="pass" id="pass" placeholder="Password" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="re-pass">
+                                            <i className="zmdi zmdi-lock-outline" />
+                                        </label>
+                                        <input
+                                            type="password"
+                                            name="re_pass"
+                                            id="re_pass"
+                                            placeholder="Repeat your password"
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="checkbox"
+                                            name="agree-term"
+                                            id="agree-term"
+                                            className="agree-term"
+                                        />
+                                        <label htmlFor="agree-term" className="label-agree-term">
+                                            <span>
+                                                <span />
+                                            </span>
+                                            I agree all statements in{' '}
+                                            <a href="#" className="term-service">
+                                                Terms of service
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div className="form-group form-button">
+                                        <input
+                                            type="submit"
+                                            name="signup"
+                                            id="signup"
+                                            className="form-submit"
+                                            defaultValue="Register"
+                                        />
+                                    </div>
+                                </form>
+                            </div>
+                            <div className="signup-image">
+                                <figure>
+                                    <img src={img1} alt="sing up image" />
+                                </figure>
+                                <a href="#" className="signup-image-link">
+                                    I am already member
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div className="box">
-                        <form className="form">
-                            <input type="text" className="fullname" placeholder="Full Name" required />
-                            <input type="email" className="email" placeholder="Email" required />
-                            <input type="text" className="username" placeholder="Username" required />
-                            <input type="password" className="password" placeholder="Password" required />
-                            <input type="submit" className="button" defaultValue="Register" />
-                        </form>
-                    </div>
-                </div>
-            </main>
-        </div>
+                </section>
+            </div>
+        </>
     );
 }
 
