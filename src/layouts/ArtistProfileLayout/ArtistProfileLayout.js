@@ -43,7 +43,7 @@ function ArtistProfileLayout({ children }) {
                                                 <div className="card">
                                                     <div className="display-button-cate">
                                                         <a className="w3-bar-item w3-button" href="/ArtistProfile">
-                                                            Profile Information
+                                                            Information Contact
                                                         </a>
                                                     </div>
                                                 </div>
@@ -70,11 +70,6 @@ function ArtistProfileLayout({ children }) {
                                                 <div className="card">
                                                     <div>
                                                         <a className="w3-bar-item w3-button">Order Artwork</a>
-                                                    </div>
-                                                </div>
-                                                <div className="card">
-                                                    <div>
-                                                        <a className="w3-bar-item w3-button">Trasation</a>
                                                     </div>
                                                 </div>
                                             </div>

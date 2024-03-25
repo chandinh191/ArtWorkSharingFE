@@ -31,7 +31,7 @@ const publicRoutes = [
 
     { path: config.routes.blogdetails, component: BlogDetails },
     { path: config.routes.shop, component: Shop },
-    { path: config.routes.signup, component: SignUp, layout: HeaderOnly },
+    { path: config.routes.signup, component: SignUp, layout: null },
     { path: config.routes.signin, component: SignIn, layout: null },
 ];
 
