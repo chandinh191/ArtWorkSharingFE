@@ -22,22 +22,22 @@ function ArtworkOrdered() {
             });
     }, []);
     /* Lấy user tạm ********************** */
-    const userid = '871a809a-b3fa-495b-9cc2-c5d738a866cg';
-    const userArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
+    const userid = '871a809a-b3fa-495b-9cc2-c5d738a866cf';
+    const myArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
+
+    const userArtworks = myArtworks.filter((artwork) => {
+        if (artwork.orders && Array.isArray(artwork.orders)) {
+            // Nếu có các đơn hàng cho tác phẩm
+            return artwork.orders.some((order) => order.status === 1);
+        } else if (artwork.orders && typeof artwork.orders === 'object') {
+            // Nếu chỉ có một đơn hàng cho tác phẩm
+            return artwork.orders.status === 1;
+        }
+        return false; // Nếu không có đơn hàng nào cho tác phẩm
+    });
 
     return (
         <div>
-            <button
-                type="submit"
-                class="site-btn"
-                style={{ backgroundColor: 'green' }}
-                onClick={() => {
-                    window.location.href = './Create';
-                }}
-            >
-                Create new
-            </button>
-
             {userArtworks.map((artwork, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">
@@ -46,7 +46,7 @@ function ArtworkOrdered() {
                             <h2 className="product-title">{artwork.name}</h2>
                             <p className="product-description">{artwork.description}</p>
                             <div className="product-price">${artwork.price}</div>
-                            <button className="add-to-cart-btn">Action</button>
+                            <button className="add-to-cart-btn">Confirm sell</button>
                         </div>
                     </div>
                 </div>

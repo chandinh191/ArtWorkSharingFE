@@ -49,17 +49,17 @@ function ArtistProfileLayout({ children }) {
                                                 </div>
                                                 <div className="card">
                                                     <div>
+                                                        <a className="w3-bar-item w3-button">Wishlist Artwork</a>
+                                                    </div>
+                                                </div>
+                                                <div className="card">
+                                                    <div>
                                                         <Link
                                                             className="w3-bar-item w3-button"
                                                             to="/ArtistProfile/MyArtwork"
                                                         >
                                                             Copyrighted Artwork
                                                         </Link>
-                                                    </div>
-                                                </div>
-                                                <div className="card">
-                                                    <div>
-                                                        <a className="w3-bar-item w3-button">Wishlist Artwork</a>
                                                     </div>
                                                 </div>
                                                 <div className="card">

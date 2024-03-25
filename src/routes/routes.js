@@ -27,7 +27,7 @@ const publicRoutes = [
     { path: config.routes.contact, component: Contact },
 
     { path: config.routes.artistProfile, component: ArtistProfile, layout: ArtistProfileLayout },
-    { path: config.routes.createArtWork, component: CreateArtWork },
+    { path: config.routes.createArtWork, component: CreateArtWork, layout: ArtistProfileLayout },
     { path: config.routes.artistArtWork, component: ArtistArtWork, layout: ArtistProfileLayout },
     { path: config.routes.artworkOrdered, component: ArtworkOrdered, layout: ArtistProfileLayout },
 

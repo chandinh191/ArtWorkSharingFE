@@ -22,7 +22,7 @@ function MyArtwork() {
             });
     }, []);
     /* Lấy user tạm ********************** */
-    const userid = '871a809a-b3fa-495b-9cc2-c5d738a866cg';
+    const userid = '871a809a-b3fa-495b-9cc2-c5d738a866cf';
     const userArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
 
     return (
