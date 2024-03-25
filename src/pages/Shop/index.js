@@ -8,6 +8,7 @@ const { SERVER_API } = appsetting;
 function Shop() {
     const [artworks, setArtworks] = useState([]);
     const [categories, setCategories] = useState([]);
+
     useEffect(() => {
         // Make the API request
         axios
@@ -22,6 +23,7 @@ function Shop() {
                 console.error('Error fetching data:', error);
             });
     }, []);
+
     useEffect(() => {
         // Make the API request
         axios
@@ -37,13 +39,18 @@ function Shop() {
             });
     }, []);
 
+    // search
+    const [search, setSearch] = useState([]);
+    const filteredData = artworks.filter((data) => data.name.toLowerCase().includes(search.toLowerCase()));
+
+    console.log(filteredData);
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
-    const [dataPerPage] = useState(6);
+    const [dataPerPage] = useState(3);
     const changePageNo = (number) => setCurrentPage(number);
     const lastIndex = currentPage * dataPerPage;
     const firstIndex = lastIndex - dataPerPage;
-    const currentData = artworks?.slice(firstIndex, lastIndex);
+    const currentData = filteredData?.slice(firstIndex, lastIndex);
 
     return (
         <div>
@@ -75,10 +82,12 @@ function Shop() {
                                     </div>
                                     <div className="categories__accordion">
                                         <div className="accordion" id="accordionExample">
-                                            {categories.map((category, index) => (
+                                            {categories.map((category) => (
                                                 <div className="card">
                                                     <div className="display-button-cate">
-                                                        <a className="w3-bar-item w3-button">{category.categoryName}</a>
+                                                        <button className="w3-bar-item w3-button" value={category.id}>
+                                                            {category.categoryName}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             ))}
@@ -88,6 +97,37 @@ function Shop() {
                             </div>
                         </div>
                         <div className="col-lg-9 col-md-9">
+                            <div
+                                className="input-group mb-3"
+                                style={{
+                                    marginBottom: '20px',
+                                    justifyContent: 'space-between',
+                                    display: 'flex',
+                                    placeholder: 'Search',
+                                    onChange: (e) => {
+                                        setSearch(e.target.value);
+                                    },
+                                }}
+                            >
+                                <div style={{ width: '30%', display: 'flex' }}>
+                                    <input type="text" className="form-control" placeholder="Search" />
+                                    <div className="input-group-append">
+                                        <button className="btn btn-outline-secondary" type="button">
+                                            Button
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style={{ width: '30%' }}>
+                                    <select className="custom-select">
+                                        <option value="0-100">Dưới 100$</option>
+                                        <option value="100-500">100$ - 500$</option>
+                                        <option value="500-1000">500$ - 1000$</option>
+                                        <option value="1000-">Trên 1000$</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div className="row">
                                 {currentData.map((artwork, index) => (
                                     <div className="col-lg-4 col-md-6">
@@ -129,67 +169,66 @@ function Shop() {
                                     </div>
                                 ))}
                             </div>
-
-                            <div style={{ display: 'flex', justifyContent: 'end' }}>
-                                <button
-                                    style={{
-                                        backgroundColor: currentPage === 1 ? 'gray' : 'blue',
-                                        color: 'white',
-                                        border: 'none',
-                                        borderRadius: '5px',
-                                        padding: '10px',
-                                        margin: '5px',
-                                        cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                                    }}
-                                    disabled={currentPage === 1}
-                                    onClick={() => changePageNo(currentPage - 1)}
-                                >
-                                    Previous
-                                </button>
-                                {Array.from({ length: Math.ceil(artworks?.length / dataPerPage) }, (_, i) => i + 1).map(
-                                    (number) => {
-                                        if (number >= currentPage - 1 && number <= currentPage + 1) {
-                                            return (
-                                                <button
-                                                    key={number}
-                                                    style={{
-                                                        backgroundColor: number === currentPage ? 'blue' : 'white',
-                                                        color: number === currentPage ? 'white' : 'black',
-                                                        border: 'none',
-                                                        borderRadius: '5px',
-                                                        padding: '10px',
-                                                        margin: '5px',
-                                                        cursor: 'pointer',
-                                                    }}
-                                                    onClick={() => changePageNo(number)}
-                                                >
-                                                    {number}
-                                                </button>
-                                            );
-                                        }
-                                    },
-                                )}
-                                <button
-                                    style={{
-                                        backgroundColor:
-                                            currentPage === Math.ceil(artworks?.length / dataPerPage) ? 'gray' : 'blue',
-                                        color: 'white',
-                                        border: 'none',
-                                        borderRadius: '5px',
-                                        padding: '10px',
-                                        margin: '5px',
-                                        cursor:
-                                            currentPage === Math.ceil(artworks?.length / dataPerPage)
-                                                ? 'not-allowed'
-                                                : 'pointer',
-                                    }}
-                                    disabled={currentPage === Math.ceil(artworks?.length / dataPerPage)}
-                                    onClick={() => changePageNo(currentPage + 1)}
-                                >
-                                    Next
-                                </button>
-                            </div>
                         </div>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'end' }}>
+                        <button
+                            style={{
+                                backgroundColor: currentPage === 1 ? 'gray' : 'blue',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '5px',
+                                padding: '10px',
+                                margin: '5px',
+                                cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                            }}
+                            disabled={currentPage === 1}
+                            onClick={() => changePageNo(currentPage - 1)}
+                        >
+                            Previous
+                        </button>
+                        {Array.from({ length: Math.ceil(artworks?.length / dataPerPage) }, (_, i) => i + 1).map(
+                            (number) => {
+                                if (number >= currentPage - 1 && number <= currentPage + 1) {
+                                    return (
+                                        <button
+                                            key={number}
+                                            style={{
+                                                backgroundColor: number === currentPage ? 'blue' : 'white',
+                                                color: number === currentPage ? 'white' : 'black',
+                                                border: 'none',
+                                                borderRadius: '5px',
+                                                padding: '10px',
+                                                margin: '5px',
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={() => changePageNo(number)}
+                                        >
+                                            {number}
+                                        </button>
+                                    );
+                                }
+                            },
+                        )}
+                        <button
+                            style={{
+                                backgroundColor:
+                                    currentPage === Math.ceil(artworks?.length / dataPerPage) ? 'gray' : 'blue',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '5px',
+                                padding: '10px',
+                                margin: '5px',
+                                cursor:
+                                    currentPage === Math.ceil(artworks?.length / dataPerPage)
+                                        ? 'not-allowed'
+                                        : 'pointer',
+                            }}
+                            disabled={currentPage === Math.ceil(artworks?.length / dataPerPage)}
+                            onClick={() => changePageNo(currentPage + 1)}
+                        >
+                            Next
+                        </button>
                     </div>
                 </div>
             </section>
