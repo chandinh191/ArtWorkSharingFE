@@ -21,10 +21,6 @@ function MyArtwork() {
                 console.error('Error fetching data:', error);
             });
     }, []);
-    /* Lấy user tạm ********************** */
-    const userid = '871a809a-b3fa-495b-9cc2-c5d738a866cf';
-    const userArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
-
     return (
         <div>
             <button
@@ -38,7 +34,7 @@ function MyArtwork() {
                 Create new
             </button>
 
-            {userArtworks.map((artwork, index) => (
+            {artworks.map((artwork, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">
                         <img src={artwork.imageUrl} alt="Product Image" className="product-image" />

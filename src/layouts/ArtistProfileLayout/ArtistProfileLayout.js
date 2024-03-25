@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import Header from '~/layouts/components/Header';
 import Footer from '~/layouts/components/Footer';
 import styles from './ArtistProfileLayout.module.scss';
-import { Link } from 'react-router-dom';
+
 const cx = classNames.bind(styles);
 
 function ArtistProfileLayout({ children }) {
@@ -42,9 +42,19 @@ function ArtistProfileLayout({ children }) {
                                             <div className="accordion" id="accordionExample">
                                                 <div className="card">
                                                     <div className="display-button-cate">
-                                                        <Link className="w3-bar-item w3-button" to="/ArtistProfile">
-                                                            Information Contact
-                                                        </Link>
+                                                        <a className="w3-bar-item w3-button" href="/ArtistProfile">
+                                                            Profile Information
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div className="card">
+                                                    <div>
+                                                        <a
+                                                            className="w3-bar-item w3-button"
+                                                            href="./ArtistProfile/MyArtwork"
+                                                        >
+                                                            Copyrighted Artwork
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <div className="card">
@@ -54,27 +64,17 @@ function ArtistProfileLayout({ children }) {
                                                 </div>
                                                 <div className="card">
                                                     <div>
-                                                        <Link
-                                                            className="w3-bar-item w3-button"
-                                                            to="/ArtistProfile/MyArtwork"
-                                                        >
-                                                            Copyrighted Artwork
-                                                        </Link>
+                                                        <a className="w3-bar-item w3-button">Ownered Artwork</a>
                                                     </div>
                                                 </div>
                                                 <div className="card">
                                                     <div>
-                                                        <Link
-                                                            className="w3-bar-item w3-button"
-                                                            to="/ArtistProfile/ArtworkOrdered"
-                                                        >
-                                                            Artwork Ordered
-                                                        </Link>
+                                                        <a className="w3-bar-item w3-button">Order Artwork</a>
                                                     </div>
                                                 </div>
                                                 <div className="card">
                                                     <div>
-                                                        <a className="w3-bar-item w3-button">Order Completed</a>
+                                                        <a className="w3-bar-item w3-button">Trasation</a>
                                                     </div>
                                                 </div>
                                             </div>
