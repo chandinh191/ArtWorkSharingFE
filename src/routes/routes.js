@@ -2,7 +2,7 @@ import config from '~/config';
 
 // Layouts
 import { HeaderOnly } from '~/layouts';
-
+import { ArtistProfileLayout } from '~/layouts';
 // Pages
 import Home from '~/pages/Home';
 import Contact from '~/pages/Contact';
@@ -25,9 +25,9 @@ const publicRoutes = [
     { path: config.routes.checkout, component: CheckOut },
     { path: config.routes.contact, component: Contact },
 
-    { path: config.routes.artistProfile, component: ArtistProfile },
+    { path: config.routes.artistProfile, component: ArtistProfile, layout: ArtistProfileLayout },
     { path: config.routes.createArtWork, component: CreateArtWork },
-    { path: config.routes.artistArtWork, component: ArtistArtWork },
+    { path: config.routes.artistArtWork, component: ArtistArtWork, layout: ArtistProfileLayout },
 
     { path: config.routes.blogdetails, component: BlogDetails },
     { path: config.routes.shop, component: Shop },
