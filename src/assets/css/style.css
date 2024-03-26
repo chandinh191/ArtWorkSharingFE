@@ -3730,10 +3730,16 @@ ol {
 
 .green {
     color: green; /* Set color to green */
+    margin: 2px;
 }
 
 .red {
     color: red; /* Set color to red */
+    margin: 2px;
+}
+.yellow {
+    color: yellow; /* Set color to red */
+    margin: 2px;
 }
 .breadcrumb__links {
     padding: 15px;
@@ -3784,6 +3790,7 @@ ol {
     border: none;
     border-radius: 3px;
     padding: 8px 16px;
+    margin: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

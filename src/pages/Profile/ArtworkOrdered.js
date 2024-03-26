@@ -24,7 +24,7 @@ function ArtworkOrdered() {
     /* Lấy user tạm ********************** */
     const userid = useridlocal;
     const myArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
-
+    console.log(myArtworks);
     const userArtworks = myArtworks.filter((artwork) => {
         if (artwork.orders && Array.isArray(artwork.orders)) {
             // Nếu có các đơn hàng cho tác phẩm
@@ -35,6 +35,7 @@ function ArtworkOrdered() {
         }
         return false; // Nếu không có đơn hàng nào cho tác phẩm
     });
+    console.log(userArtworks);
 
     return (
         <div>
@@ -44,9 +45,10 @@ function ArtworkOrdered() {
                         <img src={artwork.imageUrl} alt="Product Image" className="product-image" />
                         <div className="product-details2">
                             <h2 className="product-title">{artwork.name}</h2>
-                            <p className="product-description">{artwork.description}</p>
-                            <div className="product-price">${artwork.price}</div>
-                            <button className="add-to-cart-btn">Confirm sell</button>
+                            <p className="product-description">Category: {artwork.category.categoryName}</p>
+
+                            <div className="product-price">Price: ${artwork.price}</div>
+                            <button className="add-to-cart-btn">Accept Order Request</button>
                         </div>
                     </div>
                 </div>
