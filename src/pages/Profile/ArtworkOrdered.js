@@ -22,7 +22,6 @@ function ArtworkOrdered() {
     /* Lấy user tạm ********************** */
     const userid = useridlocal;
     const myArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
-    //console.log(myArtworks);
 
     const status = 1;
     const [orders, setOrders] = useState([]);
@@ -52,8 +51,26 @@ function ArtworkOrdered() {
     const myOrders = orders.filter((order) => myArtworks.some((artwork) => artwork.id === order.artWorkID));
     console.log(myOrders);
 
-    async function UpdateStatusOrder(orderId) {
-        console.log(orderId);
+    async function ChangeOwnerArtwork(artWorkId, buyerAccountId) {
+        const res = await fetch(`${SERVER_API}/ArtWork/UpdateOwner`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                id: artWorkId,
+                userOwnerId: buyerAccountId,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
+        } else {
+            window.location.reload();
+        }
+    }
+
+    async function UpdateStatusOrder(order) {
         const res = await fetch(`${SERVER_API}/Order/Update`, {
             method: 'PUT',
             headers: {
@@ -61,20 +78,18 @@ function ArtworkOrdered() {
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-                id: orderId,
+                id: order.id,
                 status: 2,
             }),
         });
         if (res.ok) {
+            ChangeOwnerArtwork(order.artWorkID, order.buyerAccountId);
             window.location.reload();
-            const json = await res.json();
-            console.log(json);
         } else {
             window.location.reload();
         }
     }
     async function UpdateStatusOrderCancel(orderId) {
-        console.log(orderId);
         const res = await fetch(`${SERVER_API}/Order/Update`, {
             method: 'PUT',
             headers: {
@@ -88,8 +103,6 @@ function ArtworkOrdered() {
         });
         if (res.ok) {
             window.location.reload();
-            const json = await res.json();
-            console.log(json);
         } else {
             window.location.reload();
         }
@@ -111,7 +124,7 @@ function ArtworkOrdered() {
                             >
                                 Cancel Order Request
                             </button>
-                            <button className="add-to-cart-btn" onClick={() => UpdateStatusOrder(order.id)}>
+                            <button className="add-to-cart-btn" onClick={() => UpdateStatusOrder(order)}>
                                 Accept Order Request
                             </button>
                         </div>
