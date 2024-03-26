@@ -8,7 +8,7 @@ import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
 
-function ArtistProfile() {
+function Profile() {
     const [artworks, setArtworks] = useState([]);
     useEffect(() => {
         // Make the API request
@@ -139,4 +139,4 @@ function ArtistProfile() {
     );
 }
 
-export default ArtistProfile;
+export default Profile;

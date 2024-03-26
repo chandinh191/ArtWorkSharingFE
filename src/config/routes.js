@@ -13,11 +13,11 @@ const routes = {
     productDetail: '/ProductDetail',
     cart: '/Cart',
     checkout: '/CheckOut',
-    artistProfile: '/ArtistProfile',
-    artistOrder: '/ArtistProfile/ArtistOrder',
-    createArtWork: '/ArtistProfile/Create',
-    artistArtWork: '/ArtistProfile/MyArtwork',
-    artworkOrdered: '/ArtistProfile/ArtworkOrdered',
+    artistProfile: '/Profile',
+    artistOrder: '/Profile/ArtistOrder',
+    createArtWork: '/Profile/Create',
+    artistArtWork: '/Profile/MyArtwork',
+    artworkOrdered: '/Profile/ArtworkOrdered',
 };
 
 export default routes;

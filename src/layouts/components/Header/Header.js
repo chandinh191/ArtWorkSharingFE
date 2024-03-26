@@ -22,14 +22,13 @@ function Header() {
 
     if (checkToken()) {
         menuItems.push({
-            path: '/ArtistProfile',
-            label: 'Artist Profile',
+            path: '/Profile',
+            label: 'Profile',
             dropdown: [
-                { path: '/ArtistProfile', label: 'Information' },
-                { path: '/ArtWorkNoTao', label: 'ArtWork nó tạo' },
-                { path: '/ArtWorkCuaNo', label: 'ArtWork của nó' },
-                { path: '/OrderRequest', label: 'Order request' },
-                { path: '/Transaction', label: 'Transaction' },
+                { path: '/Profile', label: 'Information Contact' },
+                { path: '/Profile/MyArtwork', label: 'Copyrighted Artwork' },
+                { path: '/Profile/ArtworkOrdered', label: 'Ordered Artwork' },
+                { path: '/Profile/OrderCompleted', label: 'Order Completed' },
             ],
         });
     }
