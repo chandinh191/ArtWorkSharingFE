@@ -1,16 +1,27 @@
+import React from 'react';
 import classNames from 'classnames/bind';
 import logo from '../../../assets/img/logo.png';
 import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
+const checkToken = () => {
+    const token = localStorage.getItem('token');
+    return token !== null;
+};
+
 function Header() {
+    const user = localStorage.getItem('user');
+
     const menuItems = [
         { path: '/', label: 'Home' },
         { path: '/Shop', label: 'Shop' },
         { path: '/blogdetails', label: 'Blog' },
         { path: '/Contact', label: 'Contact' },
-        {
+    ];
+
+    if (checkToken()) {
+        menuItems.push({
             path: '/ArtistProfile',
             label: 'Artist Profile',
             dropdown: [
@@ -20,8 +31,8 @@ function Header() {
                 { path: '/OrderRequest', label: 'Order request' },
                 { path: '/Transaction', label: 'Transaction' },
             ],
-        },
-    ];
+        });
+    }
     return (
         <>
             {/* Header Section Begin */}
@@ -67,20 +78,20 @@ function Header() {
                         </div>
                         <div className={cx('col-lg-3')}>
                             <div className={cx('header__right')}>
-                                <div className={cx('header__right__auth')}>
-                                    <a href="/SignIn">Login</a>
-                                    <a href="/SignUp">Register</a>
-                                </div>
+                                {!checkToken() && (
+                                    <div className={cx('header__right__auth')}>
+                                        <a href="/SignIn">Login</a>
+                                        <a href="/SignUp">Register</a>
+                                    </div>
+                                )}
+
+                                {checkToken() && user && (
+                                    <div className={cx('header__right__auth')}>
+                                        <a href="/User">{user.userName}</a>
+                                    </div>
+                                )}
+
                                 <ul className={cx('header__right__widget')}>
-                                    {/* <li>
-                                        <span className={cx('icon_search search-switch')} />
-                                    </li> */}
-                                    {/* <li>
-                                        <a href="#">
-                                            <span className={cx('icon_heart_alt')} />
-                                            <div className={cx('tip')}>2</div>
-                                        </a>
-                                    </li> */}
                                     <li>
                                         <a href="./Cart">
                                             <span className={cx('icon_bag_alt')} />

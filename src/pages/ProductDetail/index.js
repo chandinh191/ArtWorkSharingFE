@@ -5,7 +5,11 @@ import axios from 'axios';
 import appsetting from '../../appsetting.json';
 import { useLocation } from 'react-router-dom';
 const { SERVER_API } = appsetting;
+
 function ProductDetail() {
+    const token = localStorage.getItem('token');
+    const useridlocal = localStorage.getItem('userid');
+
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get('id');
@@ -19,6 +23,7 @@ function ProductDetail() {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
                     },
                 });
                 if (res.ok) {
@@ -35,7 +40,8 @@ function ProductDetail() {
     }, [id]);
 
     /* Lấy user tạm ********************** */
-    const userid = '6b970ce3-1120-47c9-ba13-9e6f7e4f3c76';
+    const userid = useridlocal;
+
     async function AddOrder() {
         const res = await fetch(`${SERVER_API}/Order/Add`, {
             method: 'POST',

@@ -65,7 +65,7 @@ function Shop() {
 
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
-    const [dataPerPage] = useState(6);
+    const [dataPerPage] = useState(3);
     const changePageNo = (number) => setCurrentPage(number);
     const lastIndex = currentPage * dataPerPage;
     const firstIndex = lastIndex - dataPerPage;

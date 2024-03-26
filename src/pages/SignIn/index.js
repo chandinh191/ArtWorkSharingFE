@@ -22,9 +22,11 @@ function SignIn() {
         });
 
         if (res.ok) {
+            console.log(res);
             const result = await res.json();
             localStorage.setItem('token', result.token);
-            localStorage.setItem('user', JSON.stringify(result.accinfo));
+            localStorage.setItem('userid', JSON.stringify(result.accinfo.id));
+            localStorage.setItem('username', JSON.stringify(result.accinfo.userName));
             window.location.href = '/';
         } else {
             window.location.reload();
@@ -42,12 +44,12 @@ function SignIn() {
                                 <figure>
                                     <img src={img1} alt="sign up image" />
                                 </figure>
-                                <a href="#" className="signup-image-link">
+                                <a href="/SignUp" className="signup-image-link">
                                     Create an account
                                 </a>
                             </div>
                             <div className="signin-form">
-                                <h2 className="form-title">Sign up</h2>
+                                <h2 className="form-title">SignIn</h2>
                                 <form
                                     method="POST"
                                     className="register-form"

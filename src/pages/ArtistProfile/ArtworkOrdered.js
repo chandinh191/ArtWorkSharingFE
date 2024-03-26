@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
 function ArtworkOrdered() {
