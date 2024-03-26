@@ -82,7 +82,7 @@ function Home() {
                         </div>
                         <div className="col-lg-6">
                             <div className="row">
-                                {categories.slice(1).map((category, index) => (
+                                {categories.slice(1, 5).map((category, index) => (
                                     <div className="col-lg-6 col-md-6 col-sm-6 p-0" key={category.id}>
                                         <div
                                             className="categories__item set-bg"
