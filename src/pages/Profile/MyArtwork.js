@@ -50,8 +50,8 @@ function MyArtwork() {
                             <h2 className="product-title">{artwork.name}</h2>
                             <p className="product-description">Category: {artwork.category.categoryName}</p>
                             <p className="product-description">
-                                isSold:
-                                {artwork.isSold ? ( // If the artwork is sold
+                                Selling:
+                                {artwork.artWorkStatus === 1 ? ( // If the artwork is sold
                                     <i className="icon_check_alt green"></i> // Render a red cross icon
                                 ) : (
                                     // If the artwork is not sold
@@ -60,7 +60,7 @@ function MyArtwork() {
                             </p>
                             <div className="product-price">Price: ${artwork.price}</div>
                             <button className="add-to-cart-btn">Edit</button>
-                            {artwork.isSold ? ( // If the artwork is sold
+                            {artwork.artWorkStatus === 1 ? ( // If the artwork is sold
                                 <button className="add-to-cart-btn">Stop selling</button>
                             ) : (
                                 // If the artwork is not sold
