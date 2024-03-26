@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import img_avatar from '../../assets/img/avatar.jpg';
+import img_product from '../../assets/img/product/details/product-2.jpg';
+import axios from 'axios';
 import appsetting from '../../appsetting.json';
 import { useLocation } from 'react-router-dom';
 const { SERVER_API } = appsetting;
-
 function ProductDetail() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get('id');
     console.log(id);
     const [artwork, setArtwork] = useState([]);
-
-    if (!localStorage.getItem('token')) {
-        window.location.href = '/signin';
-    }
 
     useEffect(() => {
         const fetchArtwork = async () => {
@@ -22,11 +19,10 @@ function ProductDetail() {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 });
                 if (res.ok) {
-                    const resData = await res.json();
+                    const resData = await res.json(); // Extract JSON data from response
                     setArtwork(resData);
                 } else {
                     console.error('Failed to fetch artwork');
@@ -37,6 +33,55 @@ function ProductDetail() {
         };
         fetchArtwork();
     }, [id]);
+
+    /* Lấy user tạm ********************** */
+    const userid = '6b970ce3-1120-47c9-ba13-9e6f7e4f3c76';
+    async function AddOrder() {
+        const res = await fetch(`${SERVER_API}/Order/Add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userAccountId: userid,
+                artWorkID: artwork.id,
+                status: 1,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
+            const json = await res.json();
+            console.log(json);
+        } else {
+            window.location.reload();
+        }
+    }
+
+    /* Popup */
+    const [isOpen, setIsOpen] = useState(false);
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    };
+    /* CheckOrder */
+    const [checkOrder, setCheckOrder] = useState(false);
+    useEffect(() => {
+        // Make the API request
+        axios
+            .get(`${SERVER_API}/Order/GetAll`)
+            .then((response) => {
+                // Kiểm tra xem đơn hàng tồn tại hay không
+                const existingOrder = response.data.find(
+                    (order) => order.userAccountId === userid && order.artWorkID === artwork.id && order.status === 1,
+                );
+                if (existingOrder) {
+                    setCheckOrder(true);
+                }
+            })
+            .catch((error) => {
+                // Handle any errors here
+                console.error('Error fetching data:', error);
+            });
+    }, [userid, artwork.id]);
 
     return (
         <>
@@ -83,9 +128,33 @@ function ProductDetail() {
                                 </div>
                                 <p>{artwork.description}</p>
                                 <div className="product__details__button">
-                                    <a href="#" className="cart-btn">
-                                        <span className="icon_bag_alt" /> BUY NOW
-                                    </a>
+                                    {isOpen && (
+                                        <div className="popup-container">
+                                            <div className="popup-content">
+                                                <h4>Are you sure you want to order this product ?</h4>
+                                                <p>
+                                                    The order will be sent and await confirmation from the product's
+                                                    current owner.
+                                                </p>
+
+                                                <button className="site-btn btn" onClick={togglePopup}>
+                                                    Cancel
+                                                </button>
+                                                <button className="primary-btn btn" onClick={AddOrder}>
+                                                    Order
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {checkOrder === false ? (
+                                        <a href="#" className="cart-btn" onClick={togglePopup}>
+                                            <span className="icon_bag_alt" /> Order Now
+                                        </a>
+                                    ) : (
+                                        <a href="#" className="cart-btn2">
+                                            <span className="icon_bag_alt" /> Ordered
+                                        </a>
+                                    )}
                                     <ul>
                                         <li>
                                             <a href="#">
@@ -103,11 +172,11 @@ function ProductDetail() {
                                     <ul>
                                         <li>
                                             <span>Artist :</span>
-                                            <p>Free shipping</p>
+                                            <p>{artwork.userAccountId}</p>
                                         </li>
                                         <li>
                                             <span>Owner:</span>
-                                            <p>Free shipping</p>
+                                            <p>{artwork.userOwnerId}</p>
                                         </li>
                                         <li>
                                             <span>Category:</span>
