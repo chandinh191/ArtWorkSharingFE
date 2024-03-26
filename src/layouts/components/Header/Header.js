@@ -87,21 +87,21 @@ function Header() {
 
                                 {checkToken() && user && (
                                     <div className={cx('header__right__auth')}>
-                                        <a style={{ fontSize: '20px' }} href="/ArtistProfile">
+                                        <a style={{ fontSize: '14px' }} href="/ArtistProfile">
                                             {' '}
                                             welcome {user}
                                         </a>
                                     </div>
                                 )}
 
-                                <ul className={cx('header__right__widget')}>
+                                {/* <ul className={cx('header__right__widget')}>
                                     <li>
                                         <a href="./Cart">
                                             <span className={cx('icon_bag_alt')} />
                                             <div className={cx('tip')}>2</div>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </div>
