@@ -13,7 +13,6 @@ function ArtworkOrdered() {
             .then((response) => {
                 // Update the state with the fetched data
                 setArtworks(response.data);
-                console.log(response.data);
             })
             .catch((error) => {
                 // Handle any errors here
@@ -23,6 +22,7 @@ function ArtworkOrdered() {
     /* Lấy user tạm ********************** */
     const userid = useridlocal;
     const myArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
+    //console.log(myArtworks);
 
     const status = 1;
     const [orders, setOrders] = useState([]);
@@ -49,19 +49,18 @@ function ArtworkOrdered() {
         fetchOrders();
     }, [status]);
 
-    console.log(orders);
+    const myOrders = orders.filter((order) => myArtworks.some((artwork) => artwork.id === order.artWorkID));
+    console.log(myOrders);
 
     return (
         <div>
-            {myArtworks.map((artwork, index) => (
+            {myOrders.map((order, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">
-                        <img src={artwork.imageUrl} alt="Product Image" className="product-image" />
+                        <img src={order.artWork.imageUrl} alt="Product Image" className="product-image" />
                         <div className="product-details2">
-                            <h2 className="product-title">{artwork.name}</h2>
-                            <p className="product-description">Category: {artwork.category.categoryName}</p>
-
-                            <div className="product-price">Price: ${artwork.price}</div>
+                            <h2 className="product-title">{order.artWork.name}</h2>
+                            <p className="product-description">Description: {order.artWork.description}</p>
                             <button className="add-to-cart-btn">Accept Order Request</button>
                         </div>
                     </div>
