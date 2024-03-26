@@ -45,7 +45,8 @@ function ProductDetail() {
     // add wishlist
     const userId = localStorage.getItem('userid');
     const artWork = id;
-    const [isInWishlist, setIsInWishlist] = React.useState(false); // new state
+    const [isInWishlist, setIsInWishlist] = React.useState(false);
+    const [wishlistId, setWishlistId] = React.useState(false);
 
     // get all wishlist
     useEffect(() => {
@@ -63,6 +64,31 @@ function ProductDetail() {
             const json = await res.json();
             // Check if the current artwork is in the wishlist
             setIsInWishlist(json.some((item) => item.userAccountId === userId && item.artWorkID === artWork));
+            const wishlistItem = json.find((item) => item.userAccountId === userId && item.artWorkID === artWork);
+            if (wishlistItem) {
+                // If found, set isInWishlist to true and set the wishlistId
+                setIsInWishlist(true);
+                setWishlistId(wishlistItem.id); // Assuming the id property is the wishlistId
+            } else {
+                // If not found, set isInWishlist to false and clear the wishlistId
+                setIsInWishlist(false);
+                setWishlistId(null);
+            }
+        } else {
+        }
+    }
+
+    // add wishlist category
+    async function deleteWishList() {
+        const res = await fetch(`${SERVER_API}/WishList/Delete?id` + wishlistId, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                //authorization: `Bearer ${token}`,
+            },
+        });
+        if (res.ok) {
+            window.location.reload();
         } else {
         }
     }
@@ -207,13 +233,23 @@ function ProductDetail() {
                                     )}
                                     <ul>
                                         <li>
-                                            <a
-                                                href="#"
-                                                onClick={() => addWishList()}
-                                                style={{ backgroundColor: isInWishlist ? 'red' : 'white' }}
-                                            >
-                                                <span className={`icon_heart_alt`} />
-                                            </a>
+                                            {isInWishlist ? (
+                                                <a
+                                                    href="#"
+                                                    onClick={() => deleteWishList()}
+                                                    style={{ backgroundColor: 'red' }}
+                                                >
+                                                    <span className={`icon_heart_alt`} />
+                                                </a>
+                                            ) : (
+                                                <a
+                                                    href="#"
+                                                    onClick={() => addWishList()}
+                                                    style={{ backgroundColor: 'white' }}
+                                                >
+                                                    <span className={`icon_heart_alt`} />
+                                                </a>
+                                            )}
                                         </li>
                                     </ul>
                                 </div>
