@@ -73,6 +73,27 @@ function ArtworkOrdered() {
             window.location.reload();
         }
     }
+    async function UpdateStatusOrderCancel(orderId) {
+        console.log(orderId);
+        const res = await fetch(`${SERVER_API}/Order/Update`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                id: orderId,
+                status: 0,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
+            const json = await res.json();
+            console.log(json);
+        } else {
+            window.location.reload();
+        }
+    }
 
     return (
         <div>
@@ -83,7 +104,11 @@ function ArtworkOrdered() {
                         <div className="product-details2">
                             <h2 className="product-title">{order.artWork.name}</h2>
                             <p className="product-description">Description: {order.artWork.description}</p>
-                            <button className="add-to-cart-btn" style={{ backgroundColor: 'red' }}>
+                            <button
+                                className="add-to-cart-btn"
+                                style={{ backgroundColor: 'red' }}
+                                onClick={() => UpdateStatusOrderCancel(order.id)}
+                            >
                                 Cancel Order Request
                             </button>
                             <button className="add-to-cart-btn" onClick={() => UpdateStatusOrder(order.id)}>
