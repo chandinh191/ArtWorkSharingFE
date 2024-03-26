@@ -13,10 +13,10 @@ import SignIn from '~/pages/SignIn';
 import ProductDetail from '~/pages/ProductDetail';
 import Cart from '~/pages/Cart';
 import CheckOut from '~/pages/CheckOut';
-import ArtistProfile from '~/pages/ArtistProfile';
-import CreateArtWork from '~/pages/ArtistProfile/Create';
-import ArtistArtWork from '~/pages/ArtistProfile/MyArtwork';
-import ArtworkOrdered from '~/pages/ArtistProfile/ArtworkOrdered';
+import ArtistProfile from '~/pages/Profile';
+import CreateArtWork from '~/pages/Profile/Create';
+import ArtistArtWork from '~/pages/Profile/MyArtwork';
+import ArtworkOrdered from '~/pages/Profile/ArtworkOrdered';
 
 // Public routes
 const publicRoutes = [

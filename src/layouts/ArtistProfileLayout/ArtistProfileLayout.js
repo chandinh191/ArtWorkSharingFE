@@ -42,7 +42,7 @@ function ArtistProfileLayout({ children }) {
                                             <div className="accordion" id="accordionExample">
                                                 <div className="card">
                                                     <div className="display-button-cate">
-                                                        <Link className="w3-bar-item w3-button" to="/ArtistProfile">
+                                                        <Link className="w3-bar-item w3-button" to="/Profile">
                                                             Information Contact
                                                         </Link>
                                                     </div>
@@ -54,10 +54,7 @@ function ArtistProfileLayout({ children }) {
                                                 </div>
                                                 <div className="card">
                                                     <div>
-                                                        <Link
-                                                            className="w3-bar-item w3-button"
-                                                            to="/ArtistProfile/MyArtwork"
-                                                        >
+                                                        <Link className="w3-bar-item w3-button" to="/Profile/MyArtwork">
                                                             Copyrighted Artwork
                                                         </Link>
                                                     </div>
@@ -66,9 +63,9 @@ function ArtistProfileLayout({ children }) {
                                                     <div>
                                                         <Link
                                                             className="w3-bar-item w3-button"
-                                                            to="/ArtistProfile/ArtworkOrdered"
+                                                            to="/Profile/ArtworkOrdered"
                                                         >
-                                                            Artwork Ordered
+                                                            Ordered Artwork
                                                         </Link>
                                                     </div>
                                                 </div>
