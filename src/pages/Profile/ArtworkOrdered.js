@@ -61,6 +61,9 @@ function ArtworkOrdered() {
                         <div className="product-details2">
                             <h2 className="product-title">{order.artWork.name}</h2>
                             <p className="product-description">Description: {order.artWork.description}</p>
+                            <button className="add-to-cart-btn" style={{ backgroundColor: 'red' }}>
+                                Cancel Order Request
+                            </button>
                             <button className="add-to-cart-btn">Accept Order Request</button>
                         </div>
                     </div>
