@@ -5,11 +5,14 @@ import appsetting from '../../appsetting.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const { SERVER_API } = appsetting;
 function Home() {
     const [artworks, setArtworks] = useState([]);
     const [categories, setCategories] = useState([]);
+    // lấy id từ trang home
+    const { categoryId } = useParams();
     useEffect(() => {
         // Make the API request
         axios
@@ -23,6 +26,7 @@ function Home() {
                 console.error('Error fetching data:', error);
             });
     }, []);
+
     useEffect(() => {
         // Make the API request
         axios
@@ -37,19 +41,21 @@ function Home() {
                 console.error('Error fetching data:', error);
             });
     }, []);
+
     // Hàm kiểm tra xem artwork.created có nằm trong 7 ngày gần đây không
     const isWithinLastWeek = (created) => {
         const oneWeekAgo = moment().subtract(7, 'days');
         return moment(created).isAfter(oneWeekAgo);
     };
 
-    // Lấy từng category theo index
-    const getCategoryByIndex = (index) => {
-        if (categories.length > index) {
-            return categories[index];
-        }
-        return null; // Trả về null nếu index vượt qua độ dài của mảng categories
-    };
+    // // Lấy từng category theo index
+    // const getCategoryByIndex = (index) => {
+    //     if (categories.length > index) {
+    //         return categories[index];
+    //     }
+    //     return null; // Trả về null nếu index vượt qua độ dài của mảng categories
+    // };
+
     if (!categories) {
         return <div>Loading...</div>;
     }
@@ -68,70 +74,32 @@ function Home() {
                                 }}
                             >
                                 <div className="categories__text">
-                                    <h2>Category 1</h2>
+                                    <h2>{categories[0]?.categoryName}</h2>
                                     <p>2666 items</p>
-                                    <a href="#">Shop now</a>
+                                    <a href="/shop">Shop now</a>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-6">
                             <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-6 p-0">
-                                    <div
-                                        className="categories__item set-bg"
-                                        style={{
-                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-2.jpg')`,
-                                        }}
-                                    >
-                                        <div className="categories__text">
-                                            <h4>Category 2</h4>
-                                            <p>358 items</p>
-                                            <a href="#">Shop now</a>
+                                {categories.slice(1).map((category, index) => (
+                                    <div className="col-lg-6 col-md-6 col-sm-6 p-0" key={category.id}>
+                                        <div
+                                            className="categories__item set-bg"
+                                            style={{
+                                                backgroundImage: `url('${
+                                                    process.env.PUBLIC_URL
+                                                }/images/categories/category-${index + 2}.jpg')`,
+                                            }}
+                                        >
+                                            <div className="categories__text">
+                                                <h4>{category.categoryName}</h4>
+                                                <p>358 items</p>
+                                                <a href="/shop">Shop now</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-6 p-0">
-                                    <div
-                                        className="categories__item set-bg"
-                                        style={{
-                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-3.jpg')`,
-                                        }}
-                                    >
-                                        <div className="categories__text">
-                                            <h4>Category 3</h4>
-                                            <p>273 items</p>
-                                            <a href="#">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-6 p-0">
-                                    <div
-                                        className="categories__item set-bg"
-                                        style={{
-                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-4.jpg')`,
-                                        }}
-                                    >
-                                        <div className="categories__text">
-                                            <h4>Category 4</h4>
-                                            <p>159 items</p>
-                                            <a href="#">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-6 p-0">
-                                    <div
-                                        className="categories__item set-bg"
-                                        style={{
-                                            backgroundImage: `url('${process.env.PUBLIC_URL}/images/categories/category-5.jpg')`,
-                                        }}
-                                    >
-                                        <div className="categories__text">
-                                            <h4>Category 5</h4>
-                                            <p>792 items</p>
-                                            <a href="#">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>

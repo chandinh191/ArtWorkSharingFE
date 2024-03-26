@@ -25,8 +25,8 @@ function SignIn() {
             console.log(res);
             const result = await res.json();
             localStorage.setItem('token', result.token);
-            localStorage.setItem('userid', JSON.stringify(result.accinfo.id));
-            localStorage.setItem('username', JSON.stringify(result.accinfo.userName));
+            localStorage.setItem('userid', result.accinfo.id.toString());
+            localStorage.setItem('username', result.accinfo.userName.toString());
             window.location.href = '/';
         } else {
             window.location.reload();
