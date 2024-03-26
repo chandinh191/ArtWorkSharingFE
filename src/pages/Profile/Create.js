@@ -31,8 +31,43 @@ function CreateArtWork() {
         e.preventDefault();
 
         // Upload the image to Cloudinary
-        if (!selectedFile) return;
+        if (!formData.name.trim()) {
+            alert('Please enter Art Work Name');
+            return;
+        }
+        const nameRegex = /^[A-Za-z\s]+$/;
+        if (!nameRegex.test(formData.name)) {
+            alert('Art Work Name should not contain numbers or special characters');
+            return;
+        }
+        if (formData.description.length > 500) {
+            alert('Description must be at most 500 characters');
+            return;
+        }
+        if (!formData.categoryId) {
+            alert('Please select a category');
+            return;
+        }
 
+        if (!formData.price || isNaN(formData.price)) {
+            alert('Please enter a valid price');
+            return;
+        }
+        if (formData.price < 0 || formData.price > 10000) {
+            alert('Price must be between 0 and 10,000');
+            return;
+        }
+        // Upload image validation
+        if (!selectedFile) {
+            alert('Please upload an image');
+            return;
+        }
+        const allowedTypes = ['image/jpeg', 'image/png']; // Add more types if necessary
+
+        if (!allowedTypes.includes(selectedFile.type)) {
+            alert('Please select a valid image file (JPEG, PNG)');
+            return;
+        }
         // Create a formData object to send to Cloudinary
         const imageData = new FormData();
         imageData.append('file', selectedFile);
@@ -210,16 +245,6 @@ function CreateArtWork() {
                                                 data-large-mode="true"
                                                 value={formData.price}
                                                 onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="form-group mb-3 col-xs-12 col-sm-6">
-                                            <label htmlFor="stock">Units In Stock</label>
-                                            <input
-                                                id="stock"
-                                                name="stock"
-                                                type="text"
-                                                className="form-control validate"
-                                                required=""
                                             />
                                         </div>
                                     </div>
