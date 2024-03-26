@@ -62,9 +62,15 @@ function ProductDetail() {
         });
         if (res.ok) {
             const json = await res.json();
-            // Check if the current artwork is in the wishlist
-            setIsInWishlist(json.some((item) => item.userAccountId === userId && item.artWorkID === artWork));
-            const wishlistItem = json.find((item) => item.userAccountId === userId && item.artWorkID === artWork);
+            // Check if the current artwork is in the wishlist and is not deleted
+            setIsInWishlist(
+                json.some(
+                    (item) => item.userAccountId === userId && item.artWorkID === artWork && item.isDeleted === false,
+                ),
+            );
+            const wishlistItem = json.find(
+                (item) => item.userAccountId === userId && item.artWorkID === artWork && item.isDeleted === false,
+            );
             if (wishlistItem) {
                 // If found, set isInWishlist to true and set the wishlistId
                 setIsInWishlist(true);
@@ -75,12 +81,13 @@ function ProductDetail() {
                 setWishlistId(null);
             }
         } else {
+            // Handle error
         }
     }
 
-    // add wishlist category
+    // delete wishlist category
     async function deleteWishList() {
-        const res = await fetch(`${SERVER_API}/WishList/Delete?id` + wishlistId, {
+        const res = await fetch(`${SERVER_API}/WishList/Delete?id=` + wishlistId, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,6 +97,7 @@ function ProductDetail() {
         if (res.ok) {
             window.location.reload();
         } else {
+            // Handle error
         }
     }
 
