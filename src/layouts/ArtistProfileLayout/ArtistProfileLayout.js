@@ -3,6 +3,8 @@ import classNames from 'classnames/bind';
 import Header from '~/layouts/components/Header';
 import Footer from '~/layouts/components/Footer';
 import styles from './ArtistProfileLayout.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
@@ -49,7 +51,7 @@ function ArtistProfileLayout({ children }) {
                                                 <div className="card">
                                                     <div className="display-button-cate">
                                                         <Link className="w3-bar-item w3-button" to="/Profile">
-                                                            Information Contact
+                                                            Information
                                                         </Link>
                                                     </div>
                                                 </div>
@@ -66,6 +68,16 @@ function ArtistProfileLayout({ children }) {
                                                     </div>
                                                 </div>
                                                 <div className="card">
+                                                    <div className="row-item">
+                                                        <Link
+                                                            className="w3-bar-item w3-button"
+                                                            to="/Profile/RequestArtwork"
+                                                        >
+                                                            Pedding Request Artwork
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                                <div className="card">
                                                     <div>
                                                         <Link
                                                             className="w3-bar-item w3-button"
@@ -77,7 +89,12 @@ function ArtistProfileLayout({ children }) {
                                                 </div>
                                                 <div className="card">
                                                     <div>
-                                                        <a className="w3-bar-item w3-button">Order Completed</a>
+                                                        <Link
+                                                            className="w3-bar-item w3-button"
+                                                            to="/Profile/OrderCompleted"
+                                                        >
+                                                            Order Completed
+                                                        </Link>
                                                     </div>
                                                 </div>
                                                 <div className="card">

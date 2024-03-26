@@ -25,8 +25,9 @@ function Header() {
             path: '/Profile',
             label: 'Profile',
             dropdown: [
-                { path: '/Profile', label: 'Information Contact' },
+                { path: '/Profile', label: 'Information' },
                 { path: '/Profile/MyArtwork', label: 'Copyrighted Artwork' },
+                { path: '/Profile/RequestArtwork', label: 'Pedding Request Artwork' },
                 { path: '/Profile/ArtworkOrdered', label: 'Ordered Artwork' },
                 { path: '/Profile/OrderCompleted', label: 'Order Completed' },
             ],

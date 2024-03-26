@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
-function ArtworkOrdered() {
+function RequestArtwork() {
     const token = localStorage.getItem('token');
     const useridlocal = localStorage.getItem('userid');
     const [artworks, setArtworks] = useState([]);
@@ -19,9 +19,8 @@ function ArtworkOrdered() {
                 console.error('Error fetching data:', error);
             });
     }, []);
-    /* Lấy user tạm ********************** */
+    /* Lấy user id */
     const userid = useridlocal;
-    const myArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
 
     const status = 1;
     const [orders, setOrders] = useState([]);
@@ -48,48 +47,11 @@ function ArtworkOrdered() {
         fetchOrders();
     }, [status]);
 
-    const myOrders = orders.filter((order) => myArtworks.some((artwork) => artwork.id === order.artWorkID));
+    const myOrders = orders.filter((order) => order.buyerAccountId === userid);
     console.log(myOrders);
 
-    async function ChangeOwnerArtwork(artWorkId, buyerAccountId) {
-        const res = await fetch(`${SERVER_API}/ArtWork/UpdateOwner`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-                id: artWorkId,
-                userOwnerId: buyerAccountId,
-            }),
-        });
-        if (res.ok) {
-            window.location.reload();
-        } else {
-            window.location.reload();
-        }
-    }
-
-    async function UpdateStatusOrder(order) {
-        const res = await fetch(`${SERVER_API}/Order/Update`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-                id: order.id,
-                status: 2,
-            }),
-        });
-        if (res.ok) {
-            ChangeOwnerArtwork(order.artWorkID, order.buyerAccountId);
-            window.location.reload();
-        } else {
-            window.location.reload();
-        }
-    }
-    async function UpdateStatusOrderCancel(orderId) {
+    async function UpdateStatusOrder(orderId) {
+        console.log(orderId);
         const res = await fetch(`${SERVER_API}/Order/Update`, {
             method: 'PUT',
             headers: {
@@ -103,6 +65,8 @@ function ArtworkOrdered() {
         });
         if (res.ok) {
             window.location.reload();
+            const json = await res.json();
+            console.log(json);
         } else {
             window.location.reload();
         }
@@ -120,12 +84,9 @@ function ArtworkOrdered() {
                             <button
                                 className="add-to-cart-btn"
                                 style={{ backgroundColor: 'red' }}
-                                onClick={() => UpdateStatusOrderCancel(order.id)}
+                                onClick={() => UpdateStatusOrder(order.id)}
                             >
                                 Cancel Order Request
-                            </button>
-                            <button className="add-to-cart-btn" onClick={() => UpdateStatusOrder(order)}>
-                                Accept Order Request
                             </button>
                         </div>
                     </div>
@@ -135,4 +96,4 @@ function ArtworkOrdered() {
     );
 }
 
-export default ArtworkOrdered;
+export default RequestArtwork;

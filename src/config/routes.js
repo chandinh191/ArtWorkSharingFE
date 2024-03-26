@@ -18,6 +18,8 @@ const routes = {
     createArtWork: '/Profile/Create',
     artistArtWork: '/Profile/MyArtwork',
     artworkOrdered: '/Profile/ArtworkOrdered',
+    orderCompleted: '/Profile/OrderCompleted',
+    requestArtwork: '/Profile/RequestArtwork',
 };
 
 export default routes;

@@ -125,9 +125,11 @@ function ProductDetail() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-                userAccountId: userid,
+                BuyerAccountId: userid,
+                OwnerAccountId: artwork.userAccountId,
                 artWorkID: artwork.id,
                 status: 1,
             }),
@@ -155,7 +157,7 @@ function ProductDetail() {
             .then((response) => {
                 // Kiểm tra xem đơn hàng tồn tại hay không
                 const existingOrder = response.data.find(
-                    (order) => order.userAccountId === userid && order.artWorkID === artwork.id && order.status === 1,
+                    (order) => order.buyerAccountId === userid && order.artWorkID === artwork.id && order.status === 1,
                 );
                 if (existingOrder) {
                     setCheckOrder(true);
