@@ -278,15 +278,19 @@ function ProductDetail() {
                                             </div>
                                         </div>
                                     )}
-                                    {checkOrder === false ? (
+                                    {artwork.artWorkStatus === 2 ? ( // If the artwork is sold
+                                        <button className="cart-btn2">Stop selling</button>
+                                    ) : checkOrder === false ? ( // If checkOrder is false
                                         <a href="#" className="cart-btn" onClick={togglePopup}>
                                             <span className="icon_bag_alt" /> Order Now
                                         </a>
                                     ) : (
+                                        // If checkOrder is true
                                         <a href="#" className="cart-btn2">
                                             <span className="icon_bag_alt" /> Ordered
                                         </a>
                                     )}
+
                                     <ul>
                                         <li>
                                             {isInWishlist ? (
