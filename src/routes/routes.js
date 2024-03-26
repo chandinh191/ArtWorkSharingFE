@@ -19,7 +19,7 @@ import ArtistArtWork from '~/pages/Profile/MyArtwork';
 import ArtworkOrdered from '~/pages/Profile/ArtworkOrdered';
 import OrderCompleted from '~/pages/Profile/OrderCompleted';
 import RequestArtwork from '~/pages/Profile/RequestArtwork';
-import MyWishlist from '~/pages/Profile/MyWishlist';
+import Wishlist from '~/pages/Profile/Wishlist';
 // Public routes
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -31,7 +31,7 @@ const publicRoutes = [
     { path: config.routes.artistProfile, component: ArtistProfile, layout: ArtistProfileLayout },
     { path: config.routes.createArtWork, component: CreateArtWork, layout: ArtistProfileLayout },
     { path: config.routes.artistArtWork, component: ArtistArtWork, layout: ArtistProfileLayout },
-    { path: config.routes.myWishlist, component: MyWishlist, layout: ArtistProfileLayout },
+    { path: config.routes.wishlist, component: Wishlist, layout: ArtistProfileLayout },
     { path: config.routes.requestArtwork, component: RequestArtwork, layout: ArtistProfileLayout },
     { path: config.routes.artworkOrdered, component: ArtworkOrdered, layout: ArtistProfileLayout },
     { path: config.routes.orderCompleted, component: OrderCompleted, layout: ArtistProfileLayout },

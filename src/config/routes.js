@@ -20,7 +20,7 @@ const routes = {
     artworkOrdered: '/Profile/ArtworkOrdered',
     orderCompleted: '/Profile/OrderCompleted',
     requestArtwork: '/Profile/RequestArtwork',
-    myWishlist: '/Profile/MyWishlist',
+    wishlist: '/Profile/Wishlist',
 };
 
 export default routes;

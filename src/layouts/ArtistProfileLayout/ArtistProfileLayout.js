@@ -57,10 +57,7 @@ function ArtistProfileLayout({ children }) {
                                                 </div>
                                                 <div className="card">
                                                     <div>
-                                                        <Link
-                                                            className="w3-bar-item w3-button"
-                                                            to="/Profile/MyWishlist"
-                                                        >
+                                                        <Link className="w3-bar-item w3-button" to="/Profile/Wishlist">
                                                             My Wishlist
                                                         </Link>
                                                     </div>
