@@ -3,6 +3,9 @@ import axios from 'axios';
 import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
 function ArtworkOrdered() {
+    const token = localStorage.getItem('token');
+    const useridlocal = localStorage.getItem('userid');
+
     const [artworks, setArtworks] = useState([]);
     useEffect(() => {
         // Make the API request
@@ -19,7 +22,7 @@ function ArtworkOrdered() {
             });
     }, []);
     /* Lấy user tạm ********************** */
-    const userid = '871a809a-b3fa-495b-9cc2-c5d738a866cf';
+    const userid = useridlocal;
     const myArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
 
     const userArtworks = myArtworks.filter((artwork) => {

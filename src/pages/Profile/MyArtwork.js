@@ -6,6 +6,9 @@ import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import appsetting from '../../appsetting.json';
 const { SERVER_API } = appsetting;
 function MyArtwork() {
+    const token = localStorage.getItem('token');
+    const useridlocal = localStorage.getItem('userid');
+
     const [artworks, setArtworks] = useState([]);
     useEffect(() => {
         // Make the API request
@@ -21,10 +24,11 @@ function MyArtwork() {
                 console.error('Error fetching data:', error);
             });
     }, []);
-    /* Lấy user tạm ********************** */
-    const userid = '871a809a-b3fa-495b-9cc2-c5d738a866cf';
+    /* Lấy user  */
+    const userid = useridlocal;
+    console.log(userid);
     const userArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
-
+    console.log(userArtworks);
     return (
         <div>
             <button

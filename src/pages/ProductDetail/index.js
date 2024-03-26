@@ -39,7 +39,7 @@ function ProductDetail() {
         fetchArtwork();
     }, [id]);
 
-    /* Lấy user tạm ********************** */
+    /* Lấy user  */
     const userid = useridlocal;
 
     async function AddOrder() {
