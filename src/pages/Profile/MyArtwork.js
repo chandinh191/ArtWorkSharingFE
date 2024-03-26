@@ -60,6 +60,7 @@ function MyArtwork() {
                             </p>
                             <div className="product-price">Price: ${artwork.price}</div>
                             <button className="add-to-cart-btn">Edit</button>
+                            <button className="add-to-cart-btn">Detail</button>
                             {artwork.artWorkStatus === 1 ? ( // If the artwork is sold
                                 <button className="add-to-cart-btn">Stop selling</button>
                             ) : (

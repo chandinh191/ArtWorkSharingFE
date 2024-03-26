@@ -3772,31 +3772,31 @@ ol {
 
 .product-title {
     font-size: 1.2rem;
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
 }
 
 .product-description {
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
 }
 
 .product-price {
     font-weight: bold;
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
 }
 
 .add-to-cart-btn {
-    background-color: #007bff;
+    background-color: #00bbffd2;
     color: #fff;
     border: none;
-    border-radius: 3px;
-    padding: 8px 16px;
-    margin: 5px 10px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: 5px 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .add-to-cart-btn:hover {
-    background-color: #0056b3;
+    background-color: #005fb3c1;
 }
 .popup-container {
     position: fixed;
