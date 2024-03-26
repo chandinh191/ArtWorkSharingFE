@@ -52,6 +52,28 @@ function ArtworkOrdered() {
     const myOrders = orders.filter((order) => myArtworks.some((artwork) => artwork.id === order.artWorkID));
     console.log(myOrders);
 
+    async function UpdateStatusOrder(orderId) {
+        console.log(orderId);
+        const res = await fetch(`${SERVER_API}/Order/Update`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                id: orderId,
+                status: 2,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
+            const json = await res.json();
+            console.log(json);
+        } else {
+            window.location.reload();
+        }
+    }
+
     return (
         <div>
             {myOrders.map((order, index) => (
@@ -64,7 +86,9 @@ function ArtworkOrdered() {
                             <button className="add-to-cart-btn" style={{ backgroundColor: 'red' }}>
                                 Cancel Order Request
                             </button>
-                            <button className="add-to-cart-btn">Accept Order Request</button>
+                            <button className="add-to-cart-btn" onClick={() => UpdateStatusOrder(order.id)}>
+                                Accept Order Request
+                            </button>
                         </div>
                     </div>
                 </div>
