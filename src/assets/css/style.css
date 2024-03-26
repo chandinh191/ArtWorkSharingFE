@@ -183,6 +183,16 @@ ol {
     border-radius: 40px;
     margin: 8px;
 }
+.logout-btn {
+    display: inline-block;
+    font-size: 10px;
+    width: 100px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #ff3030e7;
+    border-radius: 20px;
+    margin: auto;
+}
 
 /* Preloder */
 

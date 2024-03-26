@@ -50,14 +50,6 @@ function Profile() {
                                 </p>
                             </div>
                         </div>
-                        <div className="col-md-2">
-                            <input
-                                type="submit"
-                                className="profile-edit-btn"
-                                name="btnAddMore"
-                                defaultValue="Edit Profile"
-                            />
-                        </div>
                     </div>
                     <div className="row">
                         <div className="col-md-4">
@@ -132,6 +124,14 @@ function Profile() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="col-md-2">
+                        <input
+                            type="submit"
+                            className="profile-edit-btn"
+                            name="btnAddMore"
+                            defaultValue="Edit Profile"
+                        />
                     </div>
                 </form>
             </div>

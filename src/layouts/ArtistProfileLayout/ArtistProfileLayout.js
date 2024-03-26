@@ -7,6 +7,12 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function ArtistProfileLayout({ children }) {
+    function Logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userid');
+        localStorage.removeItem('username');
+        window.location.href = '/';
+    }
     return (
         <div className={cx('wrapper')}>
             <Header />
@@ -73,6 +79,11 @@ function ArtistProfileLayout({ children }) {
                                                     <div>
                                                         <a className="w3-bar-item w3-button">Order Completed</a>
                                                     </div>
+                                                </div>
+                                                <div className="card">
+                                                    <button class="logout-btn btn" onClick={Logout}>
+                                                        Logout
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
