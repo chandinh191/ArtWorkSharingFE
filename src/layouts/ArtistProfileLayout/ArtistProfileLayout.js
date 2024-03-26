@@ -69,7 +69,10 @@ function ArtistProfileLayout({ children }) {
                                                 </div>
                                                 <div className="card">
                                                     <div className="row-item">
-                                                        <Link className="w3-bar-item w3-button" to="/Profile/MyArtwork">
+                                                        <Link
+                                                            className="w3-bar-item w3-button"
+                                                            to="/Profile/RequestArtwork"
+                                                        >
                                                             Pedding Request Artwork
                                                         </Link>
                                                     </div>
