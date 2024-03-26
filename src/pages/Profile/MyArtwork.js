@@ -41,7 +41,7 @@ function MyArtwork() {
             >
                 Create new
             </button>
-
+            <p>Products you currently own</p>
             {userArtworks.map((artwork, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">

@@ -110,6 +110,7 @@ function ArtworkOrdered() {
 
     return (
         <div>
+            <p>Requests from others who want to buy your artwork product</p>
             {myOrders.map((order, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">

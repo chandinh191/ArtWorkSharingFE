@@ -74,6 +74,7 @@ function RequestArtwork() {
 
     return (
         <div>
+            <p>Your request to purchase a artwork product</p>
             {myOrders.map((order, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">

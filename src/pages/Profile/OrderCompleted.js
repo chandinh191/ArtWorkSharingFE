@@ -39,6 +39,7 @@ function OrderCompleted() {
 
     return (
         <div>
+            <p>History of successful trading orders with you</p>
             {myOrders.map((order, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">
