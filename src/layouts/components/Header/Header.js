@@ -11,7 +11,7 @@ const checkToken = () => {
 };
 
 function Header() {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem('username');
 
     const menuItems = [
         { path: '/', label: 'Home' },
@@ -87,7 +87,10 @@ function Header() {
 
                                 {checkToken() && user && (
                                     <div className={cx('header__right__auth')}>
-                                        <a href="/User">{user.userName}</a>
+                                        <a style={{ fontSize: '20px' }} href="/ArtistProfile">
+                                            {' '}
+                                            welcome {user}
+                                        </a>
                                     </div>
                                 )}
 
