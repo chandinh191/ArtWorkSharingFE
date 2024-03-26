@@ -15,6 +15,8 @@ function ProductDetail() {
     const id = searchParams.get('id');
     console.log(id);
     const [artwork, setArtwork] = useState([]);
+    const [artist, setArtist] = useState({});
+    const [audience, setAudience] = useState({});
 
     useEffect(() => {
         const fetchArtwork = async () => {
@@ -29,6 +31,8 @@ function ProductDetail() {
                 if (res.ok) {
                     const resData = await res.json(); // Extract JSON data from response
                     setArtwork(resData);
+                    fetchArtist(resData.userAccountId);
+                    fetchAudience(resData.userOwnerId);
                 } else {
                     console.error('Failed to fetch artwork');
                 }
@@ -38,6 +42,48 @@ function ProductDetail() {
         };
         fetchArtwork();
     }, [id]);
+
+    const fetchArtist = async (id) => {
+        try {
+            const res = await fetch(`${SERVER_API}/Auth/GetArtistById?id=${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            if (res.ok) {
+                const resData = await res.json(); // Extract JSON data from response
+                console.log(resData);
+                setArtist(resData);
+            } else {
+                console.error('Failed to fetch artist');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const fetchAudience = async (id) => {
+        try {
+            const res = await fetch(`${SERVER_API}/Auth/GetAudienceById?id=${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            if (res.ok) {
+                const resData = await res.json(); // Extract JSON data from response
+                console.log(resData);
+                setAudience(resData);
+            } else {
+                console.error('Failed to fetch audience');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     /* Lấy user  */
     const userid = useridlocal;
@@ -247,9 +293,9 @@ function ProductDetail() {
                                                 <a
                                                     href="#"
                                                     onClick={() => deleteWishList()}
-                                                    style={{ backgroundColor: 'red' }}
+                                                    style={{ backgroundColor: '#CA1515' }}
                                                 >
-                                                    <span className={`icon_heart_alt`} />
+                                                    <span className={`icon_heart_alt`} style={{ color: 'white' }} />
                                                 </a>
                                             ) : (
                                                 <a
@@ -267,11 +313,11 @@ function ProductDetail() {
                                     <ul>
                                         <li>
                                             <span>Artist :</span>
-                                            <p>{artwork.userAccountId}</p>
+                                            <p>{artist.userName}</p>
                                         </li>
                                         <li>
                                             <span>Owner:</span>
-                                            <p>{artwork.userOwnerId}</p>
+                                            <p>{audience.userName == null ? artist.userName : audience.userName}</p>
                                         </li>
                                         <li>
                                             <span>Category:</span>
