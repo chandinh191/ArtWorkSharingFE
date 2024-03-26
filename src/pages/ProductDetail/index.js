@@ -42,6 +42,50 @@ function ProductDetail() {
     /* Lấy user  */
     const userid = useridlocal;
 
+    // add wishlist
+    const userId = localStorage.getItem('userid');
+    const artWork = id;
+    const [isInWishlist, setIsInWishlist] = React.useState(false); // new state
+
+    // get all wishlist
+    useEffect(() => {
+        getWishList();
+    }, [artWork, userId]); // getWishList will be called when `artWork` or `userId` changes
+
+    async function getWishList() {
+        const res = await fetch(`${SERVER_API}/WishList/GetAll`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (res.ok) {
+            const json = await res.json();
+            // Check if the current artwork is in the wishlist
+            setIsInWishlist(json.some((item) => item.userAccountId === userId && item.artWorkID === artWork));
+        } else {
+        }
+    }
+
+    // add wishlist category
+    async function addWishList() {
+        const res = await fetch(`${SERVER_API}/WishList/Add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                //authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                userAccountId: userId,
+                artWorkID: artWork,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
+        } else {
+        }
+    }
+
     async function AddOrder() {
         const res = await fetch(`${SERVER_API}/Order/Add`, {
             method: 'POST',
@@ -163,15 +207,14 @@ function ProductDetail() {
                                     )}
                                     <ul>
                                         <li>
-                                            <a href="#">
-                                                <span className="icon_heart_alt" />
+                                            <a
+                                                href="#"
+                                                onClick={() => addWishList()}
+                                                style={{ backgroundColor: isInWishlist ? 'red' : 'white' }}
+                                            >
+                                                <span className={`icon_heart_alt`} />
                                             </a>
                                         </li>
-                                        {/* <li>
-                                            <a href="#">
-                                                <span className="icon_adjust-horiz" />
-                                            </a>
-                                        </li> */}
                                     </ul>
                                 </div>
                                 <div className="product__details__widget">
