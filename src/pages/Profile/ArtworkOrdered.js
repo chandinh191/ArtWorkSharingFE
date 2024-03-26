@@ -5,7 +5,6 @@ const { SERVER_API } = appsetting;
 function ArtworkOrdered() {
     const token = localStorage.getItem('token');
     const useridlocal = localStorage.getItem('userid');
-
     const [artworks, setArtworks] = useState([]);
     useEffect(() => {
         // Make the API request
@@ -24,22 +23,37 @@ function ArtworkOrdered() {
     /* Lấy user tạm ********************** */
     const userid = useridlocal;
     const myArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
-    console.log(myArtworks);
-    const userArtworks = myArtworks.filter((artwork) => {
-        if (artwork.orders && Array.isArray(artwork.orders)) {
-            // Nếu có các đơn hàng cho tác phẩm
-            return artwork.orders.some((order) => order.status === 1);
-        } else if (artwork.orders && typeof artwork.orders === 'object') {
-            // Nếu chỉ có một đơn hàng cho tác phẩm
-            return artwork.orders.status === 1;
-        }
-        return false; // Nếu không có đơn hàng nào cho tác phẩm
-    });
-    console.log(userArtworks);
+
+    const status = 1;
+    const [orders, setOrders] = useState([]);
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const res = await fetch(`${SERVER_API}/Order/GetOrderByStatus?status=${status}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (res.ok) {
+                    const resData = await res.json(); // Extract JSON data from response
+                    setOrders(resData);
+                } else {
+                    console.error('Failed to fetch artwork');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchOrders();
+    }, [status]);
+
+    console.log(orders);
 
     return (
         <div>
-            {userArtworks.map((artwork, index) => (
+            {myArtworks.map((artwork, index) => (
                 <div className="row">
                     <div className="product-card-horizontal">
                         <img src={artwork.imageUrl} alt="Product Image" className="product-image" />
