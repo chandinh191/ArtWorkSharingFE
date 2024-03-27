@@ -63,6 +63,21 @@ function Wishlist() {
                             <h1 className="product-title">{artwork.name}</h1>
                             <h5 className="product-title">{artwork.description}</h5>
                             <div className="product-price">Price: ${artwork.price}</div>
+                            <div style={{ textAlign: 'right' }}>
+                                <Link
+                                    to={`/ProductDetail?id=${artwork.id}`}
+                                    className="image-popup"
+                                    style={{
+                                        fontSize: '3em',
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <h5>Go to artwork</h5>
+                                    <span className="arrow_carrot-right" />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
