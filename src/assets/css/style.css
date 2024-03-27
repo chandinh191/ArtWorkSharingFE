@@ -2978,7 +2978,7 @@ ol {
     color: #111111;
     font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 .blog__details__comment .leave-btn {
@@ -3031,13 +3031,14 @@ ol {
 .blog__comment__item__text h6 {
     color: #111111;
     font-weight: 600;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 
 .blog__comment__item__text p {
     font-size: 15px;
     color: #444444;
     line-height: 26px;
+    margin-bottom: 4px;
 }
 
 .blog__comment__item__text ul li {

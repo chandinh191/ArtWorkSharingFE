@@ -13,7 +13,6 @@ function ProductDetail() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get('id');
-    console.log(id);
     const [artwork, setArtwork] = useState([]);
     const [artist, setArtist] = useState({});
     const [audience, setAudience] = useState({});
@@ -54,7 +53,6 @@ function ProductDetail() {
             });
             if (res.ok) {
                 const resData = await res.json(); // Extract JSON data from response
-                console.log(resData);
                 setArtist(resData);
             } else {
                 console.error('Failed to fetch artist');
@@ -75,7 +73,6 @@ function ProductDetail() {
             });
             if (res.ok) {
                 const resData = await res.json(); // Extract JSON data from response
-                console.log(resData);
                 setAudience(resData);
             } else {
                 console.error('Failed to fetch audience');
@@ -182,12 +179,28 @@ function ProductDetail() {
         });
         if (res.ok) {
             window.location.reload();
-            const json = await res.json();
-            console.log(json);
         } else {
             window.location.reload();
         }
     }
+
+    //Comment--------------
+    const [allComments, setAllComments] = useState([]);
+    useEffect(() => {
+        // Make the API request
+        axios
+            .get(`${SERVER_API}/Interact/GetAll`)
+            .then((response) => {
+                // Update the state with the fetched data
+                setAllComments(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                // Handle any errors here
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+    const comments = allComments.filter((comment) => comment.artWorkID === artwork.id);
 
     /* Popup */
     const [isOpen, setIsOpen] = useState(false);
@@ -424,47 +437,23 @@ function ProductDetail() {
                     <a href="#" className="leave-btn">
                         Leave a comment
                     </a>
-                    <div className="blog__comment__item">
-                        <div className="blog__comment__item__pic">
-                            <img src={img_avatar} alt="" />
-                        </div>
-                        <div className="blog__comment__item__text">
-                            <h6>Brandon Kelley</h6>
-                            <p>
-                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune perpetua mei
-                                et. Simul viderer facilisis egimus tractatos splendi.
-                            </p>
-                            <ul>
-                                <li>
-                                    <i className="fa fa-clock-o" /> Seb 17, 2019
-                                </li>
-                                {/* <li>
-                                    <i className="fa fa-heart-o" /> 12
-                                </li>
-                                <li>
-                                    <i className="fa fa-share" /> 1
-                                </li> */}
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div className="blog__comment__item">
-                        <div className="blog__comment__item__pic">
-                            <img src={img_avatar} alt="" />
+                    {comments.map((comment, index) => (
+                        <div className="blog__comment__item">
+                            <div className="blog__comment__item__pic">
+                                <img src={img_avatar} alt="" />
+                            </div>
+                            <div className="blog__comment__item__text">
+                                <h6>{comment.userAccountId}</h6>
+                                <p>{comment.comment}</p>
+                                <ul>
+                                    <li>
+                                        <i className="fa fa-clock-o" /> {comment.created}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div className="blog__comment__item__text">
-                            <h6>Brandon Kelley</h6>
-                            <p>
-                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune perpetua mei
-                                et. Simul viderer facilisis egimus tractatos splendi.
-                            </p>
-                            <ul>
-                                <li>
-                                    <i className="fa fa-clock-o" /> Seb 17, 2019
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
                 <div className="contact__content">
