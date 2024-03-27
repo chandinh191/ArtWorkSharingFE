@@ -182,6 +182,28 @@ ol {
     border-radius: 40px;
     margin: 8px 0px;
 }
+.site-btn-popup-cancel {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 30px 8px;
+    color: #ffffff;
+    background: #ca1515;
+    border-radius: 40px;
+    margin: 8px;
+}
+.site-btn-popup-add {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 30px 8px;
+    color: #ffffff;
+    background: #15c1ca;
+    border-radius: 40px;
+    margin: 8px;
+}
 .logout-btn {
     display: inline-block;
     font-size: 10px;
