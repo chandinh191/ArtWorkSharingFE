@@ -27,7 +27,12 @@ function SignIn() {
             localStorage.setItem('token', result.token);
             localStorage.setItem('userid', result.accinfo.id.toString());
             localStorage.setItem('username', result.accinfo.userName.toString());
-            window.location.href = '/';
+            localStorage.setItem('isAdmin', result.accinfo.isAdminAccount.toString());
+            if (result.accinfo.isAdminAccount) {
+                window.location.href = 'http://localhost:3000/#/dashboard';
+            } else {
+                window.location.href = '/';
+            }
         } else {
             window.location.reload();
         }
