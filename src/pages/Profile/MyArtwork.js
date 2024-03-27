@@ -50,24 +50,57 @@ function MyArtwork() {
     }
 
     /* Popup */
+    const [artId, setArtId] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const togglePopup = () => {
+    const togglePopup = async (artworkId) => {
         setIsOpen(!isOpen);
-    };
+        if (!isOpen) {
+            try {
+                // Make the API request
+                const response = await axios.get(`${SERVER_API}/ArtWork/GetById?id=${artworkId}`);
 
+                if (response.status === 200) {
+                    const res = response.data;
+                    setArtId(artworkId)
+                    // Populate form fields with retrieved data
+                    setFormData(prevState => ({
+                        ...prevState,
+                        name: res.name,
+                        description: res.description,
+                        categoryId: res.categoryId,
+                        price: res.price,
+                        artWorkStatus: res.artWorkStatus,
+                    }));
+                    setImageUrl(res.imageUrl);
+                } else {
+                    console.error('Failed to fetch artwork details');
+                }
+            } catch (error) {
+                console.error('Error fetching artwork details:', error);
+            }
+        } else {
+            setSelectedFile(null);
+        }
+
+    };
+    const [currentImageUrl, setCurrentImageUrl] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
+    const [isChange, setIsChange] = useState(false);
     const handleUploadClick = () => {
         document.getElementById('fileInput').click();
+        setIsChange(true);
     };
     const [formData, setFormData] = useState({
         name: '',
         description: '',
         categoryId: '',
         price: Number,
+        artWorkStatus: Number,
     });
     const handleFileChange = (e) => {
         const file = e.target.files[0];
+
         setSelectedFile(file);
     };
     const handleSubmit = async (e) => {
@@ -101,50 +134,35 @@ function MyArtwork() {
             return;
         }
         // Upload image validation
-        if (!selectedFile) {
-            alert('Please upload an image');
-            return;
-        }
-        const allowedTypes = ['image/jpeg', 'image/png']; // Add more types if necessary
 
-        if (!allowedTypes.includes(selectedFile.type)) {
-            alert('Please select a valid image file (JPEG, PNG)');
-            return;
-        }
         // Create a formData object to send to Cloudinary
         const imageData = new FormData();
         imageData.append('file', selectedFile);
         imageData.append('upload_preset', preset_key);
 
+
         // Send the image to Cloudinary
         try {
-            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, {
-                method: 'POST',
-                body: imageData,
-            });
-
-            const data = await response.json();
-
-            console.log(data.secure_url);
-            // Set the uploaded image URL
-            if (data.secure_url) {
+            console.log(imageUrl);
+            if (!selectedFile) {
                 try {
                     // Create the requestBody object with the imageUrl
                     const requestBody = JSON.stringify({
+                        id: artId,
                         userAccountId: useridlocal,
                         userOwnerId: useridlocal,
                         categoryId: formData.categoryId,
                         name: formData.name,
                         description: formData.description,
                         price: formData.price,
-                        imageUrl: data.secure_url, // Use the Cloudinary image URL here
+                        imageUrl: imageUrl, // Use the Cloudinary image URL here
                     });
 
                     console.log(requestBody); // Log the body before making the fetch call
 
                     // Make the fetch call
-                    const res = await fetch(`${SERVER_API}/Artwork/Add`, {
-                        method: 'POST',
+                    const res = await fetch(`${SERVER_API}/Artwork/Update`, {
+                        method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
                         },
@@ -152,6 +170,7 @@ function MyArtwork() {
                     });
 
                     if (res.ok) {
+                        alert('Artwork updated successfully');
                         window.location.reload(); // Reload the page if the request is successful
                     } else {
                         console.error('Error:', res.statusText); // Log error message if request fails
@@ -160,14 +179,64 @@ function MyArtwork() {
                     console.error('Error posting data:', error); // Log error if fetch fails
                 }
             } else {
-                console.error('Image URL is not available.'); // Log error if imageUrl is not available
+                const allowedTypes = ['image/jpeg', 'image/png']; // Add more types if necessary
+
+                if (!allowedTypes.includes(selectedFile.type)) {
+                    alert('Please select a valid image file (JPEG, PNG)');
+                    return;
+                }
+                const response = await fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, {
+                    method: 'POST',
+                    body: imageData,
+                });
+
+                const data = await response.json();
+
+                console.log(data.secure_url);
+                setCurrentImageUrl();
+
+                // Set the uploaded image URL
+                if (data.secure_url) {
+                    try {
+                        // Create the requestBody object with the imageUrl
+                        const requestBody = JSON.stringify({
+                            id: artId,
+                            userAccountId: useridlocal,
+                            userOwnerId: useridlocal,
+                            categoryId: formData.categoryId,
+                            name: formData.name,
+                            description: formData.description,
+                            price: formData.price,
+                            imageUrl: data.secure_url, // Use the Cloudinary image URL here
+                        });
+
+                        console.log(requestBody); // Log the body before making the fetch call
+
+                        // Make the fetch call
+                        const res = await fetch(`${SERVER_API}/Artwork/Update`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: requestBody,
+                        });
+
+                        if (res.ok) {
+                            alert('Artwork updated successfully');
+                            window.location.reload(); // Reload the page if the request is successful
+                        } else {
+                            console.error('Error:', res.statusText); // Log error message if request fails
+                        }
+                    } catch (error) {
+                        console.error('Error posting data:', error); // Log error if fetch fails
+                    }
+                } else {
+                    console.error('Image URL is not available.'); // Log error if imageUrl is not available
+                }
             }
         } catch (error) {
             console.error('Error uploading image:', error);
         }
-        console.log(imageUrl + 'testttttt');
-        // Ensure imageUrl is available before proceeding
-        // Ensure imageUrl is available
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -251,7 +320,7 @@ function MyArtwork() {
                                 )}
                             </p>
                             <div className="product-price">Price: ${artwork.price}</div>
-                            <button className="add-to-cart-btn" onClick={togglePopup}>
+                            <button className="add-to-cart-btn" onClick={() => togglePopup(artwork.id)}>
                                 Edit
                             </button>
                             {isOpen && (
@@ -315,12 +384,22 @@ function MyArtwork() {
                                                                 onChange={handleChange}
                                                             />
                                                         </div>
+                                                        <select
+                                                            className="custom-select tm-select-accounts mb-3 col-xs-12 col-sm-5"
+                                                            id="artWorkStatus"
+                                                            name="artWorkStatus"
+                                                            value={formData.artWorkStatus}
+                                                            onChange={handleChange}
+                                                        >
+                                                            <option value="1">Active</option>
+                                                            <option value="0">InActive</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                                                 <div className="tm-product-img-dummy mx-auto">
-                                                    {selectedFile && (
+                                                    {selectedFile && isChange ? (
                                                         <img
                                                             src={URL.createObjectURL(selectedFile)}
                                                             alt="Product Image"
@@ -331,6 +410,19 @@ function MyArtwork() {
                                                                 height: '100%',
                                                             }}
                                                         />
+                                                    ) : (
+                                                        imageUrl != null && (
+                                                            <img
+                                                                src={imageUrl}
+                                                                alt="Product Image"
+                                                                className="img-fluid"
+                                                                style={{
+                                                                    objectFit: 'cover',
+                                                                    width: '100%',
+                                                                    height: '100%',
+                                                                }}
+                                                            />
+                                                        )
                                                     )}
                                                 </div>
                                                 <div className="custom-file mt-3 mb-3">

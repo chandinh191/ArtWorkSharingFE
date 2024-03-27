@@ -22,6 +22,7 @@ function CreateArtWork() {
         description: '',
         categoryId: '',
         price: Number,
+        artWorkStatus: Number,
     });
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -109,6 +110,7 @@ function CreateArtWork() {
                     });
 
                     if (res.ok) {
+                        alert('Artwork updated successfully');
                         window.location.reload(); // Reload the page if the request is successful
                     } else {
                         console.error('Error:', res.statusText); // Log error message if request fails
@@ -122,9 +124,6 @@ function CreateArtWork() {
         } catch (error) {
             console.error('Error uploading image:', error);
         }
-        console.log(imageUrl + "testttttt");
-        // Ensure imageUrl is available before proceeding
-        // Ensure imageUrl is available
 
     };
     const handleChange = (e) => {
@@ -247,6 +246,16 @@ function CreateArtWork() {
                                                 onChange={handleChange}
                                             />
                                         </div>
+                                        <select
+                                            className="custom-select tm-select-accounts mb-3 col-xs-12 col-sm-5"
+                                            id="artWorkStatus"
+                                            name="artWorkStatus"
+                                            value={formData.artWorkStatus}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="1">Active</option>
+                                            <option value="0">InActive</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
