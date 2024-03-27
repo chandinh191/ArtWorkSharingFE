@@ -59,7 +59,7 @@ function ArtworkOrdered() {
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-                id: artWorkId,
+                artWorkId: artWorkId,
                 userOwnerId: buyerAccountId,
             }),
         });

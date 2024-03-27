@@ -29,6 +29,26 @@ function MyArtwork() {
     console.log(userid);
     const userArtworks = artworks.filter((artwork) => artwork.userOwnerId === userid);
     console.log(userArtworks);
+
+    async function UpdateArtworkStatus(artWorkId, status) {
+        const res = await fetch(`${SERVER_API}/ArtWork/UpdateStatus`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                artWorkId: artWorkId,
+                status: status,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
+        } else {
+            window.location.reload();
+        }
+    }
+
     return (
         <div>
             <button
@@ -62,10 +82,14 @@ function MyArtwork() {
                             <button className="add-to-cart-btn">Edit</button>
                             <button className="add-to-cart-btn">Detail</button>
                             {artwork.artWorkStatus === 1 ? ( // If the artwork is sold
-                                <button className="add-to-cart-btn">Stop selling</button>
+                                <button className="add-to-cart-btn" onClick={() => UpdateArtworkStatus(artwork.id, 2)}>
+                                    Stop selling
+                                </button>
                             ) : (
                                 // If the artwork is not sold
-                                <button className="add-to-cart-btn">Start selling</button>
+                                <button className="add-to-cart-btn" onClick={() => UpdateArtworkStatus(artwork.id, 1)}>
+                                    Start selling
+                                </button>
                             )}
                         </div>
                     </div>
