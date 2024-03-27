@@ -298,7 +298,7 @@ function ProductDetail() {
                                     <i className="fa fa-star" />
                                     <i className="fa fa-star" />
                                     <i className="fa fa-star" />
-                                    <span>( 138 reviews )</span>
+                                    <span>( ~~ reviews )</span>
                                 </div>
                                 <div className="product__details__price">
                                     $ {artwork.price} {/*<span>$ 83.0</span> */}
@@ -396,7 +396,7 @@ function ProductDetail() {
                                 <ul className="nav nav-tabs" role="tablist">
                                     <li className="nav-item">
                                         <a className="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                            Reviews ( 2 )
+                                            Introdution
                                         </a>
                                     </li>
                                     {/* <li className="nav-item">

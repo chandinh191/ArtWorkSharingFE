@@ -1,17 +1,26 @@
-import React from 'react';
-import img1 from '../../assets/img/blog/details/blog-details.jpg';
-import img_cmt1 from '../../assets/img/blog/details/comment-1.jpg';
-import img_cmt2 from '../../assets/img/blog/details/comment-2.jpg';
-import img_cmt3 from '../../assets/img/blog/details/comment-3.jpg';
-
-import img_sb1 from '../../assets/img/blog/sidebar/fp-1.jpg';
-import img_sb2 from '../../assets/img/blog/sidebar/fp-2.jpg';
-import img_sb3 from '../../assets/img/blog/sidebar/fp-3.jpg';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import appsetting from '../../appsetting.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
 
+const { SERVER_API } = appsetting;
+
 function BlogDetails() {
+    const [categories, setCategories] = useState([]);
+    useEffect(() => {
+        // Make the API request
+        axios
+            .get(`${SERVER_API}/Category/GetAll`)
+            .then((response) => {
+                // Update the state with the fetched data
+                setCategories(response.data);
+            })
+            .catch((error) => {
+                // Handle any errors here
+                console.error('Error fetching data:', error);
+            });
+    }, []);
     return (
         <div>
             {/* Breadcrumb Begin */}
@@ -113,31 +122,13 @@ function BlogDetails() {
                                         <h4>Categories</h4>
                                     </div>
                                     <ul>
-                                        <li>
-                                            <a href="#">
-                                                All <span>(250)</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Fashion week <span>(80)</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Street style <span>(75)</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Lifestyle <span>(35)</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Beauty <span>(60)</span>
-                                            </a>
-                                        </li>
+                                        {categories.map((category) => (
+                                            <li>
+                                                <a href="#">
+                                                    {category.categoryName} <span>({category.artWorks.length})</span>
+                                                </a>
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>

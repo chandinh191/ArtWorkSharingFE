@@ -109,7 +109,7 @@ function Shop() {
                                                             value={category.id}
                                                             onClick={(e) => setCategoriesFilter(e.target.value)}
                                                         >
-                                                            {category.categoryName}
+                                                            {category.categoryName} ({category.artWorks.length})
                                                         </button>
                                                     </div>
                                                 </div>
@@ -173,7 +173,7 @@ function Shop() {
                                                                 <span className="arrow_expand" />
                                                             </Link>
                                                         </li>
-                                                        <li>
+                                                        {/* <li>
                                                             <a href="#">
                                                                 <span className="icon_heart_alt" />
                                                             </a>
@@ -182,7 +182,7 @@ function Shop() {
                                                             <a href="#">
                                                                 <span className="icon_bag_alt" />
                                                             </a>
-                                                        </li>
+                                                        </li> */}
                                                     </ul>
                                                 </div>
                                                 <div className="product__item__text">

@@ -163,7 +163,7 @@ function Home() {
                                                                 <span className="arrow_expand" />
                                                             </Link>
                                                         </li>
-                                                        <li>
+                                                        {/* <li>
                                                             <a href="#">
                                                                 <span className="icon_heart_alt" />
                                                             </a>
@@ -172,7 +172,7 @@ function Home() {
                                                             <a href="#">
                                                                 <span className="icon_bag_alt" />
                                                             </a>
-                                                        </li>
+                                                        </li> */}
                                                     </ul>
                                                 </div>
                                                 <div className="product__item__text">
