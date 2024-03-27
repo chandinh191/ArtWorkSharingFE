@@ -75,7 +75,6 @@ function Home() {
                             >
                                 <div className="categories__text">
                                     <h2>{categories[0]?.categoryName}</h2>
-                                    <p>2666 items</p>
                                     <a href="/shop">Shop now</a>
                                 </div>
                             </div>
@@ -94,7 +93,6 @@ function Home() {
                                         >
                                             <div className="categories__text">
                                                 <h4>{category.categoryName}</h4>
-                                                <p>358 items</p>
                                                 <a href="/shop">Shop now</a>
                                             </div>
                                         </div>

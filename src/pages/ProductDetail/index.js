@@ -374,12 +374,18 @@ function ProductDetail() {
                                         </li>
 
                                         <li>
-                                            <span>On sale:</span>
-                                            <i className="icon_check_alt green"></i>
+                                            <span>Selling:</span>
+
+                                            {artwork.artWorkStatus === 1 ? ( // If the artwork is sold
+                                                <i className="icon_check_alt green"></i> // Render a red cross icon
+                                            ) : (
+                                                // If the artwork is not sold
+                                                <i className="icon_close_alt red"></i> // Render a green checkmark icon
+                                            )}
                                         </li>
                                         <li>
-                                            <span>PreOrder:</span>
-                                            <i className="icon_close_alt red"></i>
+                                            <span>Create Date:</span>
+                                            <p>{artwork.created}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -465,7 +471,7 @@ function ProductDetail() {
             {/* Product Details Section End */}
             <div className="container" style={{ padding: '45px' }}>
                 <div className="blog__details__comment">
-                    <h5>3 Comment</h5>
+                    <h5>{comments.length} Comment</h5>
                     <a href="#" className="leave-btn">
                         Leave a comment
                     </a>
