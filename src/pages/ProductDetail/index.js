@@ -13,7 +13,6 @@ function ProductDetail() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get('id');
-    console.log(id);
     const [artwork, setArtwork] = useState([]);
     const [artist, setArtist] = useState({});
     const [audience, setAudience] = useState({});
@@ -54,7 +53,6 @@ function ProductDetail() {
             });
             if (res.ok) {
                 const resData = await res.json(); // Extract JSON data from response
-                console.log(resData);
                 setArtist(resData);
             } else {
                 console.error('Failed to fetch artist');
@@ -75,7 +73,6 @@ function ProductDetail() {
             });
             if (res.ok) {
                 const resData = await res.json(); // Extract JSON data from response
-                console.log(resData);
                 setAudience(resData);
             } else {
                 console.error('Failed to fetch audience');
@@ -182,8 +179,56 @@ function ProductDetail() {
         });
         if (res.ok) {
             window.location.reload();
-            const json = await res.json();
-            console.log(json);
+        } else {
+            window.location.reload();
+        }
+    }
+
+    //Comment--------------
+    const [allComments, setAllComments] = useState([]);
+    useEffect(() => {
+        // Make the API request
+        axios
+            .get(`${SERVER_API}/Interact/GetAll`)
+            .then((response) => {
+                // Update the state with the fetched data
+                setAllComments(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                // Handle any errors here
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+    const comments = allComments.filter((comment) => comment.artWorkID === artwork.id);
+
+    const [review, setReview] = useState('');
+
+    const handleCommentChange = (event) => {
+        setReview(event.target.value);
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        console.log(review);
+        await AddComment(review);
+    };
+
+    async function AddComment(review) {
+        const res = await fetch(`${SERVER_API}/Interact/Add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                artWorkID: artwork.id,
+                userAccountId: userId,
+                comment: review,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
         } else {
             window.location.reload();
         }
@@ -253,7 +298,7 @@ function ProductDetail() {
                                     <i className="fa fa-star" />
                                     <i className="fa fa-star" />
                                     <i className="fa fa-star" />
-                                    <span>( 138 reviews )</span>
+                                    <span>( ~~ reviews )</span>
                                 </div>
                                 <div className="product__details__price">
                                     $ {artwork.price} {/*<span>$ 83.0</span> */}
@@ -329,12 +374,18 @@ function ProductDetail() {
                                         </li>
 
                                         <li>
-                                            <span>On sale:</span>
-                                            <i className="icon_check_alt green"></i>
+                                            <span>Selling:</span>
+
+                                            {artwork.artWorkStatus === 1 ? ( // If the artwork is sold
+                                                <i className="icon_check_alt green"></i> // Render a red cross icon
+                                            ) : (
+                                                // If the artwork is not sold
+                                                <i className="icon_close_alt red"></i> // Render a green checkmark icon
+                                            )}
                                         </li>
                                         <li>
-                                            <span>PreOrder:</span>
-                                            <i className="icon_close_alt red"></i>
+                                            <span>Create Date:</span>
+                                            <p>{artwork.created}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -345,7 +396,7 @@ function ProductDetail() {
                                 <ul className="nav nav-tabs" role="tablist">
                                     <li className="nav-item">
                                         <a className="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                            Reviews ( 2 )
+                                            Introdution
                                         </a>
                                     </li>
                                     {/* <li className="nav-item">
@@ -420,57 +471,37 @@ function ProductDetail() {
             {/* Product Details Section End */}
             <div className="container" style={{ padding: '45px' }}>
                 <div className="blog__details__comment">
-                    <h5>3 Comment</h5>
+                    <h5>{comments.length} Comment</h5>
                     <a href="#" className="leave-btn">
                         Leave a comment
                     </a>
-                    <div className="blog__comment__item">
-                        <div className="blog__comment__item__pic">
-                            <img src={img_avatar} alt="" />
-                        </div>
-                        <div className="blog__comment__item__text">
-                            <h6>Brandon Kelley</h6>
-                            <p>
-                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune perpetua mei
-                                et. Simul viderer facilisis egimus tractatos splendi.
-                            </p>
-                            <ul>
-                                <li>
-                                    <i className="fa fa-clock-o" /> Seb 17, 2019
-                                </li>
-                                {/* <li>
-                                    <i className="fa fa-heart-o" /> 12
-                                </li>
-                                <li>
-                                    <i className="fa fa-share" /> 1
-                                </li> */}
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div className="blog__comment__item">
-                        <div className="blog__comment__item__pic">
-                            <img src={img_avatar} alt="" />
+                    {comments.map((comment, index) => (
+                        <div className="blog__comment__item">
+                            <div className="blog__comment__item__pic">
+                                <img src={img_avatar} alt="" />
+                            </div>
+                            <div className="blog__comment__item__text">
+                                <h6>{comment.userAccountId}</h6>
+                                <p>{comment.comment}</p>
+                                <ul>
+                                    <li>
+                                        <i className="fa fa-clock-o" /> {comment.created}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div className="blog__comment__item__text">
-                            <h6>Brandon Kelley</h6>
-                            <p>
-                                Duis voluptatum. Id vis consequat consetetur dissentiet, ceteros commune perpetua mei
-                                et. Simul viderer facilisis egimus tractatos splendi.
-                            </p>
-                            <ul>
-                                <li>
-                                    <i className="fa fa-clock-o" /> Seb 17, 2019
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
                 <div className="contact__content">
                     <div className="contact__form">
-                        <form action="#">
-                            <textarea placeholder="Enter your reviewing" defaultValue={''} />
+                        <form onSubmit={handleSubmit}>
+                            <textarea
+                                placeholder="Enter your reviewing"
+                                value={review}
+                                onChange={handleCommentChange}
+                            />
                             <button type="submit" className="site-btn">
                                 Send
                             </button>

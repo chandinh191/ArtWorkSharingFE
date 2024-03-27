@@ -5,10 +5,14 @@ import '../../../src/assets/fonts/material-icon/css/material-design-iconic-font.
 
 function SignUp() {
     const [username, setUsername] = React.useState('');
+    const [status, setStatus] = React.useState(0);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
 
+    const handleStatusChange = (event) => {
+        setStatus(parseInt(event.target.value));
+    };
     async function SignUp() {
         const res = await fetch(`https://localhost:7178/api/Auth/SignUp`, {
             method: 'POST',
@@ -20,6 +24,7 @@ function SignUp() {
                 email: email,
                 password: password,
                 confirmPassword: confirmPassword,
+                status: status,
             }),
         });
         if (res.ok) {
@@ -100,6 +105,32 @@ function SignUp() {
                                             value={confirmPassword}
                                             onChange={(e) => setConfirmPassword(e.target.value)}
                                         />
+                                    </div>
+                                    <div className="form-group">
+                                        <div className="row" style={{ alignItems: 'center' }}>
+                                            <div className="col-md-4 col-sm-6">
+                                                <input
+                                                    type="radio"
+                                                    value="0"
+                                                    name="status"
+                                                    checked={status === 0}
+                                                    onChange={handleStatusChange}
+                                                />
+                                            </div>
+                                            <div className="col-md-4 col-sm-6">Audience</div>
+                                        </div>
+                                        <div className="row" style={{ alignItems: 'center' }}>
+                                            <div className="col-md-4 col-sm-6">
+                                                <input
+                                                    type="radio"
+                                                    value="1"
+                                                    name="status"
+                                                    checked={status === 1}
+                                                    onChange={handleStatusChange}
+                                                />
+                                            </div>
+                                            <div className="col-md-4 col-sm-6">Artist</div>
+                                        </div>
                                     </div>
                                     <div className="form-group form-button">
                                         <input
