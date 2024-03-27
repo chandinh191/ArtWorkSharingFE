@@ -68,6 +68,7 @@ function MyArtwork() {
                         <img src={artwork.imageUrl} alt="Product Image" className="product-image" />
                         <div className="product-details2">
                             <h2 className="product-title">{artwork.name}</h2>
+                            <p className="product-description">Description: {artwork.description}</p>
                             <p className="product-description">Category: {artwork.category.categoryName}</p>
                             <p className="product-description">
                                 Selling:
