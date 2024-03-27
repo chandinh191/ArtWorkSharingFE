@@ -202,6 +202,38 @@ function ProductDetail() {
     }, []);
     const comments = allComments.filter((comment) => comment.artWorkID === artwork.id);
 
+    const [review, setReview] = useState('');
+
+    const handleCommentChange = (event) => {
+        setReview(event.target.value);
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        console.log(review);
+        await AddComment(review);
+    };
+
+    async function AddComment(review) {
+        const res = await fetch(`${SERVER_API}/Interact/Add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                artWorkID: artwork.id,
+                userAccountId: userId,
+                comment: review,
+            }),
+        });
+        if (res.ok) {
+            window.location.reload();
+        } else {
+            window.location.reload();
+        }
+    }
+
     /* Popup */
     const [isOpen, setIsOpen] = useState(false);
     const togglePopup = () => {
@@ -458,8 +490,12 @@ function ProductDetail() {
 
                 <div className="contact__content">
                     <div className="contact__form">
-                        <form action="#">
-                            <textarea placeholder="Enter your reviewing" defaultValue={''} />
+                        <form onSubmit={handleSubmit}>
+                            <textarea
+                                placeholder="Enter your reviewing"
+                                value={review}
+                                onChange={handleCommentChange}
+                            />
                             <button type="submit" className="site-btn">
                                 Send
                             </button>
