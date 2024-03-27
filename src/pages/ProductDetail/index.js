@@ -202,6 +202,20 @@ function ProductDetail() {
     }, []);
     const comments = allComments.filter((comment) => comment.artWorkID === artwork.id);
 
+    const [commentAccountNames, setCommentAccountNames] = useState([]);
+    useEffect(() => {
+        const fetchNames = async () => {
+            const names = [];
+            for (let comment of comments) {
+                const response = await fetch(`${SERVER_API}/Auth/GetAccountById?id=${comment.userAccountId}`);
+                const data = await response.json();
+                names.push(data.userName);
+            }
+            setCommentAccountNames(names);
+        };
+        fetchNames();
+    }, [comments]);
+
     const [review, setReview] = useState('');
 
     const handleCommentChange = (event) => {
@@ -477,16 +491,17 @@ function ProductDetail() {
                     </a>
 
                     {comments.map((comment, index) => (
-                        <div className="blog__comment__item">
+                        <div className="blog__comment__item" key={index}>
                             <div className="blog__comment__item__pic">
                                 <img src={img_avatar} alt="" />
                             </div>
                             <div className="blog__comment__item__text">
-                                <h6>{comment.userAccountId}</h6>
+                                <h6>{commentAccountNames[index]}</h6>
                                 <p>{comment.comment}</p>
                                 <ul>
                                     <li>
-                                        <i className="fa fa-clock-o" /> {comment.created}
+                                        <i className="fa fa-clock-o" />{' '}
+                                        {new Date(comment.created).toLocaleString('vi-VN')}
                                     </li>
                                 </ul>
                             </div>

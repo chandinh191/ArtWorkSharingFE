@@ -198,7 +198,7 @@ function Home() {
             {/* Product Section End */}
 
             {/* Trend Section Begin */}
-            <section className="trend spad">
+            {/* <section className="trend spad">
                 <div className="container" style={{ padding: '40px' }}>
                     <div className="row">
                         <div className="col-lg-4 col-md-4 col-sm-6">
@@ -371,7 +371,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             {/* Trend Section End */}
 
             {/* Instagram Begin */}
