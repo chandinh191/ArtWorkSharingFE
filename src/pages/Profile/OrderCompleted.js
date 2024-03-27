@@ -36,6 +36,19 @@ function OrderCompleted() {
     const myOrders = orders.filter((order) => order.buyerAccountId === userid || order.ownerAccountId === userid);
     console.log(myOrders);
 
+    const [buyerAccountName, setBuyerAccountName] = useState('');
+    const [ownerAccountName, setOwnerAccountName] = useState('');
+
+    useEffect(() => {
+        fetch(`${SERVER_API}/Auth/GetAccountById?id=${myOrders.buyerAccountId}`)
+            .then((response) => response.json())
+            .then((data) => setBuyerAccountName(data.userName));
+
+        fetch(`${SERVER_API}/Auth/GetAccountById?id=${myOrders.ownerAccountId}`)
+            .then((response) => response.json())
+            .then((data) => setOwnerAccountName(data.userName));
+    }, [myOrders]);
+
     return (
         <div>
             <p>History of successful trading orders with you</p>
@@ -46,8 +59,8 @@ function OrderCompleted() {
                         <div className="product-details2">
                             <h2 className="product-title">{order.artWork.name}</h2>
                             <p className="product-description">Description: {order.artWork.description}</p>
-                            <p className="product-description">Buyer: {order.buyerAccountId}</p>
-                            <p className="product-description">Seller: {order.ownerAccountId}</p>
+                            <p className="product-description">Buyer: {buyerAccountName}</p>
+                            <p className="product-description">Seller: {ownerAccountName}</p>
                         </div>
                     </div>
                 </div>
