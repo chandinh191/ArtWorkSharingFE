@@ -82,6 +82,7 @@ function RequestArtwork() {
                         <div className="product-details2">
                             <h2 className="product-title">{order.artWork.name}</h2>
                             <p className="product-description">Description: {order.artWork.description}</p>
+                            <p className="product-description">Owner: {order.artWork.userOwnerId}</p>
                             <button
                                 className="add-to-cart-btn"
                                 style={{ backgroundColor: 'red' }}

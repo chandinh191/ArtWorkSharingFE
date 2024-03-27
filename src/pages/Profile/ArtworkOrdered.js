@@ -134,6 +134,8 @@ function ArtworkOrdered() {
                         <div className="product-details2">
                             <h2 className="product-title">{order.artWork.name}</h2>
                             <p className="product-description">Description: {order.artWork.description}</p>
+                            <p className="product-price">Price: ${order.artWork.price} </p>
+
                             <p className="product-description">Buyer: {order.buyerAccountId}</p>
                             <p className="product-description">Date: {order.artWork.created}</p>
                             <button
