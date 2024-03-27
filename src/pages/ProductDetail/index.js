@@ -175,7 +175,7 @@ function ProductDetail() {
             },
             body: JSON.stringify({
                 BuyerAccountId: userid,
-                OwnerAccountId: artwork.userAccountId,
+                OwnerAccountId: audience.id,
                 artWorkID: artwork.id,
                 status: 1,
             }),

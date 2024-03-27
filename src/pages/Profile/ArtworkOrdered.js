@@ -70,6 +70,21 @@ function ArtworkOrdered() {
         }
     }
 
+    async function CancelStatusForAllOrderPedding(artWorkId) {
+        const res = await fetch(`${SERVER_API}/Order/UpdateStatusCancel?artworkId=` + artWorkId, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        if (res.ok) {
+            window.location.reload();
+        } else {
+            window.location.reload();
+        }
+    }
+
     async function UpdateStatusOrder(order) {
         const res = await fetch(`${SERVER_API}/Order/Update`, {
             method: 'PUT',
@@ -84,6 +99,7 @@ function ArtworkOrdered() {
         });
         if (res.ok) {
             ChangeOwnerArtwork(order.artWorkID, order.buyerAccountId);
+            CancelStatusForAllOrderPedding(order.artWorkID);
             window.location.reload();
         } else {
             window.location.reload();

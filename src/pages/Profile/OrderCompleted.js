@@ -33,7 +33,6 @@ function OrderCompleted() {
         };
         fetchOrders();
     }, [status]);
-
     const myOrders = orders.filter((order) => order.buyerAccountId === userid || order.ownerAccountId === userid);
     console.log(myOrders);
 
