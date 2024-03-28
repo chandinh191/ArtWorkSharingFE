@@ -40,13 +40,24 @@ function OrderCompleted() {
     const [ownerAccountName, setOwnerAccountName] = useState('');
 
     useEffect(() => {
-        fetch(`${SERVER_API}/Auth/GetAccountById?id=${myOrders.buyerAccountId}`)
-            .then((response) => response.json())
-            .then((data) => setBuyerAccountName(data.userName));
+        myOrders.map((order) => {
+            console.log('Buyer Account ID:', order.buyerAccountId);
+            console.log('Owner Account ID:', order.ownerAccountId);
 
-        fetch(`${SERVER_API}/Auth/GetAccountById?id=${myOrders.ownerAccountId}`)
-            .then((response) => response.json())
-            .then((data) => setOwnerAccountName(data.userName));
+            fetch(`${SERVER_API}/Auth/GetAccountById?id=${order.buyerAccountId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setBuyerAccountName(data.userName);
+                    console.log('Buyer Account Name:', data.userName);
+                });
+
+            fetch(`${SERVER_API}/Auth/GetAccountById?id=${order.ownerAccountId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setOwnerAccountName(data.userName);
+                    console.log('Owner Account Name:', data.userName);
+                });
+        });
     }, [myOrders]);
 
     return (
@@ -59,7 +70,7 @@ function OrderCompleted() {
                         <div className="product-details2">
                             <h2 className="product-title">{order.artWork.name}</h2>
                             <p className="product-description">Description: {order.artWork.description}</p>
-                            <p className="product-description">Buyer: {buyerAccountName}</p>
+                            <p className="product-description">Buyer: {buyerAccountName} </p>
                             <p className="product-description">Seller: {ownerAccountName}</p>
                         </div>
                     </div>

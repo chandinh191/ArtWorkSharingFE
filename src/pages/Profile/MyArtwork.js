@@ -61,9 +61,9 @@ function MyArtwork() {
 
                 if (response.status === 200) {
                     const res = response.data;
-                    setArtId(artworkId)
+                    setArtId(artworkId);
                     // Populate form fields with retrieved data
-                    setFormData(prevState => ({
+                    setFormData((prevState) => ({
                         ...prevState,
                         name: res.name,
                         description: res.description,
@@ -81,7 +81,6 @@ function MyArtwork() {
         } else {
             setSelectedFile(null);
         }
-
     };
     const [currentImageUrl, setCurrentImageUrl] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -139,7 +138,6 @@ function MyArtwork() {
         const imageData = new FormData();
         imageData.append('file', selectedFile);
         imageData.append('upload_preset', preset_key);
-
 
         // Send the image to Cloudinary
         try {
