@@ -72,6 +72,30 @@ function RequestArtwork() {
         }
     }
 
+    const [buyerAccountName, setBuyerAccountName] = useState('');
+    const [ownerAccountName, setOwnerAccountName] = useState('');
+
+    useEffect(() => {
+        myOrders.map((order) => {
+            console.log('Buyer Account ID:', order.buyerAccountId);
+            console.log('Owner Account ID:', order.ownerAccountId);
+
+            fetch(`${SERVER_API}/Auth/GetAccountById?id=${order.buyerAccountId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setBuyerAccountName(data.userName);
+                    console.log('Buyer Account Name:', data.userName);
+                });
+
+            fetch(`${SERVER_API}/Auth/GetAccountById?id=${order.ownerAccountId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setOwnerAccountName(data.userName);
+                    console.log('Owner Account Name:', data.userName);
+                });
+        });
+    }, [myOrders]);
+
     return (
         <div>
             <p>Your request to purchase a artwork product</p>
@@ -82,7 +106,7 @@ function RequestArtwork() {
                         <div className="product-details2">
                             <h2 className="product-title">{order.artWork.name}</h2>
                             <p className="product-description">Description: {order.artWork.description}</p>
-                            <p className="product-description">Owner: {order.artWork.userOwnerId}</p>
+                            <p className="product-description">Owner: {ownerAccountName}</p>
                             <button
                                 className="add-to-cart-btn"
                                 style={{ backgroundColor: 'red' }}

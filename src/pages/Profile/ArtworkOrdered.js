@@ -128,6 +128,30 @@ function ArtworkOrdered() {
         }
     }
 
+    const [buyerAccountName, setBuyerAccountName] = useState('');
+    const [ownerAccountName, setOwnerAccountName] = useState('');
+
+    useEffect(() => {
+        myOrders.map((order) => {
+            console.log('Buyer Account ID:', order.buyerAccountId);
+            console.log('Owner Account ID:', order.ownerAccountId);
+
+            fetch(`${SERVER_API}/Auth/GetAccountById?id=${order.buyerAccountId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setBuyerAccountName(data.userName);
+                    console.log('Buyer Account Name:', data.userName);
+                });
+
+            fetch(`${SERVER_API}/Auth/GetAccountById?id=${order.ownerAccountId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setOwnerAccountName(data.userName);
+                    console.log('Owner Account Name:', data.userName);
+                });
+        });
+    }, [myOrders]);
+
     return (
         <div>
             <p>Requests from others who want to buy your artwork product</p>
@@ -140,7 +164,7 @@ function ArtworkOrdered() {
                             <p className="product-description">Description: {order.artWork.description}</p>
                             <p className="product-price">Price: ${order.artWork.price} </p>
 
-                            <p className="product-description">Buyer: {order.buyerAccountId}</p>
+                            <p className="product-description">Buyer: {buyerAccountName}</p>
                             <p className="product-description">Date: {order.artWork.created}</p>
                             <button
                                 className="add-to-cart-btn"
