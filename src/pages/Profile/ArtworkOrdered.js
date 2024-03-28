@@ -94,10 +94,14 @@ function ArtworkOrdered() {
             },
             body: JSON.stringify({
                 id: order.id,
+                buyerAccountId: order.buyerAccountId,
+                ownerAccountId: order.ownerAccountId,
+                artWorkID: order.artWorkID,
                 status: 2,
             }),
         });
         if (res.ok) {
+            console.log(order.id);
             ChangeOwnerArtwork(order.artWorkID, order.buyerAccountId);
             CancelStatusForAllOrderPedding(order.artWorkID);
             window.location.reload();
