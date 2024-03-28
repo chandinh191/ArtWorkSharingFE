@@ -32,6 +32,7 @@ function ProductDetail() {
                     setArtwork(resData);
                     fetchArtist(resData.userAccountId);
                     fetchAudience(resData.userOwnerId);
+                    getCategoryById(resData.categoryId);
                 } else {
                     console.error('Failed to fetch artwork');
                 }
@@ -274,6 +275,24 @@ function ProductDetail() {
             });
     }, [userid, artwork.id]);
 
+    // category name
+    const [categoryName, setCategoryName] = React.useState('');
+
+    async function getCategoryById(categoryId) {
+        const res = await fetch(`https://localhost:7178/api/Category/GetById?id=${categoryId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (res.ok) {
+            const json = await res.json();
+            setCategoryName(json.categoryName); // Assuming the name property is the category name
+        } else {
+            console.error('Failed to fetch category');
+        }
+    }
+
     return (
         <>
             {/* Breadcrumb Begin */}
@@ -384,7 +403,7 @@ function ProductDetail() {
                                         </li>
                                         <li>
                                             <span>Category:</span>
-                                            <p>{artwork.categoryId}</p>
+                                            <p>{categoryName}</p>
                                         </li>
 
                                         <li>
@@ -399,7 +418,7 @@ function ProductDetail() {
                                         </li>
                                         <li>
                                             <span>Create Date:</span>
-                                            <p>{artwork.created}</p>
+                                            <p>{new Date(artwork.created).toLocaleString('vi-VN')}</p>
                                         </li>
                                     </ul>
                                 </div>
