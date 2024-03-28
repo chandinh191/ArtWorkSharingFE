@@ -279,7 +279,7 @@ function ProductDetail() {
     const [categoryName, setCategoryName] = React.useState('');
 
     async function getCategoryById(categoryId) {
-        const res = await fetch(`https://localhost:7178/api/Category/GetById?id=${categoryId}`, {
+        const res = await fetch(`${SERVER_API}/Category/GetById?id=${categoryId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
