@@ -64,9 +64,7 @@ function ArtworkOrdered() {
             }),
         });
         if (res.ok) {
-            window.location.reload();
         } else {
-            window.location.reload();
         }
     }
 
@@ -100,11 +98,11 @@ function ArtworkOrdered() {
                 status: 2,
             }),
         });
+
         if (res.ok) {
             console.log(order.id);
             ChangeOwnerArtwork(order.artWorkID, order.buyerAccountId);
             CancelStatusForAllOrderPedding(order.artWorkID);
-            window.location.reload();
         } else {
             window.location.reload();
         }
