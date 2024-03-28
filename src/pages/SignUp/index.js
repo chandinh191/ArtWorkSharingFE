@@ -2,7 +2,8 @@ import React from 'react';
 import img1 from '../../assets/images/signup-image.jpg';
 import '../../assets/css/login-style.css';
 import '../../../src/assets/fonts/material-icon/css/material-design-iconic-font.css';
-
+import appsetting from '../../appsetting.json';
+const { SERVER_API } = appsetting;
 function SignUp() {
     const [username, setUsername] = React.useState('');
     const [status, setStatus] = React.useState(0);
@@ -38,7 +39,7 @@ function SignUp() {
         }
 
         if (Object.keys(errors).length === 0) {
-            const res = await fetch(`https://localhost:7178/api/Auth/SignUp`, {
+            const res = await fetch(`${SERVER_API}/Auth/SignUp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

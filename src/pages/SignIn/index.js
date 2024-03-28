@@ -39,7 +39,6 @@ function SignIn() {
                 localStorage.setItem('token', result.token);
                 localStorage.setItem('userid', result.accinfo.id.toString());
                 localStorage.setItem('username', result.accinfo.userName.toString());
-                alert('Login successful!');
                 window.location.href = '/';
             } else {
                 alert('Wrong email or password!');
