@@ -8,28 +8,44 @@ const { SERVER_API } = appsetting;
 function SignIn() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [errors, setErrors] = React.useState({});
 
     async function SignIn() {
-        const res = await fetch(`${SERVER_API}/Auth/SignIn`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-        });
+        const errors = {};
+        if (!email.trim()) {
+            errors.email = 'Please enter your email';
+        }
+        if (!password.trim()) {
+            errors.password = 'Please enter your password';
+        }
+        setErrors(errors);
 
-        if (res.ok) {
-            console.log(res);
-            const result = await res.json();
-            localStorage.setItem('token', result.token);
-            localStorage.setItem('userid', result.accinfo.id.toString());
-            localStorage.setItem('username', result.accinfo.userName.toString());
-            window.location.href = '/';
-        } else {
-            window.location.reload();
+        // If there are no errors, proceed with sign in
+        if (Object.keys(errors).length === 0) {
+            const res = await fetch(`${SERVER_API}/Auth/SignIn`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
+            });
+
+            if (res.ok) {
+                console.log(res);
+                const result = await res.json();
+                localStorage.setItem('token', result.token);
+                localStorage.setItem('userid', result.accinfo.id.toString());
+                localStorage.setItem('username', result.accinfo.userName.toString());
+                alert('Login successful!');
+                window.location.href = '/';
+            } else {
+                alert('Wrong email or password!');
+                errors.message = 'Wrong email or password';
+                setErrors(errors);
+            }
         }
     }
 
@@ -72,6 +88,9 @@ function SignIn() {
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
+                                    <p className="error" style={{ color: 'red' }}>
+                                        {errors.email}
+                                    </p>
                                     <div className="form-group">
                                         <label htmlFor="password">
                                             <i className="zmdi zmdi-lock" />
@@ -85,6 +104,9 @@ function SignIn() {
                                             onChange={(e) => setPassword(e.target.value)}
                                         />
                                     </div>
+                                    <p className="error" style={{ color: 'red' }}>
+                                        {errors.password}
+                                    </p>
                                     <div className="form-group form-button">
                                         <input
                                             type="submit"
@@ -94,6 +116,9 @@ function SignIn() {
                                             value={'Login'}
                                         />
                                     </div>
+                                    <p className="error" style={{ color: 'red' }}>
+                                        {errors.message}
+                                    </p>
                                 </form>
                                 <div className="social-login">
                                     <span className="social-label">Or login with</span>
