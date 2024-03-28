@@ -9,30 +9,57 @@ function SignUp() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
+    const [errors, setErrors] = React.useState({});
 
     const handleStatusChange = (event) => {
         setStatus(parseInt(event.target.value));
     };
     async function SignUp() {
-        const res = await fetch(`https://localhost:7178/api/Auth/SignUp`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password,
-                confirmPassword: confirmPassword,
-                status: status,
-            }),
-        });
-        if (res.ok) {
-            window.location.href = '/signin';
-            const json = await res.json();
-            console.log(json);
-        } else {
-            window.location.reload();
+        // Validate form fields
+        const errors = {};
+        if (!username.trim()) {
+            errors.username = 'Please enter your name';
+        }
+        if (!email.trim()) {
+            errors.email = 'Please enter your email';
+        }
+        if (!password.trim()) {
+            errors.password = 'Please enter your password';
+        }
+        if (password.trim() !== confirmPassword.trim()) {
+            errors.confirmPassword = 'Passwords do not match';
+        }
+        setErrors(errors);
+
+        // If there are no errors, proceed with signup
+        if (Object.keys(errors).length === 0) {
+            // Your signup logic here
+            console.log('Sign up successful');
+        }
+
+        if (Object.keys(errors).length === 0) {
+            const res = await fetch(`https://localhost:7178/api/Auth/SignUp`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword,
+                    status: status,
+                }),
+            });
+            if (res.ok) {
+                alert('Sign up successful!');
+                window.location.href = '/signin';
+                const json = await res.json();
+                console.log(json);
+            } else {
+                alert('Sign up fail!');
+                window.location.reload();
+            }
         }
     }
 
@@ -67,6 +94,9 @@ function SignUp() {
                                             onChange={(e) => setUsername(e.target.value)}
                                         />
                                     </div>
+                                    <p className="error" style={{ color: 'red' }}>
+                                        {errors.username}
+                                    </p>
                                     <div className="form-group">
                                         <label htmlFor="email">
                                             <i className="zmdi zmdi-email" />
@@ -80,6 +110,11 @@ function SignUp() {
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
+                                    {errors.email && (
+                                        <p className="error" style={{ color: 'red' }}>
+                                            {errors.email}
+                                        </p>
+                                    )}
                                     <div className="form-group">
                                         <label htmlFor="password">
                                             <i className="zmdi zmdi-lock" />
@@ -93,6 +128,11 @@ function SignUp() {
                                             onChange={(e) => setPassword(e.target.value)}
                                         />
                                     </div>
+                                    {errors.password && (
+                                        <p className="error" style={{ color: 'red' }}>
+                                            {errors.password}
+                                        </p>
+                                    )}
                                     <div className="form-group">
                                         <label htmlFor="confirmPassword">
                                             <i className="zmdi zmdi-lock-outline" />
@@ -106,6 +146,11 @@ function SignUp() {
                                             onChange={(e) => setConfirmPassword(e.target.value)}
                                         />
                                     </div>
+                                    {errors.confirmPassword && (
+                                        <p className="error" style={{ color: 'red' }}>
+                                            {errors.confirmPassword}
+                                        </p>
+                                    )}
                                     <div className="form-group">
                                         <div className="row" style={{ alignItems: 'center' }}>
                                             <div className="col-md-4 col-sm-6">
@@ -149,6 +194,9 @@ function SignUp() {
                                 </figure>
                                 <a href="/SignIn" className="signup-image-link">
                                     I am already member
+                                </a>
+                                <a href="/" className="signup-image-link">
+                                    Home page
                                 </a>
                             </div>
                         </div>
